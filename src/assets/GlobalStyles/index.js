@@ -1,9 +1,11 @@
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
+    /* https://www.schemecolor.com/cartoon-halloween-color-palette.php */
     :root {
         --orange: #FE8000;
-        --mellow-apricot: #EFBD76;
+        --mellow-apricot: hsl(35, 79%, 70%);
+        --mellow-apricot-shade: hsl(35, 79%, 62%);
         --deep-saffron: #FFA52B;
         --eerie-black: #191919;
         --black: #000000;
@@ -19,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
     html {
         scroll-behavior: smooth;
         font-family: 'Inter';
+        scrollbar-color: rgb(61, 65, 69) rgb(21, 24, 28);
     }
 `
 

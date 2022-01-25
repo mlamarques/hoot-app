@@ -32,12 +32,11 @@ export const LoginStyle = styled.div`
         position: relative;
         display: flex;
         background-color: white;
-        border: 1px solid transparent;
+        border: 2px solid transparent;
         border-radius: 9px;
         /* width: 100%; */
         min-width: 364px;
         max-width: 364px;
-        height: 64px;
         align-self: center;
         overflow: hidden;
 
