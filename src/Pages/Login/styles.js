@@ -12,142 +12,281 @@ export const LoginStyle = styled.div`
         border-radius: 16px;
         min-width: 364px;
         padding: 32px;
-    }
 
-    .logo {
-        height: 90px;
-        align-self: center;
-        margin-top: 12px;
-    }
+        .logo__container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            height: 120px;
 
-    .sign-in {
-        text-align: center;
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: var(--light-text);
-        margin-bottom: 16px;
-    }
-
-    .username__container {
-        position: relative;
-        display: flex;
-        background-color: white;
-        border: 2px solid transparent;
-        border-radius: 9px;
-        /* width: 100%; */
-        min-width: 364px;
-        max-width: 364px;
-        align-self: center;
-        overflow: hidden;
-
-        &:focus-within {
-            border: 2px solid var(--orange);
-        }
-    }
-
-    label[for=usernameContainer] {
-        position: absolute;
-        left: 8px;
-        color: #757575;
-        font-size: 1.25rem;
-        font-weight: 300;
-        transition: 0.2s ease;
-        align-self: center;
-        pointer-events: none;
-    }
-
-    .username--input {
-        outline: none;
-        position: relative;
-        background: none;
-        width: 100%;
-        border: 0;
-        color: #212121;
-        font-size: 1.25rem;
-        font-weight: 400;
-        line-height: 1;
-        padding-top: 12px;
-        padding-bottom: 8px;
-        padding-left: 8px;
-        padding-right: 8px;
-        margin-top: 16px;
-        
-
-        &:focus + label {
-            color: var(--orange); /* rgb(29, 155, 240) */
-            transform: translate(-12%, -50%) scale(0.75);
+            .logo {
+                height: 100%;
+            }
         }
 
-        &:valid + label {
-            color: var(--orange); /* rgb(29, 155, 240) */
-            transform: translate(-12%, -50%) scale(0.75);
+        /* ------------------------------- USERNAME ------------------------------- */
+
+        .sign-in {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--light-text);
+            margin-bottom: 16px;
+        }
+
+        .username__container {
+            position: relative;
+            display: flex;
+            background-color: white;
+            border: 2px solid transparent;
+            border-radius: 9px;
+            /* width: 100%; */
+            min-width: 364px;
+            max-width: 364px;
+            align-self: center;
+            overflow: hidden;
+
+            &:focus-within {
+                border: 2px solid var(--orange);
+            }
+
+            .username--input {
+                outline: none;
+                position: relative;
+                background: none;
+                width: 100%;
+                border: 0;
+                color: #212121;
+                font-size: 1.25rem;
+                font-weight: 400;
+                line-height: 1;
+                padding-top: 12px;
+                padding-bottom: 8px;
+                padding-left: 8px;
+                padding-right: 8px;
+                margin-top: 16px;
+                
+
+                &:focus + label {
+                    color: var(--orange); /* rgb(29, 155, 240) */
+                    transform: translate(-12%, -50%) scale(0.75);
+                }
+
+                &:valid + label {
+                    color: var(--orange); /* rgb(29, 155, 240) */
+                    transform: translate(-12%, -50%) scale(0.75);
+                }
+            }
+        }
+
+        label[for=usernameContainer] {
+            position: absolute;
+            left: 8px;
+            color: #757575;
+            font-size: 1.25rem;
+            font-weight: 300;
+            transition: 0.2s ease;
+            align-self: center;
+            pointer-events: none;
+        }
+
+        .btn--next {
+            min-width: 364px;
+            max-width: 364px;
+            min-height: 36px;
+            align-self: center;
+            display: grid;
+            place-items: center;
+            margin-bottom: 12px;
+            margin-top: 12px;
+            padding-left: 16px;
+            padding-right: 16px;
+            font-family: Karla, sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 20px;
+            text-align: center;
+            background-color: rgb(239, 243, 244);
+            outline-style: none;
+            border: 1px solid rgba(0, 0, 0, 0);
+            border-radius: 9999px;
+            transition-property: background-color;
+            transition-duration: 0.2s;
+            user-select: none;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgb(215, 219, 220);
+            }
+
+            span {
+                
+            }
+        }
+
+        .btn--forget-password {
+            min-width: 364px;
+            max-width: 364px;
+            min-height: 36px;
+            align-self: center;
+            display: grid;
+            place-items: center;
+            margin-bottom: 12px;
+            margin-top: 12px;
+            padding-left: 16px;
+            padding-right: 16px;
+            color: var(--light-text);
+            font-family: Karla, sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 20px;
+            text-align: center;
+            background-color: transparent;
+            outline-style: none;
+            border: solid 1px;
+            border-color: rgba(239, 234, 244, 0.3);
+            border-radius: 9999px;
+            transition-property: background-color;
+            transition-duration: 0.2s;
+            user-select: none;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba(239, 234, 244, 0.2);
+            }
+        }
+
+        /* ------------------------------- PASSWORD ------------------------------- */
+
+        .enter-password {
+            text-align: left;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light-text);
+            margin-bottom: 16px;
+        }
+
+        .username--selected {
+            position: relative;
+            background: none;
+            width: 100%;
+            border: 1px solid rgba(239, 234, 244, 0.3);
+            border-radius: 6px;
+            color: var(--light-text);
+            font-size: 1.25rem;
+            font-weight: 400;
+            line-height: 1;
+            padding-top: 32px;
+            padding-bottom: 8px;
+            padding-left: 8px;
+            padding-right: 8px;
+            margin-top: 16px;
+            pointer-events: none;
+        }
+
+        label[for=selectedUsername] {
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            color: var(--light-text);
+            font-size: 0.85rem;
+            font-weight: 400;
+            pointer-events: none;
+        }
+
+        .password__container {
+            position: relative;
+            display: flex;
+            background-color: white;
+            border: 2px solid transparent;
+            border-radius: 9px;
+            width: 100%;
+            min-height: 62px;
+            margin-top: 16px;
+            align-self: center;
+            overflow: hidden;
+
+            &:focus-within {
+                border: 2px solid var(--orange);
+            }
+
+            .password--input {
+                outline: none;
+                position: relative;
+                background: none;
+                width: 100%;
+                border: 0;
+                color: #212121;
+                font-size: 1.25rem;
+                font-weight: 400;
+                line-height: 1;
+                padding-top: 12px;
+                padding-bottom: 8px;
+                padding-left: 8px;
+                padding-right: 8px;
+                margin-top: 16px;
+
+                &:focus + label {
+                    color: var(--orange); /* rgb(29, 155, 240) */
+                    transform: translate(-12%, -50%) scale(0.75);
+                }
+
+                &:valid + label {
+                    color: var(--orange); /* rgb(29, 155, 240) */
+                    transform: translate(-12%, -50%) scale(0.75);
+                }
+            }
+
+            label[for=passwordContainer] {
+                position: absolute;
+                left: 8px;
+                color: #757575;
+                font-size: 1.25rem;
+                font-weight: 300;
+                transition: 0.2s ease;
+                align-self: center;
+                cursor: pointer;
+            }   
+        }
+
+        .log-in__bottom {
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 36px;
+
+            .btn--log-in {
+                min-height: 46px;
+                height: 46px;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 12px;
+                margin-top: 12px;
+                padding-left: 16px;
+                padding-right: 16px;
+                font-family: Karla, sans-serif;
+                font-weight: 700;
+                font-size: 1rem;
+                line-height: 24px;
+                text-align: center;
+                background-color: rgb(239, 243, 244);
+                outline-style: none;
+                border: 1px solid rgba(0, 0, 0, 0);
+                border-radius: 9999px;
+                transition-property: background-color;
+                transition-duration: 0.2s;
+                user-select: none;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: rgb(215, 219, 220);
+                }
+            }
         }
     }
-
-    .btn--next {
-        min-width: 364px;
-        max-width: 364px;
-        min-height: 36px;
-        align-self: center;
-        display: grid;
-        place-items: center;
-        margin-bottom: 12px;
-        margin-top: 12px;
-        padding-left: 16px;
-        padding-right: 16px;
-        font-family: Karla, sans-serif;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 20px;
-        text-align: center;
-        background-color: rgb(239, 243, 244);
-        outline-style: none;
-        border: 1px solid rgba(0, 0, 0, 0);
-        border-radius: 9999px;
-        transition-property: background-color;
-        transition-duration: 0.2s;
-        user-select: none;
-        cursor: pointer;
-
-        &:hover {
-            background-color: rgb(215, 219, 220);
-        }
-
-        span {
-            
-        }
-    }
-
-    .btn--forget-password {
-        min-width: 364px;
-        max-width: 364px;
-        min-height: 36px;
-        align-self: center;
-        display: grid;
-        place-items: center;
-        margin-bottom: 12px;
-        margin-top: 12px;
-        padding-left: 16px;
-        padding-right: 16px;
-        color: var(--light-text);
-        font-family: Karla, sans-serif;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 20px;
-        text-align: center;
-        background-color: transparent;
-        outline-style: none;
-        border: solid 1px;
-        border-color: rgba(239, 234, 244, 0.3);
-        border-radius: 9999px;
-        transition-property: background-color;
-        transition-duration: 0.2s;
-        user-select: none;
-        cursor: pointer;
-
-        &:hover {
-            background-color: rgba(239, 234, 244, 0.2);
-        }
-    }
+    
 `
 

@@ -1,8 +1,12 @@
 import {React, useState} from 'react';
+import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
 import Login from './Pages/Login/Login'
+import Favorites from './Pages/Favorites/Favorites'
 import Home from './Pages/Home/Home'
+import Search from './Pages/Search/Search'
 import './App.css';
 import GlobalStyles from './assets/GlobalStyles'
+import Nav from './components/Nav/Nav'
 
 function App() {
   const [hasSigned, setHasSigned] = useState(false)
@@ -15,16 +19,19 @@ function App() {
     setHasSigned(false)
   }
 
-  function handleKeyPress(event) {
-    if(event.key === 'Enter'){
-      handleSignIn()
-    }
-  }
-
   return (
     <div className="App">
       <GlobalStyles/>
-      {hasSigned ? <Home handleLogout={logout} /> : <Login handleNext={handleSignIn} handleKeyPress={handleKeyPress}  />}
+        <BrowserRouter>
+          {hasSigned && <Nav />}
+          <Routes>
+            <Route path="/sign-in" element={<Login handleSignIn={handleSignIn}/>} />
+            <Route path="/favorites" element={<Favorites handleLogout={logout} />} />
+            <Route path="/search" element={<Search handleLogout={logout} />} />
+            <Route path="/" element={!hasSigned ? <Navigate to="/sign-in" /> : <Home handleLogout={logout} />} />
+            <Route path="*" element={<Home handleLogout={logout} />} />
+          </Routes>
+        </BrowserRouter>
     </div>
   );
 }

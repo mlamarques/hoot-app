@@ -1,15 +1,16 @@
-import {HomeStyle} from './styles'
+import {NavStyle} from './styles'
+import { Link } from 'react-router-dom';
 import LogoSimp from '../../assets/LogoSimp'
 import IconHome from '../../assets/icons/IconHome'
 import IconFavorite from '../../assets/icons/IconFavorite'
 import IconMessages from '../../assets/icons/IconMessages'
 import IconSearch from '../../assets/icons/IconSearch'
 
-export default function Home(props) {
+export default function Nav() {
     return (
-      <HomeStyle>
-        <div className="home-page">
-          {/* -------------------------- Nav --------------------------
+      <NavStyle>
+        <div className="nav__component">
+          
           <div className="menu__container">
             <div className="header--logo">
               <a className="logo--redirect" href="">
@@ -17,7 +18,7 @@ export default function Home(props) {
               </a>
             </div>
             <nav className="nav__container">
-              <a className="nav__item" href="#">
+              <Link to='/' className="nav__item">
                 <div className="item--wrapper">
                   <div className="logo-item">
                     <IconHome /> 
@@ -26,8 +27,8 @@ export default function Home(props) {
                     <span className="logo-text--value">Home</span>
                   </div>
                 </div>
-              </a>
-              <a className="nav__item" href="#">
+              </Link>
+              <Link to='/favorites' className="nav__item">
                 <div className="item--wrapper">
                   <div className="logo-item">
                     <IconFavorite /> 
@@ -36,8 +37,8 @@ export default function Home(props) {
                     <span className="logo-text--value">Favorites</span>
                   </div>
                 </div>
-              </a>
-              <a className="nav__item" href="#">
+              </Link>
+              <Link to='/' className="nav__item">
                 <div className="item--wrapper">
                   <div className="logo-item">
                     <IconMessages /> 
@@ -46,8 +47,8 @@ export default function Home(props) {
                     <span className="logo-text--value">Messages</span>
                   </div>
                 </div>
-              </a>
-              <a className="nav__item" href="#">
+              </Link>
+              <Link to='/search' className="nav__item">
                 <div className="item--wrapper">
                   <div className="logo-item">
                     <IconSearch /> 
@@ -56,24 +57,10 @@ export default function Home(props) {
                     <span className="logo-text--value">Search</span>
                   </div>
                 </div>
-              </a>
+              </Link>
             </nav>
-          </div> */}
-          {/* -------------------------- Main -------------------------- */}
-          <div className="main__container">
-            <div className="main__header">
-              <h1 onClick={props.handleLogout} >Home</h1>
-            </div>
-            <div className="feed__container">
-              <div className="hoot--individual__container"></div>
-              <div className="hoot--individual__container"></div>
-              <div className="hoot--individual__container"></div>
-            </div>
-          </div>
-          {/* -------------------------- Alt -------------------------- */}
-          <div className="alternative__container">
           </div>
         </div>
-      </HomeStyle>
+      </NavStyle>
     );
   }
