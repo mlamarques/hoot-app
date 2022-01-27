@@ -4,6 +4,7 @@ export const NavStyle = styled.div`
 
     .nav__component {
         display: grid;
+        height: 100%;
         
         .menu__container {
             display: flex;

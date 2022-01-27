@@ -1,6 +1,8 @@
 import {React, useState, useEffect} from 'react';
 import { useNavigate  } from 'react-router-dom';
 import Logo from '../../assets/Logo'
+import IconVisible from '../../assets/icons/IconVisible'
+import IconNotVisible from '../../assets/icons/IconNotVisible'
 import {LoginStyle} from './styles'
 
 function Login(props) {
@@ -108,7 +110,12 @@ function Login(props) {
                 value={password}
                 autoFocus
               />
-              <label htmlFor="passwordContainer" onClick={togglePassword}>Password</label>
+              <label htmlFor="passwordContainer">Password</label>
+              <div className="toggle-visible__container">
+                <div className="icon--visible__background" onClick={togglePassword} >
+                  {isPasswordShown ? <IconNotVisible /> : <IconVisible />}
+                </div>
+              </div>
             </div>
             <div className="log-in__bottom">
               <div className="btn--log-in" onClick={handlePassword}>

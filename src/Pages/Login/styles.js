@@ -246,8 +246,34 @@ export const LoginStyle = styled.div`
                 font-weight: 300;
                 transition: 0.2s ease;
                 align-self: center;
-                cursor: pointer;
-            }   
+                pointer-events: none;
+            }
+
+            .toggle-visible__container {
+                /* position: absolute;
+                right: 8px;
+                top: 50%; */
+                position: relative;
+                align-self: center;
+                height: 24px;
+                width: 28px;
+                padding-left: 4px;
+                padding-top: 12px;
+                margin-right: 8px;
+                /* transform: translate(0, -20%); */
+
+                .icon--visible__background {
+                    height: 24px;
+                    width: 24px;
+                    border-radius: 9999px;
+                    transition: 0.2s ease;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: var(--light-text);
+                    }
+                }
+            }
         }
 
         .log-in__bottom {
