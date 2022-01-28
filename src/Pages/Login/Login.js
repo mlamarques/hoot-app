@@ -3,6 +3,7 @@ import { useNavigate  } from 'react-router-dom';
 import Logo from '../../assets/Logo'
 import IconVisible from '../../assets/icons/IconVisible'
 import IconNotVisible from '../../assets/icons/IconNotVisible'
+import IconArrowBack from '../../assets/icons/IconArrowBack'
 import {LoginStyle} from './styles'
 
 function Login(props) {
@@ -62,7 +63,6 @@ function Login(props) {
       <LoginStyle>
         <div className="sign-in__container">
           <div className="logo__container"><Logo /></div>
-          
           {!isUsernameValid ? 
           <>
             <span className="sign-in">Sign in</span>
@@ -89,9 +89,16 @@ function Login(props) {
             <div className="btn--forget-password">
               <span>Forgot password?</span>
             </div>
+            <div className="create-account__container">
+              <span className="sign-up--text">Don't have an account?</span>
+              <span className="sign-up--link" onClick={() => navigate("/signup")}>Sign up</span>
+            </div>
           </>
           :
           <>
+            <div className="go-back--wrapper" onClick={() => setIsUSerNameValid(false)}>
+              <IconArrowBack />
+            </div>
             <span className="enter-password">Enter your password</span>
             <div className="username--selected" id="selectedUsername">
               <span>{username}</span>

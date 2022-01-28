@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
         --deep-saffron: #FFA52B;
         --eerie-black: #191919;
         --black: #000000;
+        --black-shade: rgba(239, 243, 244, 0.1);
         --light-text: rgb(217, 217, 217);
     }
 

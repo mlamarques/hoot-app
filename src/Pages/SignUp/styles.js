@@ -14,6 +14,67 @@ export const LoginStyle = styled.div`
         min-width: 364px;
         padding: 32px;
 
+        .go-back--wrapper {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 34px;
+            width: 34px;
+            margin: 16px;
+            border-radius: 9999px;
+            transition-duration: 0.5s;
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--black-shade);
+                /* transform: rotate(90deg); */
+
+                .llabel {
+                    background-color: rgba(91, 112, 131, 0.8);
+                    color: #FFF;
+                }
+            }
+
+            &:not(:hover) {
+                .llabel {
+                    transition:  none;
+                }   
+            }
+
+            .llabel {
+                position: absolute;
+                display: flex;
+                left: calc(-100% + 34px;);
+                top: 100%;
+                align-items: stretch;
+                justify-content: center;
+                border-radius: 2px;
+                margin-top: 2px;
+                padding: 2px 5px;
+                color: transparent;
+                font-size: 12px;
+                background-color: transparent;
+                overflow: hidden;
+                transition-property: background-color, color;
+                transition:  0.15s ease 0.75s;
+                pointer-events: none;
+
+                span {
+                    position: relative;
+                    width: max-content;
+                }                
+            }
+
+            /* &[title]:hover::after {
+                position: relative;
+                display: flex;
+                align-self: center;
+            } */
+        }
+
         .logo__container {
             display: flex;
             align-items: center;
@@ -26,15 +87,15 @@ export const LoginStyle = styled.div`
             }
         }
 
-        /* ------------------------------- USERNAME ------------------------------- */
-
-        .sign-in {
-            text-align: center;
-            font-size: 2rem;
+        .signup--title {
+            text-align: left;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--light-text);
-            margin-bottom: 16px;
+            margin-top: 12px;
         }
+
+        /* ------------------------------- USERNAME ------------------------------- */
 
         .username__container {
             position: relative;
@@ -42,10 +103,9 @@ export const LoginStyle = styled.div`
             background-color: white;
             border: 2px solid transparent;
             border-radius: 9px;
-            /* width: 100%; */
-            min-width: 364px;
-            max-width: 364px;
-            margin-bottom: 16px;
+            width: 100%;
+            min-height: 62px;
+            margin-top: 16px;
             align-self: center;
             overflow: hidden;
 
@@ -68,7 +128,6 @@ export const LoginStyle = styled.div`
                 padding-left: 8px;
                 padding-right: 8px;
                 margin-top: 16px;
-                
 
                 &:focus + label {
                     color: var(--orange); /* rgb(29, 155, 240) */
@@ -80,159 +139,57 @@ export const LoginStyle = styled.div`
                     transform: translate(-12%, -50%) scale(0.75);
                 }
             }
-        }
 
-        label[for=usernameContainer] {
-            position: absolute;
-            left: 8px;
-            color: #757575;
-            font-size: 1.25rem;
-            font-weight: 300;
-            transition: 0.2s ease;
-            align-self: center;
-            pointer-events: none;
-        }
-
-        .btn--next {
-            min-width: 364px;
-            max-width: 364px;
-            min-height: 36px;
-            align-self: center;
-            display: grid;
-            place-items: center;
-            margin-bottom: 12px;
-            margin-top: 12px;
-            padding-left: 16px;
-            padding-right: 16px;
-            font-family: Karla, sans-serif;
-            font-weight: 700;
-            font-size: 16px;
-            line-height: 20px;
-            text-align: center;
-            background-color: rgb(239, 243, 244);
-            outline-style: none;
-            border: 1px solid rgba(0, 0, 0, 0);
-            border-radius: 9999px;
-            transition-property: background-color;
-            transition-duration: 0.2s;
-            user-select: none;
-            cursor: pointer;
-
-            &:hover {
-                background-color: rgb(215, 219, 220);
+            label[for=usernameContainer] {
+                position: absolute;
+                left: 8px;
+                color: #757575;
+                font-size: 1.25rem;
+                font-weight: 300;
+                transition: 0.2s ease;
+                align-self: center;
+                pointer-events: none;
             }
 
-            span {
-                
-            }
-        }
+            .clean-input__container {
+                /* position: absolute;
+                right: 8px;
+                top: 50%; */
+                position: relative;
+                align-self: center;
+                height: 24px;
+                width: 28px;
+                padding-left: 4px;
+                padding-top: 12px;
+                margin-right: 8px;
+                /* transform: translate(0, -20%); */
 
-        .btn--forget-password {
-            min-width: 364px;
-            max-width: 364px;
-            min-height: 36px;
-            align-self: center;
-            display: grid;
-            place-items: center;
-            margin-bottom: 12px;
-            /* margin-top: 12px; */
-            padding-left: 16px;
-            padding-right: 16px;
-            color: var(--light-text);
-            font-family: Karla, sans-serif;
-            font-weight: 700;
-            font-size: 16px;
-            line-height: 20px;
-            text-align: center;
-            background-color: transparent;
-            outline-style: none;
-            border: solid 1px;
-            border-color: rgba(239, 234, 244, 0.3);
-            border-radius: 9999px;
-            transition-property: background-color;
-            transition-duration: 0.2s;
-            user-select: none;
-            cursor: pointer;
-
-            &:hover {
-                background-color: rgba(239, 234, 244, 0.2);
-            }
-        }
-
-        .create-account__container {
-            min-width: 364px;
-            max-width: 364px;
-            align-self: center;
-            margin-top: 40px;
-            color: var(--light-text);
-
-            .sign-up--text {
-                user-select: none;
-            }
-
-            .sign-up--link {
-                color: var(--orange);
-                padding-left: 8px;
-
-                &:hover {
-                    text-decoration: underline;
+                .clean-input__background {
+                    height: 24px;
+                    width: 24px;
+                    border-radius: 9999px;
+                    transition: 0.2s ease;
                     cursor: pointer;
+
+                    &:hover {
+                        background-color: var(--light-text);
+                    }
                 }
             }
         }
 
+        
+
+        
+
         /* ------------------------------- PASSWORD ------------------------------- */
-
-        .go-back--wrapper {
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 34px;
-            width: 34px;
-            margin: 16px;
-            border-radius: 9999px;
-            transition-duration: 0.5s;
-            cursor: pointer;
-
-            &:hover {
-                background-color: var(--black-shade);
-            }
-        }
 
         .enter-password {
             text-align: left;
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--light-text);
-            margin-top: 12px;
-        }
-
-        .username--selected {
-            position: relative;
-            background: none;
-            width: 100%;
-            border: 1px solid rgba(239, 234, 244, 0.3);
-            border-radius: 6px;
-            color: var(--light-text);
-            font-size: 1.25rem;
-            font-weight: 400;
-            line-height: 1;
-            padding-top: 32px;
-            padding-bottom: 8px;
-            padding-left: 8px;
-            padding-right: 8px;
-            margin-top: 16px;
-            pointer-events: none;
-        }
-
-        label[for=selectedUsername] {
-            position: absolute;
-            left: 8px;
-            top: 8px;
-            color: var(--light-text);
-            font-size: 0.85rem;
-            font-weight: 400;
-            pointer-events: none;
+            margin-bottom: 16px;
         }
 
         .password__container {
@@ -316,13 +273,13 @@ export const LoginStyle = styled.div`
             }
         }
 
-        .log-in__bottom {
+        .create-account__container{
             height: 100%;
             display: flex;
             align-items: flex-end;
             margin-bottom: 36px;
 
-            .btn--log-in {
+            .btn--create-account {
                 min-height: 46px;
                 height: 46px;
                 width: 100%;
