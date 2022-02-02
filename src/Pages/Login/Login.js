@@ -1,5 +1,6 @@
 import {React, useState, useEffect} from 'react';
 import { useNavigate  } from 'react-router-dom';
+import { api } from '../../services/api'
 import Logo from '../../assets/Logo'
 import IconVisible from '../../assets/icons/IconVisible'
 import IconNotVisible from '../../assets/icons/IconNotVisible'
@@ -27,18 +28,43 @@ function Login(props) {
     }
   }
 
-  function handleUsername() {
-    if (username.length !== 0) {
-      setIsUSerNameValid(true)
+  async function handleUsername() {
+    // if (username.length !== 0) {
+    //   setIsUSerNameValid(true)
+    // }
+    const data = {
+      username: username
     }
+    await api.post('/usercheck', data)
+      .then(res => {
+        console.log(res.data)
+        console.log(res.status)
+        res.status === 200 ? setIsUSerNameValid(true) : console.log(res.data)
+      })
+      .catch(err => console.log(err))
   }
 
-  function handlePassword() {
-    if (password.length !== 0) {
-      setIsPasswordValid(true)
-      props.handleSignIn()
-      navigate("/")
+  async function handlePassword() {
+    // if (password.length !== 0) {
+    //   setIsPasswordValid(true)
+    //   props.handleSignIn()
+    //   navigate("/")
+    // }
+
+    const data = {
+      username: username,
+      password: password
     }
+
+    await api.post('/login', data)
+      .then(res => {
+        if (res.status === 200) {
+          setIsPasswordValid(true)
+          props.handleSignIn()
+          navigate("/")
+        }
+      })
+      .catch(err => console.log(err))
   }
 
   function handleKeyPress(event) {

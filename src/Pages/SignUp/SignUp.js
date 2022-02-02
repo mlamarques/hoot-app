@@ -1,5 +1,6 @@
 import {React, useState, useEffect} from 'react';
 import { useNavigate  } from 'react-router-dom';
+import { api } from '../../services/api'
 import Logo from '../../assets/Logo'
 import IconVisible from '../../assets/icons/IconVisible'
 import IconNotVisible from '../../assets/icons/IconNotVisible'
@@ -25,6 +26,16 @@ function SignUp(props) {
     if (name === 'password') {
       setPassword(value)
     }
+  }
+
+  async function handleSubmit() {
+    const data = {
+      username: username,
+      password: password
+    }
+    await api.post('/signup', data)
+      .then(navigate('/home'))
+      .catch(err => console.log(err))
   }
 
   function handleUsername() {
@@ -57,9 +68,9 @@ function SignUp(props) {
     <div className="login-page">
       <LoginStyle>
         <div className="sign-in__container"id="sign-in__container">
-          <div className="go-back--wrapper" onClick={() => navigate(-1)} tabindex="0">
+          <div className="go-back--wrapper" onClick={() => navigate(-1)} tabIndex="0">
             <IconClose />
-            <div className="llabel" role="tooltip">
+            <div className="tooltip" role="tooltip">
               <span >Close</span>
             </div>
           </div>
@@ -110,7 +121,7 @@ function SignUp(props) {
             </div>
           </div>
           <div className="create-account__container">
-            <div className="btn--create-account" onClick={handlePassword}>
+            <div className="btn--create-account" onClick={handleSubmit}>
               <span>Sign up</span>
             </div>
           </div>

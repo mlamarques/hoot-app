@@ -1,4 +1,5 @@
 import {HomeStyle} from './styles'
+import Nav from '../../components/Nav/Nav'
 import LogoSimp from '../../assets/LogoSimp'
 import IconHome from '../../assets/icons/IconHome'
 import IconFavorite from '../../assets/icons/IconFavorite'
@@ -7,8 +8,10 @@ import IconSearch from '../../assets/icons/IconSearch'
 
 export default function Home(props) {
     return (
-      <HomeStyle>
-        <div className="home-page">
+      <div className="home-page">
+      
+        <Nav />
+        
           {/* -------------------------- Nav --------------------------
           <div className="menu__container">
             <div className="header--logo">
@@ -60,6 +63,7 @@ export default function Home(props) {
             </nav>
           </div> */}
           {/* -------------------------- Main -------------------------- */}
+          <HomeStyle>
           <div className="main__container">
             <div className="main__header">
               <h1 onClick={props.handleLogout} >Home</h1>
@@ -73,7 +77,8 @@ export default function Home(props) {
           {/* -------------------------- Alt -------------------------- */}
           <div className="alternative__container">
           </div>
-        </div>
+        
       </HomeStyle>
+      </div>
     );
   }

@@ -32,19 +32,19 @@ export const LoginStyle = styled.div`
                 background-color: var(--black-shade);
                 /* transform: rotate(90deg); */
 
-                .llabel {
+                .tooltip {
                     background-color: rgba(91, 112, 131, 0.8);
                     color: #FFF;
                 }
             }
 
             &:not(:hover) {
-                .llabel {
+                .tooltip {
                     transition:  none;
                 }   
             }
 
-            .llabel {
+            .tooltip {
                 position: absolute;
                 display: flex;
                 left: calc(-100% + 34px;);

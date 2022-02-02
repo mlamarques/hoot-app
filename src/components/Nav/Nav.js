@@ -7,10 +7,14 @@ import IconMessages from '../../assets/icons/IconMessages'
 import IconSearch from '../../assets/icons/IconSearch'
 
 export default function Nav() {
+    const style = {
+      display: 'grid'
+    }
+
     return (
-      <NavStyle>
-        <div className="nav__component">
-          
+      
+      <div className="nav__component" style={style}>
+        <NavStyle>
           <div className="menu__container">
             <div className="header--logo">
               <a className="logo--redirect" href="">
@@ -60,7 +64,7 @@ export default function Nav() {
               </Link>
             </nav>
           </div>
-        </div>
-      </NavStyle>
+        </NavStyle>
+      </div>
     );
   }

@@ -23,17 +23,16 @@ function App() {
   return (
     <div className="App">
       <GlobalStyles/>
-        <BrowserRouter>
-          {hasSigned && <Nav />}
-          <Routes>
-            <Route path="/login" element={<Login handleSignIn={handleSignIn}/>} />
-            <Route path="/signup" element={<SignUp handleSignIn={handleSignIn}/>} />
-            <Route path="/favorites" element={<Favorites handleLogout={logout} />} />
-            <Route path="/search" element={<Search handleLogout={logout} />} />
-            <Route path="/" element={!hasSigned ? <Navigate to="/login" /> : <Home handleLogout={logout} />} />
-            <Route path="*" element={<Home handleLogout={logout} />} />
-          </Routes>
-        </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<Login handleSignIn={handleSignIn}/>} />
+          <Route path="/signup" element={<SignUp handleSignIn={handleSignIn}/>} />
+          <Route path="/favorites" element={<Favorites handleLogout={logout} />} />
+          <Route path="/search" element={<Search handleLogout={logout} />} />
+          <Route path="/home" element={<Home handleLogout={logout} />} />
+          <Route path="/" element={!hasSigned ? <Navigate to="/login" /> : <Home handleLogout={logout} />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
