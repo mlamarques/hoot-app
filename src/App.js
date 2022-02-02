@@ -1,5 +1,5 @@
 import {React, useState} from 'react';
-import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Navigate, Routes, Route, Redirect } from 'react-router-dom';
 import Login from './Pages/Login/Login'
 import SignUp from './Pages/SignUp/SignUp'
 import Favorites from './Pages/Favorites/Favorites'
@@ -30,7 +30,7 @@ function App() {
           <Route path="/favorites" element={<Favorites handleLogout={logout} />} />
           <Route path="/search" element={<Search handleLogout={logout} />} />
           <Route path="/home" element={<Home handleLogout={logout} />} />
-          <Route path="/" element={!hasSigned ? <Navigate to="/login" /> : <Home handleLogout={logout} />} />
+          <Route path="/" element={!hasSigned ? <Navigate to="/login" /> : <Navigate to="/home" />} />
         </Routes>
       </BrowserRouter>
     </div>

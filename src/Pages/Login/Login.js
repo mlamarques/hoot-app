@@ -11,11 +11,24 @@ function Login(props) {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [isUsernameValid, setIsUSerNameValid] = useState(false)
+  const [isUsernameValid, setIsUserNameValid] = useState(false)
   const [isPasswordValid, setIsPasswordValid] = useState(false)
   const [isPasswordShown, setIsPasswordShown] = useState(false)
+  const [token, setToken] = useState(null)
 
   let navigate = useNavigate()
+
+  useEffect(() => {
+    const sessionToken = localStorage.getItem("accessToken")
+    if (sessionToken !== null) {
+      api.post('/session', {session: sessionToken})
+      .then(res => {
+        console.log("user session on")
+        navigate('/home')
+      })
+      .catch(err => console.log(err))
+    }
+  }, [])
 
   function handleChange(event) {
     const { name, value } = event.target
@@ -37,9 +50,9 @@ function Login(props) {
     }
     await api.post('/usercheck', data)
       .then(res => {
-        console.log(res.data)
-        console.log(res.status)
-        res.status === 200 ? setIsUSerNameValid(true) : console.log(res.data)
+        console.log(res.data.message)
+        // console.log(res.data.message)
+        res.data.isFound ? setIsUserNameValid(true) : console.log(res.data.message)
       })
       .catch(err => console.log(err))
   }
@@ -58,10 +71,11 @@ function Login(props) {
 
     await api.post('/login', data)
       .then(res => {
-        if (res.status === 200) {
+        if (res.data.match && res.status === 200) {
           setIsPasswordValid(true)
           props.handleSignIn()
           navigate("/")
+          localStorage.setItem("accessToken", JSON.stringify(res.data.token))
         }
       })
       .catch(err => console.log(err))
@@ -122,7 +136,7 @@ function Login(props) {
           </>
           :
           <>
-            <div className="go-back--wrapper" onClick={() => setIsUSerNameValid(false)}>
+            <div className="go-back--wrapper" onClick={() => setIsUserNameValid(false)}>
               <IconArrowBack />
             </div>
             <span className="enter-password">Enter your password</span>

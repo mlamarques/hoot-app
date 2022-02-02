@@ -31,7 +31,9 @@ function SignUp(props) {
   async function handleSubmit() {
     const data = {
       username: username,
-      password: password
+      password: password,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     }
     await api.post('/signup', data)
       .then(navigate('/home'))
