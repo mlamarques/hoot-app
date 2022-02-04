@@ -9,6 +9,7 @@ export const NavStyle = styled.div`
         /* max-width: 275px; */
         /* width: 100%; */
         width: 275px;
+        height: 100%;
         flex-direction: column;
         align-items: flex-start;
         padding-left: 12px;

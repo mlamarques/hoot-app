@@ -5,8 +5,9 @@ import IconHome from '../../assets/icons/IconHome'
 import IconFavorite from '../../assets/icons/IconFavorite'
 import IconMessages from '../../assets/icons/IconMessages'
 import IconSearch from '../../assets/icons/IconSearch'
+import UserCard from '../UserCard/UserCard';
 
-export default function Nav() {
+export default function Nav(props) {
     const style = {
       display: 'grid'
     }
@@ -63,6 +64,7 @@ export default function Nav() {
                 </div>
               </Link>
             </nav>
+            <UserCard handleClick={props.handleClick} username={props.username || "player"} />
           </div>
         </NavStyle>
       </div>

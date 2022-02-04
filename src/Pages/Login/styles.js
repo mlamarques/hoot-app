@@ -14,6 +14,11 @@ export const LoginStyle = styled.div`
         min-width: 364px;
         padding: 32px;
 
+        /* .loading__component {
+            transform: translate(-32px, -32px);
+            border-radius: 16px;
+        } */
+
         .logo__container {
             display: flex;
             align-items: center;

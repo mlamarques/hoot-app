@@ -5,80 +5,73 @@ import IconHome from '../../assets/icons/IconHome'
 import IconFavorite from '../../assets/icons/IconFavorite'
 import IconMessages from '../../assets/icons/IconMessages'
 import IconSearch from '../../assets/icons/IconSearch'
+import { useEffect, useState } from 'react'
+import Loading from '../../components/Loading/Loading'
+import { useNavigate } from 'react-router-dom'
+import { api } from '../../services/api'
 
 export default function Home(props) {
-    return (
-      <div className="home-page">
-      
-        <Nav />
-        
-          {/* -------------------------- Nav --------------------------
-          <div className="menu__container">
-            <div className="header--logo">
-              <a className="logo--redirect" href="">
-                <LogoSimp />
-              </a>
-            </div>
-            <nav className="nav__container">
-              <a className="nav__item" href="#">
-                <div className="item--wrapper">
-                  <div className="logo-item">
-                    <IconHome /> 
-                  </div>
-                  <div className="logo-text">
-                    <span className="logo-text--value">Home</span>
-                  </div>
-                </div>
-              </a>
-              <a className="nav__item" href="#">
-                <div className="item--wrapper">
-                  <div className="logo-item">
-                    <IconFavorite /> 
-                  </div>
-                  <div className="logo-text">
-                    <span className="logo-text--value">Favorites</span>
-                  </div>
-                </div>
-              </a>
-              <a className="nav__item" href="#">
-                <div className="item--wrapper">
-                  <div className="logo-item">
-                    <IconMessages /> 
-                  </div>
-                  <div className="logo-text">
-                    <span className="logo-text--value">Messages</span>
-                  </div>
-                </div>
-              </a>
-              <a className="nav__item" href="#">
-                <div className="item--wrapper">
-                  <div className="logo-item">
-                    <IconSearch /> 
-                  </div>
-                  <div className="logo-text">
-                    <span className="logo-text--value">Search</span>
-                  </div>
-                </div>
-              </a>
-            </nav>
-          </div> */}
-          {/* -------------------------- Main -------------------------- */}
-          <HomeStyle>
-          <div className="main__container">
-            <div className="main__header">
-              <h1 onClick={props.handleLogout} >Home</h1>
-            </div>
-            <div className="feed__container">
-              <div className="hoot--individual__container"></div>
-              <div className="hoot--individual__container"></div>
-              <div className="hoot--individual__container"></div>
-            </div>
-          </div>
-          {/* -------------------------- Alt -------------------------- */}
-          <div className="alternative__container">
-          </div>
-        
-      </HomeStyle>
-      </div>
-    );
+  const [isLoading, setIsLoading] = useState(false)
+  const [username, setUsername] = useState('')
+
+  let navigate = useNavigate()
+
+  useEffect(() => {
+    const sessionToken = localStorage.getItem("accessToken")
+    
+    function getAuthData() {
+      if (sessionToken !== null) {
+        api.post('/session', {session: sessionToken})
+        .then(res => {
+          setUsername(res.data.authData.username)
+        })
+        .catch(err => console.log(err))
+      }
+    }
+
+    getAuthData()
+    
+  }, [])
+
+  function handleLogout() {
+    if (localStorage.getItem("accessToken")) {
+      removeToken().then(() => {
+        redirectToLogin()
+      }, () => {
+        return
+      })
+    }
+
+    async function removeToken() {
+      localStorage.removeItem("accessToken")
+    }
+
+    function redirectToLogin() {
+      navigate("/login")
+    }
+    
   }
+
+  return (
+    <div className="home-page">
+      {isLoading && <Loading />}
+      <Nav username={username} handleClick={handleLogout} />
+        {/* -------------------------- Main -------------------------- */}
+      <HomeStyle>
+        <div className="main__container">
+          <div className="main__header">
+            <h1 onClick={props.handleLogout} >Home</h1>
+          </div>
+          <div className="feed__container">
+            <div className="hoot--individual__container"></div>
+            <div className="hoot--individual__container"></div>
+            <div className="hoot--individual__container"></div>
+          </div>
+        </div>
+        {/* -------------------------- Alt -------------------------- */}
+        <div className="alternative__container">
+        </div>
+      </HomeStyle>
+    </div>
+  );
+}

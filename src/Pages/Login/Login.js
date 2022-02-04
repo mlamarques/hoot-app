@@ -2,6 +2,8 @@ import {React, useState, useEffect} from 'react';
 import { useNavigate  } from 'react-router-dom';
 import { api } from '../../services/api'
 import Logo from '../../assets/Logo'
+import Notification from '../../components/Notification/Notification'
+import Loading from '../../components/Loading/Loading'
 import IconVisible from '../../assets/icons/IconVisible'
 import IconNotVisible from '../../assets/icons/IconNotVisible'
 import IconArrowBack from '../../assets/icons/IconArrowBack'
@@ -14,20 +16,32 @@ function Login(props) {
   const [isUsernameValid, setIsUserNameValid] = useState(false)
   const [isPasswordValid, setIsPasswordValid] = useState(false)
   const [isPasswordShown, setIsPasswordShown] = useState(false)
-  const [token, setToken] = useState(null)
+  // const [token, setToken] = useState(null)
+  const [showNotifications, setShowNotifications] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   let navigate = useNavigate()
 
   useEffect(() => {
     const sessionToken = localStorage.getItem("accessToken")
-    if (sessionToken !== null) {
-      api.post('/session', {session: sessionToken})
-      .then(res => {
-        console.log("user session on")
-        navigate('/home')
-      })
-      .catch(err => console.log(err))
+    
+    function checkSessionStatus() {
+      if (sessionToken !== null) {
+        setIsLoading(true)
+        api.post('/session', {session: sessionToken})
+        .then(res => {
+          console.log("session on")
+          setIsLoading(false)
+        })
+        .then(() => {
+          navigate('/home')
+        })
+        .catch(err => console.log(err))
+      }
     }
+
+    checkSessionStatus()
+    
   }, [])
 
   function handleChange(event) {
@@ -48,12 +62,15 @@ function Login(props) {
     const data = {
       username: username
     }
+    setIsLoading(true)
     await api.post('/usercheck', data)
       .then(res => {
-        console.log(res.data.message)
         // console.log(res.data.message)
-        res.data.isFound ? setIsUserNameValid(true) : console.log(res.data.message)
+        // console.log(res.data.message)
+        // res.data.isFound ? setIsUserNameValid(true) : console.log(res.data.message)
+        res.data.isFound ? setIsUserNameValid(true) : userNotFound(res)
       })
+      .then(() => setIsLoading(false))
       .catch(err => console.log(err))
   }
 
@@ -69,14 +86,18 @@ function Login(props) {
       password: password
     }
 
+    setIsLoading(true)
     await api.post('/login', data)
       .then(res => {
-        if (res.data.match && res.status === 200) {
+        if (res.data.match) {
           setIsPasswordValid(true)
+          setIsLoading(false)
           props.handleSignIn()
-          navigate("/")
-          localStorage.setItem("accessToken", JSON.stringify(res.data.token))
+          localStorage.setItem("accessToken", res.data.token)
         }
+      })
+      .then(() => {
+        navigate("/")
       })
       .catch(err => console.log(err))
   }
@@ -98,10 +119,21 @@ function Login(props) {
     setIsPasswordShown(prev => !prev)
   }
 
+  function userNotFound(res) {
+    console.log(res.data.message)
+    setShowNotifications(true)
+    setTimeout(() => {
+      setShowNotifications(false)
+    }, 4 * 1000) // 4 sec
+
+  }
+
   return (
     <div className="login-page">
+      {isLoading && <Loading />}
       <LoginStyle>
         <div className="sign-in__container">
+        
           <div className="logo__container"><Logo /></div>
           {!isUsernameValid ? 
           <>
@@ -172,6 +204,7 @@ function Login(props) {
           </>
           }
         </div>
+        {showNotifications && <Notification text={'User not found'} />}
       </LoginStyle>
     </div>
     );
