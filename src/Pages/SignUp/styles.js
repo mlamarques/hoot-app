@@ -98,83 +98,106 @@ export const LoginStyle = styled.div`
         /* ------------------------------- USERNAME ------------------------------- */
 
         .username__container {
-            position: relative;
             display: flex;
-            background-color: white;
-            border: 2px solid transparent;
-            border-radius: 9px;
-            width: 100%;
-            min-height: 62px;
-            margin-top: 16px;
-            align-self: center;
-            overflow: hidden;
-
-            &:focus-within {
-                border: 2px solid var(--orange);
-            }
-
-            .username--input {
-                outline: none;
+            position: relative;
+            
+            .username__wrapper--input {
                 position: relative;
-                background: none;
+                display: flex;
+                background-color: white;
+                border: 2px solid transparent;
+                border-radius: 9px;
                 width: 100%;
-                border: 0;
-                color: #212121;
-                font-size: 1.25rem;
-                font-weight: 400;
-                line-height: 1;
-                padding-top: 12px;
-                padding-bottom: 8px;
-                padding-left: 8px;
-                padding-right: 8px;
-                margin-top: 16px;
+                min-height: 62px;
+                margin-top: 24px;
+                align-self: center;
+                overflow: hidden;
 
-                &:focus + label {
-                    color: var(--orange); /* rgb(29, 155, 240) */
-                    transform: translate(-12%, -50%) scale(0.75);
+                &:focus-within {
+                    border: 2px solid var(--orange);
                 }
 
-                &:valid + label {
-                    color: var(--orange); /* rgb(29, 155, 240) */
-                    transform: translate(-12%, -50%) scale(0.75);
-                }
-            }
+                .username--input {
+                    outline: none;
+                    position: relative;
+                    background: none;
+                    width: 100%;
+                    border: 0;
+                    color: #212121;
+                    font-size: 1.25rem;
+                    font-weight: 400;
+                    line-height: 1;
+                    padding-top: 12px;
+                    padding-bottom: 8px;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    margin-top: 16px;
 
-            label[for=usernameContainer] {
-                position: absolute;
-                left: 8px;
-                color: #757575;
-                font-size: 1.25rem;
-                font-weight: 300;
-                transition: 0.2s ease;
-                align-self: center;
-                pointer-events: none;
-            }
+                    &:focus + label {
+                        color: var(--orange); /* rgb(29, 155, 240) */
+                        transform: translate(-12%, -50%) scale(0.75);
+                    }
 
-            .clean-input__container {
-                /* position: absolute;
-                right: 8px;
-                top: 50%; */
-                position: relative;
-                align-self: center;
-                height: 24px;
-                width: 28px;
-                padding-left: 4px;
-                padding-top: 12px;
-                margin-right: 8px;
-                /* transform: translate(0, -20%); */
-
-                .clean-input__background {
-                    height: 24px;
-                    width: 24px;
-                    border-radius: 9999px;
-                    transition: 0.2s ease;
-                    cursor: pointer;
-
-                    &:hover {
-                        background-color: var(--light-text);
+                    &:valid + label {
+                        color: var(--orange); /* rgb(29, 155, 240) */
+                        transform: translate(-12%, -50%) scale(0.75);
                     }
                 }
+
+                label[for=usernameContainer] {
+                    position: absolute;
+                    left: 8px;
+                    color: #757575;
+                    font-size: 1.25rem;
+                    font-weight: 300;
+                    transition: 0.2s ease;
+                    align-self: center;
+                    pointer-events: none;
+                }
+
+                .clean-input__container {
+                    /* position: absolute;
+                    right: 8px;
+                    top: 50%; */
+                    position: relative;
+                    align-self: center;
+                    height: 24px;
+                    width: 28px;
+                    padding-left: 4px;
+                    padding-top: 12px;
+                    margin-right: 8px;
+                    
+                    /* transform: translate(0, -20%); */
+
+                    .clean-input__background {
+                        height: 24px;
+                        width: 24px;
+                        border-radius: 9999px;
+                        transition: 0.2s ease;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: var(--light-text);
+                        }
+
+                        .icon-close {
+                            padding: 2px;
+                            fill: rgb(32, 35, 36) !important;
+                        }
+                    }
+                }
+
+            }
+
+            .username--validation {
+                position: absolute;
+                bottom: 0;
+                height: 20px;
+                padding: 4px;
+                font-size: 0.85rem;
+                color: var(--orange);
+                transform: translate(0, 100%);
+                overflow: unset;
             }
         }
 
@@ -184,92 +207,111 @@ export const LoginStyle = styled.div`
 
         /* ------------------------------- PASSWORD ------------------------------- */
 
-        .enter-password {
+        /* .enter-password {
             text-align: left;
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--light-text);
             margin-bottom: 16px;
-        }
+        } */
 
         .password__container {
-            position: relative;
             display: flex;
-            background-color: white;
-            border: 2px solid transparent;
-            border-radius: 9px;
-            width: 100%;
-            min-height: 62px;
-            margin-top: 16px;
-            align-self: center;
-            overflow: hidden;
+            position: relative;
 
-            &:focus-within {
-                border: 2px solid var(--orange);
-            }
-
-            .password--input {
-                outline: none;
+            .password__wrapper--input {
                 position: relative;
-                background: none;
+                display: flex;
+                background-color: white;
+                border: 2px solid transparent;
+                border-radius: 9px;
                 width: 100%;
-                border: 0;
-                color: #212121;
-                font-size: 1.25rem;
-                font-weight: 400;
-                line-height: 1;
-                padding-top: 12px;
-                padding-bottom: 8px;
-                padding-left: 8px;
-                padding-right: 8px;
-                margin-top: 16px;
+                min-height: 62px;
+                margin-top: 24px;
+                align-self: center;
+                overflow: hidden;
 
-                &:focus + label {
-                    color: var(--orange); /* rgb(29, 155, 240) */
-                    transform: translate(-12%, -50%) scale(0.75);
+                &:focus-within {
+                    border: 2px solid var(--orange);
                 }
 
-                &:valid + label {
-                    color: var(--orange); /* rgb(29, 155, 240) */
-                    transform: translate(-12%, -50%) scale(0.75);
-                }
-            }
+                .password--input {
+                    outline: none;
+                    position: relative;
+                    background: none;
+                    width: 100%;
+                    border: 0;
+                    color: #212121;
+                    font-size: 1.25rem;
+                    font-weight: 400;
+                    line-height: 1;
+                    padding-top: 12px;
+                    padding-bottom: 8px;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    margin-top: 16px;
 
-            label[for=passwordContainer] {
-                position: absolute;
-                left: 8px;
-                color: #757575;
-                font-size: 1.25rem;
-                font-weight: 300;
-                transition: 0.2s ease;
-                align-self: center;
-                pointer-events: none;
-            }
+                    &:focus + label {
+                        color: var(--orange); /* rgb(29, 155, 240) */
+                        transform: translate(-12%, -50%) scale(0.75);
+                    }
 
-            .toggle-visible__container {
-                /* position: absolute;
-                right: 8px;
-                top: 50%; */
-                position: relative;
-                align-self: center;
-                height: 24px;
-                width: 28px;
-                padding-left: 4px;
-                padding-top: 12px;
-                margin-right: 8px;
-                /* transform: translate(0, -20%); */
-
-                .icon--visible__background {
-                    height: 24px;
-                    width: 24px;
-                    border-radius: 9999px;
-                    transition: 0.2s ease;
-                    cursor: pointer;
-
-                    &:hover {
-                        background-color: var(--light-text);
+                    &:valid + label {
+                        color: var(--orange); /* rgb(29, 155, 240) */
+                        transform: translate(-12%, -50%) scale(0.75);
                     }
                 }
+
+                label[for=passwordContainer] {
+                    position: absolute;
+                    left: 8px;
+                    color: #757575;
+                    font-size: 1.25rem;
+                    font-weight: 300;
+                    transition: 0.2s ease;
+                    align-self: center;
+                    pointer-events: none;
+                }
+
+                .toggle-visible__container {
+                    /* position: absolute;
+                    right: 8px;
+                    top: 50%; */
+                    position: relative;
+                    align-self: center;
+                    height: 24px;
+                    width: 28px;
+                    padding-left: 4px;
+                    padding-top: 12px;
+                    margin-right: 8px;
+                    /* transform: translate(0, -20%); */
+
+                    .icon--visible__background {
+                        height: 24px;
+                        width: 24px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 9999px;
+                        transition: 0.2s ease;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: var(--light-text);
+                        }
+                    }
+                }
+            }
+
+            .password--validation {
+                position: absolute;
+                bottom: 0;
+                height: 20px;
+                padding: 4px;
+                font-size: 0.85rem;
+                color: var(--orange);
+                transform: translate(0, 100%);
+                overflow: unset;
             }
         }
 

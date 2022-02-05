@@ -6,10 +6,29 @@ import IconFavorite from '../../assets/icons/IconFavorite'
 import IconMessages from '../../assets/icons/IconMessages'
 import IconSearch from '../../assets/icons/IconSearch'
 import UserCard from '../UserCard/UserCard';
+import { useNavigate } from 'react-router-dom'
 
 export default function Nav(props) {
     const style = {
       display: 'grid'
+    }
+
+    let navigate = useNavigate()
+
+    function handleLogout() {
+      if (localStorage.getItem("accessToken")) {
+        removeToken().then(() => {
+          redirectToLogin()
+        })
+      }
+  
+      async function removeToken() {
+        localStorage.removeItem("accessToken")
+      }
+  
+      function redirectToLogin() {
+        navigate("/login")
+      }
     }
 
     return (
@@ -18,9 +37,9 @@ export default function Nav(props) {
         <NavStyle>
           <div className="menu__container">
             <div className="header--logo">
-              <a className="logo--redirect" href="">
+              <Link to='/' className="logo--redirect">
                 <LogoSimp />
-              </a>
+              </Link>
             </div>
             <nav className="nav__container">
               <Link to='/' className="nav__item">
@@ -64,7 +83,7 @@ export default function Nav(props) {
                 </div>
               </Link>
             </nav>
-            <UserCard handleClick={props.handleClick} username={props.username || "player"} />
+            <UserCard handleClick={handleLogout} username={props.username || "player"} />
           </div>
         </NavStyle>
       </div>

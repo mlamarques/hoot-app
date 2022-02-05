@@ -18,6 +18,7 @@ function Login(props) {
   const [isPasswordShown, setIsPasswordShown] = useState(false)
   // const [token, setToken] = useState(null)
   const [showNotifications, setShowNotifications] = useState(false)
+  const [notificationValue, setNotificationValue] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
   let navigate = useNavigate()
@@ -68,7 +69,7 @@ function Login(props) {
         // console.log(res.data.message)
         // console.log(res.data.message)
         // res.data.isFound ? setIsUserNameValid(true) : console.log(res.data.message)
-        res.data.isFound ? setIsUserNameValid(true) : userNotFound(res)
+        res.data.isFound ? setIsUserNameValid(true) : notifyUserNotFound(res)
       })
       .then(() => setIsLoading(false))
       .catch(err => console.log(err))
@@ -94,10 +95,12 @@ function Login(props) {
           setIsLoading(false)
           props.handleSignIn()
           localStorage.setItem("accessToken", res.data.token)
+          navigate('/home')
+        } else {
+          setIsLoading(false)
+          setIsPasswordValid(false)
+          notifyWrongPassword(res)
         }
-      })
-      .then(() => {
-        navigate("/")
       })
       .catch(err => console.log(err))
   }
@@ -119,13 +122,20 @@ function Login(props) {
     setIsPasswordShown(prev => !prev)
   }
 
-  function userNotFound(res) {
-    console.log(res.data.message)
+  function notifyUserNotFound(res) {
+    setNotificationValue(res.data.message)
     setShowNotifications(true)
     setTimeout(() => {
       setShowNotifications(false)
     }, 4 * 1000) // 4 sec
+  }
 
+  function notifyWrongPassword(res) {
+    setNotificationValue(res.data.message)
+    setShowNotifications(true)
+    setTimeout(() => {
+      setShowNotifications(false)
+    }, 4 * 1000) // 4 sec
   }
 
   return (
@@ -204,7 +214,7 @@ function Login(props) {
           </>
           }
         </div>
-        {showNotifications && <Notification text={'User not found'} />}
+        {showNotifications && <Notification text={notificationValue} />}
       </LoginStyle>
     </div>
     );
