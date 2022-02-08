@@ -8,7 +8,7 @@ import IconNotVisible from '../../assets/icons/IconNotVisible'
 import IconClose from '../../assets/icons/IconClose'
 import {LoginStyle} from './styles'
 
-function SignUp(props) {
+function SignUp() {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -25,7 +25,7 @@ function SignUp(props) {
     function checkSessionStatus() {
       if (sessionToken !== null) {
         setIsLoading(true)
-        api.post('/session', {session: sessionToken})
+        api.get('/session')
         .then(res => {
           console.log("session on")
           setIsLoading(false)
@@ -62,7 +62,6 @@ function SignUp(props) {
 
     if ((isPasswordValid && password.length > 0) && (isUsernameValid && username.length > 0)) {
       setIsLoading(true)
-      props.handleSignIn()
 
       await api.post('/signup', data)
       .catch(err => console.log(err))
@@ -105,7 +104,7 @@ function SignUp(props) {
     const { name } = event.target
 
     if(event.key === 'Enter'){
-      return
+      handleSubmit()
     }
   }
 

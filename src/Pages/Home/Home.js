@@ -21,7 +21,7 @@ export default function Home(props) {
     
     function getAuthData() {
       if (sessionToken !== null) {
-        api.post('/session', {session: sessionToken})
+        api.get('/session')
         .then(res => {
           setUsername(res.data.authData.username)
         })

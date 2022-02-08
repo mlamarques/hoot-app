@@ -83,7 +83,7 @@ export default function Nav(props) {
                 </div>
               </Link>
             </nav>
-            <UserCard handleClick={handleLogout} username={props.username || "player"} />
+            <UserCard handleClick={handleLogout} username={props.username || ""} />
           </div>
         </NavStyle>
       </div>

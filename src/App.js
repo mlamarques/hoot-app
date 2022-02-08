@@ -29,15 +29,15 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/settings/" element={<Navigate to="/settings/account" />} />
-          <Route path="/settings/another" element={<AnotherSetting handleSignIn={handleSignIn}/>} />
-          <Route path="/settings/account" element={<Account handleSignIn={handleSignIn}/>} />
-          <Route path="/settings/password" element={<ChangePassword handleSignIn={handleSignIn}/>} />
-          <Route path="/login" element={<Login handleSignIn={handleSignIn}/>} />
-          <Route path="/signup" element={<SignUp handleSignIn={handleSignIn}/>} />
-          <Route path="/favorites" element={<Favorites handleLogout={logout} />} />
-          <Route path="/search" element={<Search handleLogout={logout} />} />
-          <Route path="/home" element={<Home handleLogout={logout} />} />
-          <Route path="/" element={!hasSigned ? <Navigate to="/login" /> : <Navigate to="/home" />} />
+          <Route path="/settings/another" element={<AnotherSetting />} />
+          <Route path="/settings/account" element={<Account />} />
+          <Route path="/settings/password" element={<ChangePassword />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Navigate to="/home" />} />
         </Routes>
       </BrowserRouter>
     </div>

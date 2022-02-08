@@ -9,7 +9,7 @@ import IconNotVisible from '../../assets/icons/IconNotVisible'
 import IconArrowBack from '../../assets/icons/IconArrowBack'
 import {LoginStyle} from './styles'
 
-function Login(props) {
+function Login() {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -29,7 +29,7 @@ function Login(props) {
     function checkSessionStatus() {
       if (sessionToken !== null) {
         setIsLoading(true)
-        api.post('/session', {session: sessionToken})
+        api.get('/session')
         .then(res => {
           console.log("session on")
           setIsLoading(false)
@@ -93,7 +93,6 @@ function Login(props) {
         if (res.data.match) {
           setIsPasswordValid(true)
           setIsLoading(false)
-          props.handleSignIn()
           localStorage.setItem("accessToken", res.data.token)
           navigate('/home')
         } else {
