@@ -13,6 +13,7 @@ import { api } from '../../services/api'
 export default function Home(props) {
   const [isLoading, setIsLoading] = useState(false)
   const [username, setUsername] = useState('')
+  const [targetValue, setTargetValue] = useState("")
 
   let navigate = useNavigate()
 
@@ -55,7 +56,7 @@ export default function Home(props) {
   return (
     <div className="home-page">
       {isLoading && <Loading />}
-      <Nav username={username} handleClick={handleLogout} />
+      <Nav username={username} handleClick={handleLogout} targetValue={targetValue} />
         {/* -------------------------- Main -------------------------- */}
       <HomeStyle>
         <div className="main__container">
