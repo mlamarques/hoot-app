@@ -7,7 +7,7 @@ export const LoadingStyle = styled.div`
     width: 100%;
     height: 100%;
     user-select: none !important;
-    z-index: 1000;
+    z-index: 90;
 
     .loading__component {
         position: relative;

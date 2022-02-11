@@ -2,6 +2,7 @@ import {React, useState, useEffect} from 'react';
 import { useNavigate  } from 'react-router-dom';
 import { api } from '../../services/api'
 import Logo from '../../assets/Logo'
+import Notification from '../../components/Notification/Notification'
 import Loading from '../../components/Loading/Loading'
 import IconVisible from '../../assets/icons/IconVisible'
 import IconNotVisible from '../../assets/icons/IconNotVisible'
@@ -15,6 +16,8 @@ function SignUp() {
   const [isUsernameValid, setIsUSerNameValid] = useState(true)
   const [isPasswordValid, setIsPasswordValid] = useState(true)
   const [isPasswordShown, setIsPasswordShown] = useState(false)
+  const [showNotifications, setShowNotifications] = useState(false)
+  const [notificationValue, setNotificationValue] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
   let navigate = useNavigate()
@@ -64,22 +67,25 @@ function SignUp() {
       setIsLoading(true)
 
       await api.post('/signup', data)
-      .catch(err => console.log(err))
-
-      await api.post('/login', {username, password})
-      .then(res => {
-        if (res.data.match) {
-          localStorage.setItem("accessToken", res.data.token)
-          setIsLoading(false)
-          navigate("/home")
-        } else {
-          setIsLoading(false)
-        }
-      })
-      // .finally(() => {
-        
-      // })
-      .catch(err => console.log(err))
+        .then(res => {
+          if (res.data.message === "User already exists") {
+            setIsLoading(false)
+            notifyUser(res)
+          } else {
+            api.post('/login', {username, password})
+              .then(res => {
+                if (res.data.match) {
+                  localStorage.setItem("accessToken", res.data.token)
+                  setIsLoading(false)
+                  navigate("/home")
+                } else {
+                  setIsLoading(false)
+                }
+              })
+              .catch(err => console.log(err))
+          }
+        })
+        .catch(err => console.log(err))
     }
   }
 
@@ -110,6 +116,14 @@ function SignUp() {
 
   function togglePassword() {
     setIsPasswordShown(prev => !prev)
+  }
+
+  function notifyUser(res) {
+    setNotificationValue(res.data.message)
+    setShowNotifications(true)
+    setTimeout(() => {
+      setShowNotifications(false)
+    }, 4 * 1000) // 4 sec
   }
 
   return (
@@ -195,6 +209,7 @@ function SignUp() {
           </div>
         </div>
       </LoginStyle>
+      {showNotifications && <Notification text={notificationValue} />}
     </div>
     );
   }

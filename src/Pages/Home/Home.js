@@ -34,7 +34,8 @@ export default function Home(props) {
     
   }, [])
 
-  function handleLogout() {
+  function handleLogout(event) {
+    event.preventDefault()
     if (localStorage.getItem("accessToken")) {
       removeToken().then(() => {
         redirectToLogin()
