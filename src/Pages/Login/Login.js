@@ -60,6 +60,7 @@ function Login() {
     // if (username.length !== 0) {
     //   setIsUSerNameValid(true)
     // }
+    navigator.clipboard.writeText(username) // save username clipboard
     const data = {
       username: username
     }
