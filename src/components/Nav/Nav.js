@@ -1,5 +1,5 @@
 import {NavStyle} from './styles'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import LogoSimp from '../../assets/LogoSimp'
 import IconHome from '../../assets/icons/IconHome'
 import IconFavorite from '../../assets/icons/IconFavorite'
@@ -14,6 +14,7 @@ export default function Nav(props) {
     }
 
     let navigate = useNavigate()
+    let location = useLocation();
 
     function handleLogout() {
       if (localStorage.getItem("accessToken")) {
@@ -79,6 +80,13 @@ export default function Nav(props) {
                   </div>
                   <div className="logo-text">
                     <span className="logo-text--value">Search</span>
+                  </div>
+                </div>
+              </Link>
+              <Link to='/compose/hoot' className="nav__compose" state={{ backgroundLocation: location }}>
+                <div className="item--wrapper">
+                  <div className="logo-text">
+                    <span className="logo-text--value">Hoot</span>
                   </div>
                 </div>
               </Link>

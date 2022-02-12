@@ -83,6 +83,30 @@ export const NavStyle = styled.div`
                     }
                 }
             }
+
+            .nav__compose {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                text-decoration: inherit;
+                color: inherit;
+                background-color: var(--orange);
+                margin-top: 16px;
+                padding: 16px;
+                border-radius: 9999px;
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 24px;
+                box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 28px;
+                transition-property: background-color, box-shadow;
+                transition-duration: 0.2s;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: hsl(30, 100%, 45%);
+                }
+            }
         }
         
     }
