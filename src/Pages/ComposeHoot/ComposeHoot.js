@@ -4,6 +4,7 @@ import { api } from '../../services/api'
 import { UserContext } from '../../context/UserContext'
 import {ComposeHootStyle} from './styles'
 import IconClose from '../../assets/icons/IconClose'
+import Loading from '../../components/Loading/Loading'
 
 export default function ComposeHoot(props) {
     const [isComponentVisible, setIsComponentVisible] = useState(true);
@@ -11,14 +12,13 @@ export default function ComposeHoot(props) {
     const [textboxExcess, setTextboxExcess] = useState('');
     const [isCloseAllowed, setIsCloseAllowed] = useState(true)
     const [isCharacterLimit, setCharacterLimit] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     // const ref = useRef(null);
     const modalRef = useRef();
     
     let navigate = useNavigate()
 
     const { user } = useContext(UserContext)
-
-    console.log(user.username)
     
     async function closeCompose(e) {
 
@@ -39,7 +39,26 @@ export default function ComposeHoot(props) {
     });
     
     function handlePostHoot() {
-        console.log('clicked')
+        const data = {
+            owner: user.id,
+            box_content: textboxValue,
+            createdAt: new Date(),
+        }
+
+        setIsLoading(true)
+
+        console.log(data)
+
+        api.post('/compose/hoot', data)
+            .then(res => {
+                console.log(res.data.message)
+                setIsLoading(false)
+                navigate(-1)
+            })
+            .catch(err => {
+                console.log(err)
+                setIsLoading(false)
+            })
     }
 
     function handleChange(event) {
@@ -79,6 +98,7 @@ export default function ComposeHoot(props) {
 
     return (
         <div className="compose-hoot__component" onClick={closeCompose} ref={modalRef} onMouseDown={() => setIsCloseAllowed(true)}>
+            {isLoading && <Loading />}
             <ComposeHootStyle >
                 <div className="compose-hoot__container" onMouseLeave={() => setIsCloseAllowed(false)} onMouseEnter={() => setIsCloseAllowed(false)}>
                     <div className="container__header" onClick={() => console.log(textboxValue)}>

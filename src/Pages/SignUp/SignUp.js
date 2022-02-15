@@ -1,6 +1,7 @@
-import {React, useState, useEffect} from 'react';
+import {React, useContext, useState, useEffect} from 'react';
 import { useNavigate  } from 'react-router-dom';
 import { api } from '../../services/api'
+import { UserContext } from '../../context/UserContext'
 import Logo from '../../assets/Logo'
 import Notification from '../../components/Notification/Notification'
 import Loading from '../../components/Loading/Loading'
@@ -21,6 +22,8 @@ function SignUp() {
   const [isLoading, setIsLoading] = useState(false)
 
   let navigate = useNavigate()
+
+  const { setUser } = useContext(UserContext)
 
   useEffect(() => {
     const sessionToken = localStorage.getItem("accessToken")
@@ -75,9 +78,14 @@ function SignUp() {
             api.post('/login', {username, password})
               .then(res => {
                 if (res.data.match) {
-                  localStorage.setItem("accessToken", res.data.token)
+                  setUser({
+                    id: res.data._id,
+                    username: res.data.username
+                  })
+                  setIsPasswordValid(true)
                   setIsLoading(false)
-                  navigate("/home")
+                  localStorage.setItem("accessToken", res.data.token)
+                  navigate('/home')
                 } else {
                   setIsLoading(false)
                 }

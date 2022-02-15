@@ -4,8 +4,8 @@ export const UserContext = React.createContext({})
 
 export const UserProvider = (props) => {
     const [user, setUser] = useState({
-        id: 'xxx',
-        username: 'Joaozinho'
+        id: '',
+        username: ''
     }) 
 
     return (
