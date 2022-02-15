@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React, useContext, useState} from 'react';
 import { BrowserRouter, Navigate, Routes, Route, Redirect, useLocation } from 'react-router-dom';
 import Login from './Pages/Login/Login'
 import SignUp from './Pages/SignUp/SignUp'
@@ -9,12 +9,15 @@ import ComposeHoot from './Pages/ComposeHoot/ComposeHoot'
 import ChangePassword from './Pages/ChangePassword/ChangePassword'
 import Account from './Pages/Account/Account'
 import AnotherSetting from './Pages/AnotherSetting/AnotherSetting'
+import { UserContext } from './context/UserContext';
 import './App.css';
 import GlobalStyles from './assets/GlobalStyles'
-import Nav from './components/Nav/Nav'
 
 function App() {
   const [hasSigned, setHasSigned] = useState(false)
+
+  const { user } = useContext(UserContext)
+  // console.log(user)
 
   let location = useLocation()
   let state = location.state

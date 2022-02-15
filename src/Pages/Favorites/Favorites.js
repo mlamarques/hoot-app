@@ -1,22 +1,27 @@
+import { useContext } from 'react'
 import {FavoritesStyle} from './styles'
 import Nav from '../../components/Nav/Nav'
+import { UserContext } from '../../context/UserContext'
 
 export default function Favorites(props) {
-    return (
-      <div className="favorites-page">
-        <Nav />
-        <FavoritesStyle>
-        <div className="main__container">
-          <div className="main__header">
-            <h1 onClick={props.handleLogout} >Favorites</h1>
-          </div>
-          <div className="feed__container">
-            <div className="hoot--individual__container">
-              <h2>My favorite</h2>
-            </div>
+
+  const { user } = useContext(UserContext)
+
+  return (
+    <div className="favorites-page">
+      <Nav username={user.username} />
+      <FavoritesStyle>
+      <div className="main__container">
+        <div className="main__header">
+          <h1 onClick={props.handleLogout} >Favorites</h1>
+        </div>
+        <div className="feed__container">
+          <div className="hoot--individual__container">
+            <h2>My favorite</h2>
           </div>
         </div>
-        </FavoritesStyle>
       </div>
-    );
-  }
+      </FavoritesStyle>
+    </div>
+  );
+}

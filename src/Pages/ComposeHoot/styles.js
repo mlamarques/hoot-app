@@ -120,6 +120,7 @@ export const ComposeHootStyle = styled.div`
 
                 .draft-editor--content {
                     display: flex;
+                    flex-direction: column;
                     flex: 1;
                     outline: currentcolor none medium;
                     user-select: text;
@@ -130,34 +131,41 @@ export const ComposeHootStyle = styled.div`
                     user-select: none;
                     cursor: text;
 
-                    .content--wrapper {
-                        display: flex;
-                        flex-direction: column;
-
-                        .content--block {
-
-                            .text-value--limit {
-                                width: 100%;
-                                direction: ltr;
-                                text-align: initial;
-                                white-space: pre-wrap;
-                                overflow-wrap: break-word;
-                            }
-
-                            .text-value--exceess {
-
-                            }
-                        }
-                    }
+                    
                 }
 
                 .footer__container {
                     position: relative;
                     display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
                     height: 48px;
                     width: 100%;
                     margin-top: 36px;
                     border-top: 1px solid rgb(47, 51, 54);
+
+                    .submit__button {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: var(--orange);
+                        color: #f8f8ff;
+                        font-size: 1rem;
+                        font-weight: 500;
+                        min-width: 48px;
+                        min-height: 36px;
+                        padding: 0px 16px;
+                        margin-left: 12px;
+                        border-radius: 9999px;
+                        user-select: none;
+                        transition-duration: 0.2s;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: var(--orange-hover);
+                        }
+                    }
                 }
             }
         }

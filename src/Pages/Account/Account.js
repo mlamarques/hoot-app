@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Loading from '../../components/Loading/Loading'
 import { Link, useNavigate } from 'react-router-dom'
 import { api } from '../../services/api'
 import Nav from '../../components/Nav/Nav'
+import { UserContext } from '../../context/UserContext'
 import {AccountStyle} from './styles'
 import IconArrowFoward from '../../assets/icons/IconArrowFoward'
 import IconUser from '../../assets/icons/IconUser'
@@ -13,6 +14,8 @@ export default function Account(props) {
   const [username, setUsername] = useState('')
 
   let navigate = useNavigate()
+
+  const { user } = useContext(UserContext)
 
   useEffect(() => {
     const sessionToken = localStorage.getItem("accessToken")
@@ -58,7 +61,7 @@ export default function Account(props) {
   return (
     <div className="account-page">
       {isLoading && <Loading />}
-      <Nav username={username} handleClick={handleLogout} />
+      <Nav username={user.username} handleClick={handleLogout} />
         {/* -------------------------- Main -------------------------- */}
       <AccountStyle>
         <div className="main__container">

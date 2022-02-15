@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Loading from '../../components/Loading/Loading'
 import { useNavigate } from 'react-router-dom'
 import { api } from '../../services/api'
 import Nav from '../../components/Nav/Nav'
+import { UserContext } from '../../context/UserContext'
 import {ChangePasswordStyle} from './styles'
 
 export default function Home(props) {
@@ -10,6 +11,8 @@ export default function Home(props) {
   const [username, setUsername] = useState('')
 
   let navigate = useNavigate()
+
+  const { user } = useContext(UserContext)
 
   useEffect(() => {
     const sessionToken = localStorage.getItem("accessToken")
@@ -50,7 +53,7 @@ export default function Home(props) {
   return (
     <div className="home-page">
       {isLoading && <Loading />}
-      <Nav username={username} handleClick={handleLogout} />
+      <Nav username={user.username} handleClick={handleLogout} />
         {/* -------------------------- Main -------------------------- */}
       <ChangePasswordStyle>
         <div className="main__container">

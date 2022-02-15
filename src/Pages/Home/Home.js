@@ -5,17 +5,20 @@ import IconHome from '../../assets/icons/IconHome'
 import IconFavorite from '../../assets/icons/IconFavorite'
 import IconMessages from '../../assets/icons/IconMessages'
 import IconSearch from '../../assets/icons/IconSearch'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { UserContext } from '../../context/UserContext'
 import Loading from '../../components/Loading/Loading'
 import { useNavigate } from 'react-router-dom'
 import { api } from '../../services/api'
 
 export default function Home(props) {
   const [isLoading, setIsLoading] = useState(false)
-  const [username, setUsername] = useState('')
+  // const [username, setUsername] = useState('')
   const [targetValue, setTargetValue] = useState("")
 
   let navigate = useNavigate()
+
+  const { user } = useContext(UserContext)
 
   useEffect(() => {
     const sessionToken = localStorage.getItem("accessToken")
@@ -24,7 +27,7 @@ export default function Home(props) {
       if (sessionToken !== null) {
         api.get('/session')
         .then(res => {
-          setUsername(res.data.authData.username)
+          // setUsername(res.data.authData.username)
         })
         .catch(err => console.log(err))
       }
@@ -57,7 +60,7 @@ export default function Home(props) {
   return (
     <div className="home-page">
       {isLoading && <Loading />}
-      <Nav username={username} handleClick={handleLogout} targetValue={targetValue} />
+      <Nav username={user.username} handleClick={handleLogout} targetValue={targetValue} />
         {/* -------------------------- Main -------------------------- */}
       <HomeStyle>
         <div className="main__container">

@@ -1,6 +1,7 @@
-import {React, useState, useEffect} from 'react';
+import {React, useContext, useState, useEffect} from 'react';
 import { useNavigate  } from 'react-router-dom';
 import { api } from '../../services/api'
+import { UserContext } from '../../context/UserContext'
 import Logo from '../../assets/Logo'
 import Notification from '../../components/Notification/Notification'
 import Loading from '../../components/Loading/Loading'
@@ -22,6 +23,8 @@ function Login() {
   const [isLoading, setIsLoading] = useState(false)
 
   let navigate = useNavigate()
+
+  const { setUser } = useContext(UserContext)
 
   useEffect(() => {
     const sessionToken = localStorage.getItem("accessToken")
@@ -92,6 +95,10 @@ function Login() {
     await api.post('/login', data)
       .then(res => {
         if (res.data.match) {
+          setUser({
+            id: res.data._id,
+            username: res.data.username
+          })
           setIsPasswordValid(true)
           setIsLoading(false)
           localStorage.setItem("accessToken", res.data.token)
