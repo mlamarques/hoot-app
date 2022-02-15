@@ -97,7 +97,8 @@ function Login() {
         if (res.data.match) {
           setUser({
             id: res.data._id,
-            username: res.data.username
+            username: res.data.username,
+            img_url: res.data.img_url
           })
           setIsPasswordValid(true)
           setIsLoading(false)

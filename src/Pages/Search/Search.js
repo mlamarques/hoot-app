@@ -16,7 +16,6 @@ export default function Search(props) {
       try {
         api.post('/user/search', { "term": searchTerm })
           .then(res => {
-            console.log(res.data)
             setAutoComplete(res.data.list_users)
           })
       } catch (error) {

@@ -112,7 +112,7 @@ export default function ComposeHoot(props) {
                     <div className="container__body">
                         <div className="user--avatar__container">
                             <div className="user--avatar__wrapper">
-                                <img className="user--avatar" src="https://avatars.dicebear.com/api/bottts/j155a1ssdgsgsd1w.svg" alt="robot avatar" />
+                                <img className="user--avatar" src={user.img_url} alt="robot avatar" />
                             </div>
                         </div>
                         <div className="text__container">

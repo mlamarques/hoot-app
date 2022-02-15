@@ -5,7 +5,8 @@ export const UserContext = React.createContext({})
 export const UserProvider = (props) => {
     const [user, setUser] = useState({
         id: '',
-        username: ''
+        username: '',
+        img_url: '',
     }) 
 
     return (

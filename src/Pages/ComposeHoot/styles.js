@@ -100,7 +100,7 @@ export const ComposeHootStyle = styled.div`
                     align-items: center;
                     justify-content: center;
                     border-radius: 9999px;
-                    background-color: var(--orange);
+                    background-color: var(--light-text);
                     
                     .user--avatar {
                        

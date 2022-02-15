@@ -62,6 +62,7 @@ function SignUp() {
     const data = {
       username: username,
       password: password,
+      img_url: `https://avatars.dicebear.com/api/bottts/${username}${Math.round(Math.random() * 1000)}.svg`,
       createdAt: new Date(),
       updatedAt: new Date(),
     }
@@ -80,7 +81,8 @@ function SignUp() {
                 if (res.data.match) {
                   setUser({
                     id: res.data._id,
-                    username: res.data.username
+                    username: res.data.username,
+                    img_url: res.data.img_url
                   })
                   setIsPasswordValid(true)
                   setIsLoading(false)
@@ -90,10 +92,16 @@ function SignUp() {
                   setIsLoading(false)
                 }
               })
-              .catch(err => console.log(err))
+              .catch(err => {
+                console.log(err)
+                setIsLoading(false)
+              })
           }
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+          console.log(err)
+          setIsLoading(false)
+        })
     }
   }
 
