@@ -3,7 +3,7 @@ import Loading from '../../components/Loading/Loading'
 import { useNavigate } from 'react-router-dom'
 import { api } from '../../services/api'
 import Nav from '../../components/Nav/Nav'
-import { UserContext } from '../../context/UserContext'
+import { useUserState } from '../../context/UserContext'
 import {ChangePasswordStyle} from './styles'
 
 export default function Home(props) {
@@ -12,7 +12,7 @@ export default function Home(props) {
 
   let navigate = useNavigate()
 
-  const { user } = useContext(UserContext)
+  const { user } = useUserState()
 
   useEffect(() => {
     const sessionToken = localStorage.getItem("accessToken")

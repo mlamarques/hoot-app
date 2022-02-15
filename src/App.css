@@ -21,7 +21,7 @@ body {
   align-self: center;
 }
 
-.home-page, .favorites-page, .search-page, .account-page {
+.home-page, .favorites-page, .search-page, .account-page, .user-page {
   display: grid;
   grid-template-columns: 1fr fit-content(600px) 1fr;
   width: 100%;

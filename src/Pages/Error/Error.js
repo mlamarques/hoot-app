@@ -1,4 +1,4 @@
-import {HomeStyle} from './styles'
+import {ErrorStyle} from './styles'
 import Nav from '../../components/Nav/Nav'
 import LogoSimp from '../../assets/LogoSimp'
 import IconHome from '../../assets/icons/IconHome'
@@ -6,7 +6,7 @@ import IconFavorite from '../../assets/icons/IconFavorite'
 import IconMessages from '../../assets/icons/IconMessages'
 import IconSearch from '../../assets/icons/IconSearch'
 import { useContext, useEffect, useState } from 'react'
-import { useUserState } from '../../context/UserContext'
+import { UserContext } from '../../context/UserContext'
 import Loading from '../../components/Loading/Loading'
 import { useNavigate } from 'react-router-dom'
 import { api } from '../../services/api'
@@ -18,7 +18,7 @@ export default function Home(props) {
 
   let navigate = useNavigate()
 
-  const { user } = useUserState()
+  const { user } = useContext(UserContext)
 
   useEffect(() => {
     const sessionToken = localStorage.getItem("accessToken")
@@ -62,21 +62,14 @@ export default function Home(props) {
       {isLoading && <Loading />}
       <Nav username={user.username} handleClick={handleLogout} targetValue={targetValue} />
         {/* -------------------------- Main -------------------------- */}
-      <HomeStyle>
+      <ErrorStyle>
         <div className="main__container">
-          <div className="main__header">
-            <h1 onClick={props.handleLogout} >Home</h1>
-          </div>
-          <div className="feed__container">
-            <div className="hoot--individual__container"></div>
-            <div className="hoot--individual__container"></div>
-            <div className="hoot--individual__container"></div>
-          </div>
+          <span>Hmm...this page doesn't exist. Try searching for something else.</span>
         </div>
         {/* -------------------------- Alt -------------------------- */}
         <div className="alternative__container">
         </div>
-      </HomeStyle>
+      </ErrorStyle>
     </div>
   );
 }

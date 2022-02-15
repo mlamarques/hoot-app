@@ -25,6 +25,7 @@ export default function Nav(props) {
   
       async function removeToken() {
         localStorage.removeItem("accessToken")
+        localStorage.removeItem("user")
       }
   
       function redirectToLogin() {
@@ -91,7 +92,7 @@ export default function Nav(props) {
                 </div>
               </Link>
             </nav>
-            <UserCard handleClick={handleLogout} username={props.username || ""} targetValue={props.targetValue} />
+            <UserCard handleClick={handleLogout} username={props.username || ""} />
           </div>
         </NavStyle>
       </div>

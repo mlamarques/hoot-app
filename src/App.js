@@ -1,9 +1,11 @@
 import {React, useContext, useState} from 'react';
-import { BrowserRouter, Navigate, Routes, Route, Redirect, useLocation } from 'react-router-dom';
+import { Navigate, Routes, Route, Redirect, useLocation } from 'react-router-dom';
 import Login from './Pages/Login/Login'
 import SignUp from './Pages/SignUp/SignUp'
 import Favorites from './Pages/Favorites/Favorites'
 import Home from './Pages/Home/Home'
+import Error from './Pages/Error/Error';
+import User from './Pages/User/User';
 import Search from './Pages/Search/Search'
 import ComposeHoot from './Pages/ComposeHoot/ComposeHoot'
 import ChangePassword from './Pages/ChangePassword/ChangePassword'
@@ -13,11 +15,9 @@ import { UserContext } from './context/UserContext';
 import './App.css';
 import GlobalStyles from './assets/GlobalStyles'
 
+
 function App() {
   const [hasSigned, setHasSigned] = useState(false)
-
-  const { user } = useContext(UserContext)
-  // console.log(user)
 
   let location = useLocation()
   let state = location.state
@@ -43,6 +43,7 @@ function App() {
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/search" element={<Search />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/:user" element={<User />} />
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
         {state?.backgroundLocation && (

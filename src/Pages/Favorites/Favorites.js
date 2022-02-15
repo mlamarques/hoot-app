@@ -1,11 +1,11 @@
 import { useContext } from 'react'
 import {FavoritesStyle} from './styles'
 import Nav from '../../components/Nav/Nav'
-import { UserContext } from '../../context/UserContext'
+import { useUserState } from '../../context/UserContext'
 
 export default function Favorites(props) {
 
-  const { user } = useContext(UserContext)
+  const { user } = useUserState()
 
   return (
     <div className="favorites-page">

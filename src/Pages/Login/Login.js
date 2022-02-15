@@ -95,14 +95,16 @@ function Login() {
     await api.post('/login', data)
       .then(res => {
         if (res.data.match) {
-          setUser({
+          const user = {
             id: res.data._id,
             username: res.data.username,
             img_url: res.data.img_url
-          })
+          }
           setIsPasswordValid(true)
           setIsLoading(false)
           localStorage.setItem("accessToken", res.data.token)
+          localStorage.setItem("user", JSON.stringify(user))
+          setUser(user)
           navigate('/home')
         } else {
           setIsLoading(false)

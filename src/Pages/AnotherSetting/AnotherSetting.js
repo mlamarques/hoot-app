@@ -3,7 +3,7 @@ import Loading from '../../components/Loading/Loading'
 import { Link, useNavigate } from 'react-router-dom'
 import { api } from '../../services/api'
 import Nav from '../../components/Nav/Nav'
-import { UserContext } from '../../context/UserContext'
+import { useUserState } from '../../context/UserContext'
 import {AnotherSettingStyle} from './styles'
 import IconArrowFoward from '../../assets/icons/IconArrowFoward'
 import IconUser from '../../assets/icons/IconUser'
@@ -15,7 +15,7 @@ export default function Account(props) {
 
   let navigate = useNavigate()
 
-  const { user } = useContext(UserContext)
+  const { user } = useUserState()
 
   useEffect(() => {
     const sessionToken = localStorage.getItem("accessToken")

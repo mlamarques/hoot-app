@@ -1,7 +1,7 @@
 import {React, useContext, useState, useEffect, useRef, createElement} from 'react';
 import { useNavigate  } from 'react-router-dom';
 import { api } from '../../services/api'
-import { UserContext } from '../../context/UserContext'
+import { useUserState } from '../../context/UserContext'
 import {ComposeHootStyle} from './styles'
 import IconClose from '../../assets/icons/IconClose'
 import Loading from '../../components/Loading/Loading'
@@ -18,7 +18,7 @@ export default function ComposeHoot(props) {
     
     let navigate = useNavigate()
 
-    const { user } = useContext(UserContext)
+    const { user } = useUserState()
     
     async function closeCompose(e) {
 

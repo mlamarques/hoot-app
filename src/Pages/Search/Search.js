@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import {SearchStyle} from './styles'
 import Nav from '../../components/Nav/Nav'
-import { UserContext } from '../../context/UserContext'
+import { useUserState } from '../../context/UserContext'
 import { api } from '../../services/api'
 
 
@@ -9,7 +9,7 @@ export default function Search(props) {
   const [searchTerm, setSearchTerm] = useState('')
   const [autoComplete, setAutoComplete] = useState([])  
 
-  const { user } = useContext(UserContext)
+  const { user } = useUserState()
 
   useEffect( () => {
     if (searchTerm.length) {

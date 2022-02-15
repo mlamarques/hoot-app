@@ -59,13 +59,16 @@ function SignUp() {
   }
 
   async function handleSubmit() {
+    const randomNumber = Math.floor(Math.random() * 1000)
+
     const data = {
       username: username,
       password: password,
-      img_url: `https://avatars.dicebear.com/api/bottts/${username}${Math.round(Math.random() * 1000)}.svg`,
+      img_url: `https://avatars.dicebear.com/api/bottts/${username}${randomNumber}.svg`,
       createdAt: new Date(),
       updatedAt: new Date(),
     }
+    
 
     if ((isPasswordValid && password.length > 0) && (isUsernameValid && username.length > 0)) {
       setIsLoading(true)
@@ -79,14 +82,16 @@ function SignUp() {
             api.post('/login', {username, password})
               .then(res => {
                 if (res.data.match) {
-                  setUser({
+                  const user = {
                     id: res.data._id,
                     username: res.data.username,
                     img_url: res.data.img_url
-                  })
+                  }
                   setIsPasswordValid(true)
                   setIsLoading(false)
                   localStorage.setItem("accessToken", res.data.token)
+                  localStorage.setItem("user", JSON.stringify(user))
+                  setUser(user)
                   navigate('/home')
                 } else {
                   setIsLoading(false)
