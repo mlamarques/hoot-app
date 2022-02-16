@@ -33,7 +33,7 @@ export default function Search(props) {
 
   return (
     <div className="search-page">
-      <Nav username={user.username} />
+      <Nav username={user.username} img_url={user.img_url} />
       <SearchStyle>
       <div className="main__container">
         <div className="main__header">

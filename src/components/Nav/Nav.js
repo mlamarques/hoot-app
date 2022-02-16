@@ -38,61 +38,63 @@ export default function Nav(props) {
       <div className="nav__component" style={style}>
         <NavStyle>
           <div className="menu__container">
-            <div className="header--logo">
-              <Link to='/' className="logo--redirect">
-                <LogoSimp />
-              </Link>
+            <div className="menu--wrapper">
+              <div className="header--logo">
+                <Link to='/' className="logo--redirect">
+                  <LogoSimp />
+                </Link>
+              </div>
+              <nav className="nav__container">
+                <Link to='/home' className="nav__item">
+                  <div className="item--wrapper">
+                    <div className="logo-item">
+                      <IconHome /> 
+                    </div>
+                    <div className="logo-text">
+                      <span className="logo-text--value">Home</span>
+                    </div>
+                  </div>
+                </Link>
+                <Link to='/favorites' className="nav__item">
+                  <div className="item--wrapper">
+                    <div className="logo-item">
+                      <IconFavorite /> 
+                    </div>
+                    <div className="logo-text">
+                      <span className="logo-text--value">Favorites</span>
+                    </div>
+                  </div>
+                </Link>
+                <Link to='/' className="nav__item">
+                  <div className="item--wrapper">
+                    <div className="logo-item">
+                      <IconMessages /> 
+                    </div>
+                    <div className="logo-text">
+                      <span className="logo-text--value">Messages</span>
+                    </div>
+                  </div>
+                </Link>
+                <Link to='/search' className="nav__item">
+                  <div className="item--wrapper">
+                    <div className="logo-item">
+                      <IconSearch /> 
+                    </div>
+                    <div className="logo-text">
+                      <span className="logo-text--value">Search</span>
+                    </div>
+                  </div>
+                </Link>
+                <Link to='/compose/hoot' className="nav__compose" state={{ backgroundLocation: location }}>
+                  <div className="item--wrapper">
+                    <div className="logo-text">
+                      <span className="logo-text--value">Hoot</span>
+                    </div>
+                  </div>
+                </Link>
+              </nav>
             </div>
-            <nav className="nav__container">
-              <Link to='/' className="nav__item">
-                <div className="item--wrapper">
-                  <div className="logo-item">
-                    <IconHome /> 
-                  </div>
-                  <div className="logo-text">
-                    <span className="logo-text--value">Home</span>
-                  </div>
-                </div>
-              </Link>
-              <Link to='/favorites' className="nav__item">
-                <div className="item--wrapper">
-                  <div className="logo-item">
-                    <IconFavorite /> 
-                  </div>
-                  <div className="logo-text">
-                    <span className="logo-text--value">Favorites</span>
-                  </div>
-                </div>
-              </Link>
-              <Link to='/' className="nav__item">
-                <div className="item--wrapper">
-                  <div className="logo-item">
-                    <IconMessages /> 
-                  </div>
-                  <div className="logo-text">
-                    <span className="logo-text--value">Messages</span>
-                  </div>
-                </div>
-              </Link>
-              <Link to='/search' className="nav__item">
-                <div className="item--wrapper">
-                  <div className="logo-item">
-                    <IconSearch /> 
-                  </div>
-                  <div className="logo-text">
-                    <span className="logo-text--value">Search</span>
-                  </div>
-                </div>
-              </Link>
-              <Link to='/compose/hoot' className="nav__compose" state={{ backgroundLocation: location }}>
-                <div className="item--wrapper">
-                  <div className="logo-text">
-                    <span className="logo-text--value">Hoot</span>
-                  </div>
-                </div>
-              </Link>
-            </nav>
-            <UserCard handleClick={handleLogout} username={props.username || ""} />
+            <UserCard handleClick={handleLogout} username={props.username || ""} img_url={props.img_url} />
           </div>
         </NavStyle>
       </div>

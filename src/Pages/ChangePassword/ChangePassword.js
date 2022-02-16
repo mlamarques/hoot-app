@@ -31,29 +31,10 @@ export default function Home(props) {
     
   }, [])
 
-  function handleLogout() {
-    if (localStorage.getItem("accessToken")) {
-      removeToken().then(() => {
-        redirectToLogin()
-      }, () => {
-        return
-      })
-    }
-
-    async function removeToken() {
-      localStorage.removeItem("accessToken")
-    }
-
-    function redirectToLogin() {
-      navigate("/login")
-    }
-    
-  }
-
   return (
     <div className="home-page">
       {isLoading && <Loading />}
-      <Nav username={user.username} handleClick={handleLogout} />
+      <Nav username={user.username} img_url={user.img_url} />
         {/* -------------------------- Main -------------------------- */}
       <ChangePasswordStyle>
         <div className="main__container">

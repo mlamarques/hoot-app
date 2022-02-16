@@ -9,7 +9,7 @@ export default function Favorites(props) {
 
   return (
     <div className="favorites-page">
-      <Nav username={user.username} />
+      <Nav username={user.username} img_url={user.img_url} />
       <FavoritesStyle>
       <div className="main__container">
         <div className="main__header">

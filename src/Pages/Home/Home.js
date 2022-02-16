@@ -37,30 +37,10 @@ export default function Home(props) {
     
   }, [])
 
-  function handleLogout(event) {
-    event.preventDefault()
-    if (localStorage.getItem("accessToken")) {
-      removeToken().then(() => {
-        redirectToLogin()
-      }, () => {
-        return
-      })
-    }
-
-    async function removeToken() {
-      localStorage.removeItem("accessToken")
-    }
-
-    function redirectToLogin() {
-      navigate("/login")
-    }
-    
-  }
-
   return (
     <div className="home-page">
       {isLoading && <Loading />}
-      <Nav username={user.username} handleClick={handleLogout} targetValue={targetValue} />
+      <Nav username={user.username} img_url={user.img_url} />
         {/* -------------------------- Main -------------------------- */}
       <HomeStyle>
         <div className="main__container">

@@ -34,25 +34,6 @@ export default function Account(props) {
     
   }, [])
 
-  function handleLogout() {
-    if (localStorage.getItem("accessToken")) {
-      removeToken().then(() => {
-        redirectToLogin()
-      }, () => {
-        return
-      })
-    }
-
-    async function removeToken() {
-      localStorage.removeItem("accessToken")
-    }
-
-    function redirectToLogin() {
-      navigate("/login")
-    }
-    
-  }
-
   const currentOptionStyle = {
     borderRight: "2px solid var(--orange)",
     backgroundColor: "var(--mellow-apricot-shade)"
@@ -61,7 +42,7 @@ export default function Account(props) {
   return (
     <div className="account-page">
       {isLoading && <Loading />}
-      <Nav username={user.username} handleClick={handleLogout} />
+      <Nav username={user.username} img_url={user.img_url} />
         {/* -------------------------- Main -------------------------- */}
       <AnotherSettingStyle>
         <div className="main__container">
