@@ -5,8 +5,10 @@ import IconHome from '../../assets/icons/IconHome'
 import IconFavorite from '../../assets/icons/IconFavorite'
 import IconMessages from '../../assets/icons/IconMessages'
 import IconSearch from '../../assets/icons/IconSearch'
+import IconProfile from '../../assets/icons/IconProfile'
 import UserCard from '../UserCard/UserCard';
 import { useNavigate } from 'react-router-dom'
+import { useUserState } from '../../context/UserContext'
 
 export default function Nav(props) {
     const style = {
@@ -15,6 +17,8 @@ export default function Nav(props) {
 
     let navigate = useNavigate()
     let location = useLocation();
+
+    const { user } = useUserState()
 
     function handleLogout() {
       if (localStorage.getItem("accessToken")) {
@@ -82,6 +86,16 @@ export default function Nav(props) {
                     </div>
                     <div className="logo-text">
                       <span className="logo-text--value">Search</span>
+                    </div>
+                  </div>
+                </Link>
+                <Link to={`/${user.username}`} className="nav__item">
+                  <div className="item--wrapper">
+                    <div className="logo-item">
+                      <IconProfile /> 
+                    </div>
+                    <div className="logo-text">
+                      <span className="logo-text--value">Profile</span>
                     </div>
                   </div>
                 </Link>

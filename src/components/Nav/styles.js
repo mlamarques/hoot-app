@@ -74,6 +74,16 @@ export const NavStyle = styled.div`
                         transition-property: background-color, box-shadow;
                         transition-duration: 0.2s;
 
+                        .logo-item {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            svg {
+                                height: 1.75rem;
+                            }
+                        }
+
                         .logo-text {
                             overflow: hidden;
                             text-overflow: ellipsis;
