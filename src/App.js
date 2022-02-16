@@ -1,18 +1,17 @@
-import {React, useContext, useState} from 'react';
-import { Navigate, Routes, Route, Redirect, useLocation } from 'react-router-dom';
+import {React, useState} from 'react';
+import { Navigate, Routes, Route, useLocation } from 'react-router-dom';
 import Nav from '../src/components/Nav/Nav'
 import Login from './Pages/Login/Login'
 import SignUp from './Pages/SignUp/SignUp'
 import Favorites from './Pages/Favorites/Favorites'
 import Home from './Pages/Home/Home'
-import Error from './Pages/Error/Error';
 import User from './Pages/User/User';
 import Search from './Pages/Search/Search'
 import ComposeHoot from './Pages/ComposeHoot/ComposeHoot'
 import ChangePassword from './Pages/ChangePassword/ChangePassword'
 import Account from './Pages/Account/Account'
 import AnotherSetting from './Pages/AnotherSetting/AnotherSetting'
-import { UserContext, useUserState } from './context/UserContext';
+import { useUserState } from './context/UserContext';
 import './App.css';
 import GlobalStyles from './assets/GlobalStyles'
 
@@ -32,8 +31,6 @@ function App() {
   function logout() {
     setHasSigned(false)
   }
-
-  console.log(location)
 
   return (
     <div className="App">

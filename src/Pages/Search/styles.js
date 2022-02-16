@@ -7,7 +7,7 @@ export const SearchStyle = styled.div`
         justify-self: center;
         flex-direction: column;
         width: 600px;
-        height: 100vh;
+        height: 100%;
         border: 1px solid rgba(0, 0, 0, 0.7);
 
         .main__header {
@@ -27,10 +27,21 @@ export const SearchStyle = styled.div`
         }
 
         .hoot--individual__container {
+            display: flex;
+            flex-direction: column;
+            position: relative;
             height: 200px;
             background-color: pink;
             opacity: 0.5;
             border: 1px solid var(--orange);
+
+            .results__container {
+                display: flex;
+                position: relative;
+                flex: 1;
+                height: 100%;
+                min-height: 0;
+            }
         }
     }
 
