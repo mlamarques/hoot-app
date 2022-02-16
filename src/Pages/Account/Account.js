@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from 'react'
 import Loading from '../../components/Loading/Loading'
 import { Link, useNavigate } from 'react-router-dom'
 import { api } from '../../services/api'
-import Nav from '../../components/Nav/Nav'
 import { useUserState } from '../../context/UserContext'
 import {AccountStyle} from './styles'
 import IconArrowFoward from '../../assets/icons/IconArrowFoward'
@@ -11,28 +10,6 @@ import IconDeactivate from '../../assets/icons/IconDeactivate'
 
 export default function Account(props) {
   const [isLoading, setIsLoading] = useState(false)
-  const [username, setUsername] = useState('')
-
-  let navigate = useNavigate()
-
-  const { user } = useUserState()
-
-  useEffect(() => {
-    const sessionToken = localStorage.getItem("accessToken")
-    
-    function getAuthData() {
-      if (sessionToken !== null) {
-        api.post('/session', {session: sessionToken})
-        .then(res => {
-          setUsername(res.data.authData.username)
-        })
-        .catch(err => console.log(err))
-      }
-    }
-
-    getAuthData()
-    
-  }, [])
 
   const currentOptionStyle = {
     borderRight: "2px solid var(--orange)",
@@ -42,7 +19,7 @@ export default function Account(props) {
   return (
     <div className="account-page">
       {isLoading && <Loading />}
-      <Nav username={user.username} img_url={user.img_url} />
+      
         {/* -------------------------- Main -------------------------- */}
       <AccountStyle>
         <div className="main__container">

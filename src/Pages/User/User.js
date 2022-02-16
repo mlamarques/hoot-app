@@ -1,15 +1,8 @@
 import { UserStyle } from './styles'
-import Nav from '../../components/Nav/Nav'
-import LogoSimp from '../../assets/LogoSimp'
-import IconHome from '../../assets/icons/IconHome'
-import IconFavorite from '../../assets/icons/IconFavorite'
-import IconMessages from '../../assets/icons/IconMessages'
-import IconSearch from '../../assets/icons/IconSearch'
-import { useContext, useEffect, useState } from 'react'
-import { useUserState } from '../../context/UserContext'
 import Loading from '../../components/Loading/Loading'
 import { useNavigate, useParams  } from 'react-router-dom'
 import { api } from '../../services/api'
+import { useEffect, useState } from 'react'
 
 export default function User(props) {
   const [isLoading, setIsLoading] = useState(false)
@@ -23,9 +16,6 @@ export default function User(props) {
 
   let navigate = useNavigate()
   let params = useParams();
-
-  const { user } = useUserState()
-  console.log(isUserFound)
 
   useEffect(() => {
     const sessionToken = localStorage.getItem("accessToken")
@@ -70,7 +60,6 @@ export default function User(props) {
   return (
     <div className="user-page">
       {isLoading && <Loading />}
-      <Nav username={user.username} img_url={user.img_url} />
         {/* -------------------------- Main -------------------------- */}
       <UserStyle>
         {isUserFound ?
@@ -84,6 +73,72 @@ export default function User(props) {
                   <img className="user--avatar" src={userData.img_url} alt="robot avatar" />
               </div>
               <h2>{userData.createdAt}</h2>
+            </div>
+          </div>
+          <div className="feed__container">
+            <div className="hoot--individual__container">
+              <div className="text__container">
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+              </div>
+              <div className="text__container">
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+              </div>
+              <div className="text__container">
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+              </div>
+              <div className="text__container">
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+              </div>
+              <div className="text__container">
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+              </div>
+              <div className="text__container">
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+              </div>
+              <div className="text__container">
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+              </div>
+              <div className="text__container">
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+              </div>
+
+              <div className="text__container">
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+              </div>
+
+              <div className="text__container">
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+              </div><div className="text__container">
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+              </div>
+              <div className="text__container">
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+                <span>asdasduihasiudhasasddddddddddddddddddddddddddddddddddasdddddddddddddd</span>
+              </div>
+              
             </div>
           </div>
         </div>

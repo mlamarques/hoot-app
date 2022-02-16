@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import useComponentVisible from '../../hooks/showComponent';
 import {UserCardStyle} from './styles'
 import { Link } from 'react-router-dom';
 import IconOptions from '../../assets/icons/IconOptions'
 
 export default function UserCard(props) {
-  const [isSettingsShown, setIsSettingsShown] = useState(false)
   const [isAnimationShown, setIsanimationShown] = useState(true)
 
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false)

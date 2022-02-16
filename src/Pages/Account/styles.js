@@ -13,11 +13,21 @@ export const AccountStyle = styled.div`
         height: 100vh;
         border: 1px solid rgba(0, 0, 0, 0.7);
 
-        h1 {
-            cursor: pointer;
+        .main__header {
+            display: flex;
+            position: sticky;
+            top: -0.5px;
+            min-height: 55px;
+            padding-left: 16px;
+            padding-right: 16px;
+            align-items: center;
+            background-color: var(--mellow-apricot-transparent);
+            z-index: 3;
+            
+            h1 {
+                cursor: pointer;
+            }
         }
-
-        
 
         .settings__container {
 
@@ -100,14 +110,6 @@ export const AccountStyle = styled.div`
             }
         }
 
-    }
-
-    .main__header {
-        display: flex;
-        min-height: 55px;
-        padding-left: 16px;
-        padding-right: 16px;
-        align-items: center;
     }
 `
 

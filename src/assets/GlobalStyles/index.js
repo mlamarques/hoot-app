@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
         --orange: hsl(30, 100%, 50%);
         --orange-hover: hsl(30, 90%, 48%);
         --mellow-apricot: hsl(35, 79%, 70%);
+        --mellow-apricot-transparent: hsla(35, 79%, 70%, 0.95);
         --mellow-apricot-shade: hsl(35, 79%, 62%);
         --deep-saffron: #FFA52B;
         --eerie-black: #191919;

@@ -11,7 +11,7 @@ export const UserCardStyle = styled.div`
         flex: 1;
         max-width: 100%;
         align-items: center;
-        padding: 14px;
+        padding: 12px;
         border-radius: 9999px;
         background-color: var(--mellow-apricot-shade);
         user-select: none;
@@ -26,8 +26,8 @@ export const UserCardStyle = styled.div`
             pointer-events: none;
 
             .user--avatar__wrapper {
-                height: 48px;
-                width: 48px;
+                height: 40px;
+                width: 40px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
