@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const UserStyle = styled.div`
+    position: relative;
 
     .main__container {
         display: flex;

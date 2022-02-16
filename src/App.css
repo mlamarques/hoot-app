@@ -24,6 +24,7 @@ body {
 .home-page, .favorites-page, .search-page, .account-page, .user-page {
   display: flex;
   flex: 1;
+  position: relative;
   width: 100%;
   height: 100vh;
   overflow-Y: scroll;
