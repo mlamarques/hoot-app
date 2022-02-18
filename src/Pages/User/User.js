@@ -25,11 +25,8 @@ export default function User(props) {
     api.get(`/user/${params.user}`)
       .then(res => {
         if (res.data.message) {
-          console.log(res.data.message)
-          setIsUserFound(false)
           setIsLoading(false)
         } else {
-          setIsUserFound(true)
           setUserData(prev => ({
             ...prev,
             _id: res.data._id,
@@ -47,8 +44,6 @@ export default function User(props) {
         console.log(err)
         setIsLoading(false)
       })
-      
-    return
     
   }, [params])
 

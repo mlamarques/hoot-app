@@ -56,7 +56,8 @@ export default function UserCard(props) {
                 <div className="usercard__options" onClick={(event) => handleInsideClick(event)} style={{ animation: `${isAnimationShown ? "fadeIn" : "fadeOut"} 0.5s ease-in-out` }} >
                   <div className="a">
                     <div className="ainside"></div>
-                    <Link to='/logout' className="binside" onClick={() => props.handleClick()} >
+                    {/* link to logout route */}
+                    <Link to='#' className="binside" onClick={() => props.handleClick()} >
                       <span >Log out</span>
                     </Link>
                   </div>
