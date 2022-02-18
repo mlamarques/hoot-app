@@ -1,5 +1,6 @@
 import {React, useState} from 'react';
 import { Navigate, Routes, Route, useLocation } from 'react-router-dom';
+import PrivateRoutes from './private.routes';
 import Nav from '../src/components/Nav/Nav'
 import Login from './Pages/Login/Login'
 import SignUp from './Pages/SignUp/SignUp'
@@ -39,15 +40,17 @@ function App() {
         <Routes location={state?.backgroundLocation || location}>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/settings/" element={<Navigate to="/settings/account" />} />
-          <Route path="/settings/another" element={<AnotherSetting />} />
-          <Route path="/settings/account" element={<Account />} />
-          <Route path="/settings/password" element={<ChangePassword />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/:user" element={<User />} />
-          <Route path="*" element={<Navigate to="/home" />} />
+          <Route path="/"  element={<PrivateRoutes />}>
+            <Route path="/settings/another" element={<AnotherSetting />} />
+            <Route path="/settings/account" element={<Account />} />
+            <Route path="/settings/password" element={<ChangePassword />} />
+            <Route path="/settings/" element={<Navigate to="/settings/account" />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/:user" element={<User />} />
+            <Route path="*" element={<Navigate to="/home" />} />
+          </Route>
         </Routes>
         {state?.backgroundLocation && (
           <Routes>

@@ -26,28 +26,6 @@ function Login() {
 
   const { setUser } = useContext(UserContext)
 
-  useEffect(() => {
-    const sessionToken = localStorage.getItem("accessToken")
-    
-    function checkSessionStatus() {
-      if (sessionToken !== null) {
-        setIsLoading(true)
-        api.get('/session')
-        .then(res => {
-          console.log("session on")
-          setIsLoading(false)
-        })
-        .then(() => {
-          navigate('/home')
-        })
-        .catch(err => console.log(err))
-      }
-    }
-
-    checkSessionStatus()
-    
-  }, [])
-
   function handleChange(event) {
     const { name, value } = event.target
 

@@ -21,60 +21,34 @@ export default function User(props) {
   let params = useParams();
 
   useEffect(() => {
-    const sessionToken = localStorage.getItem("accessToken")
-    
-    async function getAuthData() {
-      setIsLoading(true)
-      if (sessionToken !== null) {
-        // api.get('/api/session')
-        // .then(res => {
-        //   // setUsername(res.data.authData.username)
-        // })
-        // .catch(err => {
-        //   console.log(err)
-        // })
-        api.get(`/${params.user}`)
-          .then(res => {
-            if (res.data.message) {
-              console.log(res.data.message)
-              setIsUserFound(false)
-              setIsLoading(false)
-            } else {
-              setIsUserFound(true)
-              setUserData(prev => ({
-                ...prev,
-                _id: res.data._id,
-                username: res.data.username,
-                img_url: res.data.img_url,
-                createdAt: res.data.createdAt,
-                // date_formatted: res.data.date_formatted,
-                date_formatted_simple: res.data.date_formatted_simple,
-                list_hoots: res.data.newList
-              }))
-              setIsLoading(false)
-            }
-          })
-          .catch(err => {
-            console.log(err)
-            setIsLoading(false)
-          })
-      }
-    }
 
-    getAuthData()
+    api.get(`/user/${params.user}`)
+      .then(res => {
+        if (res.data.message) {
+          console.log(res.data.message)
+          setIsUserFound(false)
+          setIsLoading(false)
+        } else {
+          setIsUserFound(true)
+          setUserData(prev => ({
+            ...prev,
+            _id: res.data._id,
+            username: res.data.username,
+            img_url: res.data.img_url,
+            createdAt: res.data.createdAt,
+            // date_formatted: res.data.date_formatted,
+            date_formatted_simple: res.data.date_formatted_simple,
+            list_hoots: res.data.newList
+          }))
+          setIsLoading(false)
+        }
+      })
+      .catch(err => {
+        console.log(err)
+        setIsLoading(false)
+      })
     
-  }, [params.user])
-
-  // async function getUserHoots(userId) {
-  //   try {
-  //     api.get(`/hoots/${userId}`)
-  //       .then(res => {
-  //         setUserData(res.data)
-  //       })
-  //   } catch (error) {
-  //     console.error(error)
-  //   }
-  // }
+  }, [])
 
   return (
     <div className="user-page">
