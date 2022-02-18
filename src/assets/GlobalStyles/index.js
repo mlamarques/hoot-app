@@ -13,6 +13,13 @@ const GlobalStyle = createGlobalStyle`
         --black: #000000;
         --black-shade: rgba(239, 243, 244, 0.1);
         --light-text: rgb(217, 217, 217);
+        --icon-empty: rgb(110, 118, 125);
+        --blue-twitter: rgb(29, 155, 240);
+        --blue-twitter-shade: rgba(29, 155, 240, 0.1);
+        --green-twitter: rgb(0, 186, 124);
+        --green-twitter-shade: rgba(0, 186, 124, 0.1);
+        --red-twitter: rgb(249, 24, 128);
+        --red-twitter-shade: rgba(249, 24, 128, 0.1);
     }
 
     *, *:before, *:after{

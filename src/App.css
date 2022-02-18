@@ -28,6 +28,7 @@ body {
   width: 100%;
   height: 100vh;
   overflow-Y: scroll;
+  z-index: 0;
 }
 
 .nav__component {
@@ -39,6 +40,8 @@ body {
   position: absolute;
   display: flex;
   justify-content: center;
+  left: 0;
+  top: 0;
   width: 100vw;
   height: 100vh;
   background-color: rgba(91, 112, 131, 0.4);

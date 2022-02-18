@@ -3,6 +3,7 @@ import Loading from '../../components/Loading/Loading'
 import { useNavigate, useParams  } from 'react-router-dom'
 import { api } from '../../services/api'
 import { useEffect, useState } from 'react'
+import HootCard from '../../components/HootCard/HootCard'
 
 export default function User(props) {
   const [isLoading, setIsLoading] = useState(false)
@@ -11,6 +12,7 @@ export default function User(props) {
     username: '',
     img_url: '',
     createdAt: '',
+    date_formatted_simple: '',
     list_hoots: []
   })
   const [isUserFound, setIsUserFound] = useState(false)
@@ -45,7 +47,9 @@ export default function User(props) {
                 username: res.data.username,
                 img_url: res.data.img_url,
                 createdAt: res.data.createdAt,
-                list_hoots: res.data.list_hoots
+                // date_formatted: res.data.date_formatted,
+                date_formatted_simple: res.data.date_formatted_simple,
+                list_hoots: res.data.newList
               }))
               setIsLoading(false)
             }
@@ -88,7 +92,7 @@ export default function User(props) {
               <div className="user--avatar__wrapper">
                   <img className="user--avatar" src={userData.img_url} alt="robot avatar" />
               </div>
-              <h2>{userData.createdAt}</h2>
+              <h2>Joined: {userData.date_formatted_simple}</h2>
             </div>
           </div>
           <div className="feed__container">
@@ -108,12 +112,14 @@ export default function User(props) {
                       onClick={() => console.log(item?._id)}
                     >
                       {item?.box_content}
-                      {item?.createdAt}
+                      {item?.new_date}
                     </div>
                   )
                 })}
               </div>
             </div>
+            <HootCard box_content={'asdhuasudhashduashduashd aushduahsduhsa asuhd'} img_url={userData?.img_url} username={userData?.username} time={userData?.list_hoots[0]?.new_date} />
+            <HootCard box_content={'asdhuasudhashduashduashd aushduahsduhsa asuhd'} img_url={userData?.img_url} username={'asdasdddddddddddfffffffffffffgggg'} time={userData?.list_hoots[0]?.new_date} />
           </div>
         </div>
         :
