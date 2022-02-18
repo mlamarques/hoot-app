@@ -47,8 +47,10 @@ export default function User(props) {
         console.log(err)
         setIsLoading(false)
       })
+      
+    return
     
-  }, [])
+  }, [params])
 
   return (
     <div className="user-page">
