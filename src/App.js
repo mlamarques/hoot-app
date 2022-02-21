@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React, useEffect, useState} from 'react';
 import { Navigate, Routes, Route, useLocation } from 'react-router-dom';
 import PrivateRoutes from './private.routes';
 import Nav from '../src/components/Nav/Nav'
@@ -18,20 +18,12 @@ import GlobalStyles from './assets/GlobalStyles'
 
 
 function App() {
-  const [hasSigned, setHasSigned] = useState(false)
-
   let location = useLocation()
   let state = location.state
 
   const { user } = useUserState()
 
-  function handleSignIn() {
-    setHasSigned(true)
-  }
-
-  function logout() {
-    setHasSigned(false)
-  }
+  // Check if server is up
 
   return (
     <div className="App">
@@ -49,6 +41,7 @@ function App() {
             <Route path="/search" element={<Search />} />
             <Route path="/home" element={<Home />} />
             <Route path="/:user" element={<User />} />
+            <Route path="/" element={<Navigate to="/home" />} />
             <Route path="*" element={<Navigate to="/home" />} />
           </Route>
         </Routes>
@@ -57,7 +50,6 @@ function App() {
             <Route path="/compose/hoot" element={<ComposeHoot />} />
           </Routes>
         )}
-      
     </div>
   );
 }

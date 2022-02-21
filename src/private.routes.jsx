@@ -3,33 +3,36 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { api } from './services/api';
 
 function PrivateRoutes() {
-    const [isAuth, setIsAuth] = useState()
-    const token = localStorage.getItem('accessToken')
+  const [isAuth, setIsAuth] = useState();
+  const token = localStorage.getItem('accessToken');
 
-    useEffect(() => {
-        if (token === null) {
-            // console.log('Access token null')
-            setIsAuth(false)
-            return isAuth
-        } else {
-            api.get('/session')
-                .then(res => {
-                if (res.data.isSessionActive) {
-                    setIsAuth(res.data.isSessionActive)
-                    return isAuth
-                } else {
-                    return false
-                }
-            })
-        }
-    }, [isAuth, token])
+  useEffect(() => {
+    if (token === null) {
+      // console.log('Access token null')
+      setIsAuth(false);
+      return isAuth;
+    } else {
+      api
+        .get('/session')
+        .then((res) => {
+          if (res.data.isSessionActive) {
+            setIsAuth(res.data.isSessionActive);
+            return isAuth;
+          } else {
+            setIsAuth(null);
+            return isAuth;
+          }
+        })
+        .catch((err) => {
+            setIsAuth(null);
+            return isAuth;
+        });
+    }
+  }, [isAuth, token]);
 
-    if (isAuth === undefined) return null
+  if (isAuth === undefined) return null;
 
-    return (
-        isAuth ? <Outlet /> : <Navigate to="/login" />
-    )
-    
+  return isAuth ? <Outlet /> : <Navigate to="/login" />;
 }
 
 export default PrivateRoutes;

@@ -21,7 +21,8 @@ export default function User(props) {
   let params = useParams();
 
   useEffect(() => {
-
+    setIsLoading(true)
+    
     api.get(`/user/${params.user}`)
       .then(res => {
         if (res.data.message) {
@@ -37,6 +38,7 @@ export default function User(props) {
             date_formatted_simple: res.data.date_formatted_simple,
             list_hoots: res.data.newList
           }))
+          setIsUserFound(true)
           setIsLoading(false)
         }
       })
