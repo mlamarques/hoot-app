@@ -189,6 +189,9 @@ function SignUp() {
                 </div>
               </div>
               }
+              <div className="characters-length__container">
+                <span><span style={username.length > 20 ? {color: 'red'} : {}}>{username ? username.length : 0}</span>/20</span>
+              </div>
             </div>
             
             {/* Username validation */}

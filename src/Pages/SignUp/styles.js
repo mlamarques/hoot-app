@@ -160,6 +160,7 @@ export const LoginStyle = styled.div`
                     right: 8px;
                     top: 50%; */
                     position: relative;
+                    right: 0;
                     align-self: center;
                     height: 24px;
                     width: 28px;
@@ -185,6 +186,15 @@ export const LoginStyle = styled.div`
                             fill: rgb(32, 35, 36) !important;
                         }
                     }
+                }
+
+                .characters-length__container {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    padding: 2px;
+                    pointer-events: none;
+                    user-select: none;
                 }
 
             }
