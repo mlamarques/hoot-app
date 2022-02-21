@@ -1,4 +1,4 @@
-import {React, useContext, useState, useEffect} from 'react';
+import {React, useContext, useState} from 'react';
 import { useNavigate  } from 'react-router-dom';
 import { api } from '../../services/api'
 import { UserContext } from '../../context/UserContext'
@@ -15,8 +15,10 @@ function SignUp() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [isUsernameValid, setIsUSerNameValid] = useState(true)
+  const [usernameMessage, setUsernameMessage] = useState('please enter your username')
   const [isPasswordValid, setIsPasswordValid] = useState(true)
   const [isPasswordShown, setIsPasswordShown] = useState(false)
+  const [passwordMessage, setPasswordMessage] = useState('please enter your password')
   const [showNotifications, setShowNotifications] = useState(false)
   const [notificationValue, setNotificationValue] = useState("")
   const [isLoading, setIsLoading] = useState(false)
@@ -25,36 +27,21 @@ function SignUp() {
 
   const { setUser } = useContext(UserContext)
 
-  useEffect(() => {
-    const sessionToken = localStorage.getItem("accessToken")
-    
-    function checkSessionStatus() {
-      if (sessionToken !== null) {
-        setIsLoading(true)
-        api.get('/session')
-        .then(res => {
-          console.log("session on")
-          setIsLoading(false)
-        })
-        .then(() => {
-          navigate('/home')
-        })
-        .catch(err => console.log(err))
-      }
-    }
-
-    checkSessionStatus()
-    
-  }, [])
+  const styleDisabled = {
+    opacity: "0.5",
+    pointerEvents: 'none'
+  }
 
   function handleChange(event) {
     const { name, value } = event.target
 
     if (name === 'username') {
       setUsername(value)
+      handleUsername()
     }
     if (name === 'password') {
       setPassword(value)
+      handlePassword()
     }
   }
 
@@ -111,18 +98,34 @@ function SignUp() {
   }
 
   function handleUsername() {
-    if (username.length !== 0) {
+    if (username.length <= 20 && username.length !== 0) {
       setIsUSerNameValid(true)
-      
-    } else {
+    }
+    else {
+      if (username.length === 0) {
+        setUsernameMessage('please enter your username')
+      }
+      if (username.length > 20) {
+        setUsernameMessage('username characters limit is 20')
+      }
       setIsUSerNameValid(false)
     }
   }
 
   function handlePassword() {
-    if (password.length > 3) {
+    // Set password validation 
+    if (password.length >= 8) {
       setIsPasswordValid(true)
-    } else {
+    }
+     else {
+      if (password.length === 0) {
+        setPasswordMessage('please enter your password')
+  
+      }
+      if (password.length !== 0) {
+        setPasswordMessage('Password must contain at least 8 characters')
+  
+      }
       setIsPasswordValid(false)
     }
   }
@@ -191,7 +194,7 @@ function SignUp() {
             {/* Username validation */}
             {!isUsernameValid &&
               <div className="username--validation">
-                <span>This is a validation</span>
+                <span>{usernameMessage}</span>
               </div>
             }
           </div>
@@ -219,12 +222,12 @@ function SignUp() {
             {/* Password validation */}
             {!isPasswordValid &&
               <div className="password--validation">
-                <span>This is a validation</span>
+                <span>{passwordMessage}</span>
               </div>
             }         
           </div>
           <div className="create-account__container">
-            <div className="btn--create-account" onClick={handleSubmit}>
+            <div className="btn--create-account" style={ (isPasswordValid && isUsernameValid && password && username) ? {} : styleDisabled} onClick={handleSubmit}>
               <span>Sign up</span>
             </div>
           </div>
