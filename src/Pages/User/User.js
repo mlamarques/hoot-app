@@ -73,26 +73,25 @@ export default function User(props) {
               <div className="text__container" onClick={() => {
                   console.log(userData.list_hoots)
                  }}>
-                <span>{userData._id}</span>
-                <br />
               </div>
               <div className="hoots_container">
-                {userData.list_hoots.map(item => {
+                {userData.list_hoots.length === 0 ?
+                <span>No hoots yet</span>
+                :
+                userData.list_hoots.map(item => {
                   return (
-                    <div
-                      key={item?._id}
-                      className="hoot-card"
+                    <HootCard
+                      key={item?._id} 
+                      box_content={item?.box_content} 
+                      img_url={userData?.img_url} 
+                      username={userData?.username} 
+                      time={item?.new_date}
                       onClick={() => console.log(item?._id)}
-                    >
-                      {item?.box_content}
-                      {item?.new_date}
-                    </div>
+                    />
                   )
                 })}
               </div>
             </div>
-            <HootCard box_content={'asdhuasudhashduashduashd aushduahsduhsa asuhd'} img_url={userData?.img_url} username={userData?.username} time={userData?.list_hoots[0]?.new_date} />
-            <HootCard box_content={'asdhuasudhashduashduashd aushduahsduhsa asuhd'} img_url={userData?.img_url} username={'asdasdddddddddddfffffffffffffgggg'} time={userData?.list_hoots[0]?.new_date} />
           </div>
         </div>
         :

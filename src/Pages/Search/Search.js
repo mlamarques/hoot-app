@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react'
 import {SearchStyle} from './styles'
 import { api } from '../../services/api'
 import Loading from '../../components/Loading/Loading'
+import LoadingSimple from '../../components/LoadingSimple/LoadingSimple'
+import IconSearchInput from '../../assets/icons/IconSearchInput'
+import IconClose from '../../assets/icons/IconClose'
+import UserCardSearch from '../../components/UserCardSearch/UserCard'
 
 
 export default function Search(props) {
@@ -15,6 +19,7 @@ export default function Search(props) {
       try {
         api.post('/user/search', { "term": searchTerm })
           .then(res => {
+            console.log(res.data.list_users)
             setAutoComplete(res.data.list_users)
             setIsLoading(false)
           })
@@ -42,24 +47,42 @@ export default function Search(props) {
         </div>
         <div className="feed__container">
           <div className="hoot--individual__container">
-            <h2>Search here...</h2>
-            <input type="text" value={searchTerm} onChange={handleChange}/>
-            <div className="results__container">
-              {isLoading && <Loading />}
+            <div className="search__container">
+              <div className="search--logo__container">
+                <IconSearchInput />
+              </div>
+              <div className="input--wrapper">
+                {searchTerm.length === 0 &&
+                <div className="label__container">
+                  <span>Search user</span>
+                </div>
+                }
+              <input className="search--input" type="text" value={searchTerm} onChange={handleChange} />
+              </div>
+              {searchTerm.length !== 0 &&
+              <div className="clean-input__container">
+                <div className="clean-input__background" onClick={() => setSearchTerm('')} >
+                  <IconClose />
+                </div>
+              </div>
+              }
+            </div>
+          </div>
+          <div className="results__container">
+              <div className="loading__container">
+                {isLoading && <LoadingSimple />}
+              </div>
               {autoComplete.length > 0 && (
-                <ul className="user-card_container">
+                <div className="user-card_container">
                   {autoComplete.map(item => {
                     return (
-                      <li
-                        key={item?._id}
-                        className="user-card"
-                        onClick={() => console.log(item?._id)}
-                      >
-                        {item?.username}
-                      </li>
+                      <UserCardSearch
+                      username={item?.username}
+                      img_url={item?.img_url}
+                      />
                     )
                   })}
-                </ul>
+                </div>
               )}
               {(autoComplete.length === 0 && searchTerm.length > 0) && 
                 <ul className="user-card_container">
@@ -67,7 +90,6 @@ export default function Search(props) {
                 </ul>
               }
             </div>
-          </div>
         </div>
       </div>
       </SearchStyle>

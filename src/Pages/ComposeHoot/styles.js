@@ -51,6 +51,7 @@ export const ComposeHootStyle = styled.div`
 
                 .icon-close {
                     height: 20px;
+                    fill: white;
                 }
 
                 .tooltip {

@@ -57,7 +57,7 @@ export default function UserCard(props) {
                   <div className="a">
                     <div className="ainside"></div>
                     {/* link to logout route */}
-                    <Link to='#' className="binside" onClick={() => props.handleClick()} >
+                    <Link to='/home' className="binside" onClick={() => props.handleClick()} >
                       <span >Log out</span>
                     </Link>
                   </div>
