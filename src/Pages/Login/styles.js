@@ -197,6 +197,7 @@ export const LoginStyle = styled.div`
             margin: 16px;
             border-radius: 9999px;
             transition-duration: 0.5s;
+            fill: var(--light-text);
             cursor: pointer;
 
             &:hover {

@@ -76,7 +76,8 @@ function Login() {
           const user = {
             id: res.data._id,
             username: res.data.username,
-            img_url: res.data.img_url
+            img_url: res.data.img_url,
+            follows: res.data.follows
           }
           setIsPasswordValid(true)
           setIsLoading(false)

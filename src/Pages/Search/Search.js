@@ -19,8 +19,11 @@ export default function Search(props) {
       try {
         api.post('/user/search', { "term": searchTerm })
           .then(res => {
-            console.log(res.data.list_users)
             setAutoComplete(res.data.list_users)
+            setIsLoading(false)
+          })
+          .catch ((err) => {
+            console.log('Invalid character')
             setIsLoading(false)
           })
       } catch (error) {
@@ -77,6 +80,7 @@ export default function Search(props) {
                   {autoComplete.map(item => {
                     return (
                       <UserCardSearch
+                      key={item?._id}
                       username={item?.username}
                       img_url={item?.img_url}
                       />

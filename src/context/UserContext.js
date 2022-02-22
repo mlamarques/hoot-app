@@ -7,6 +7,8 @@ export const UserProvider = (props) => {
         id: '',
         username: '',
         img_url: '',
+        follows: [],
+        likes: []
     }) 
 
     useEffect(() => {
@@ -18,6 +20,8 @@ export const UserProvider = (props) => {
                 id: '',
                 username: '',
                 img_url: '',
+                follows: [],
+                likes: []
             })
         }
     }, [])
