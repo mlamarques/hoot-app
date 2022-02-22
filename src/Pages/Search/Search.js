@@ -6,12 +6,15 @@ import LoadingSimple from '../../components/LoadingSimple/LoadingSimple'
 import IconSearchInput from '../../assets/icons/IconSearchInput'
 import IconClose from '../../assets/icons/IconClose'
 import UserCardSearch from '../../components/UserCardSearch/UserCard'
+import { useUserState } from '../../context/UserContext'
 
 
 export default function Search(props) {
   const [searchTerm, setSearchTerm] = useState('')
   const [autoComplete, setAutoComplete] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+
+  const { user } = useUserState()
 
   useEffect( () => {
     setIsLoading(true)
@@ -83,6 +86,7 @@ export default function Search(props) {
                       key={item?._id}
                       username={item?.username}
                       img_url={item?.img_url}
+                      followValue={(user?.follows.includes(item?._id) ? 'Following' : 'Follow')}
                       />
                     )
                   })}
