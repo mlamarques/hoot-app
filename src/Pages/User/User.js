@@ -11,6 +11,7 @@ import { useUserState } from '../../context/UserContext'
 export default function User(props) {
   const [isLoading, setIsLoading] = useState(false)
   const [isFollowing, setIsFollowing] = useState()
+  const [showUnfollow, setShowUnfollow] = useState(false)
   const [userData, setUserData] = useState({
     _id: '',
     username: '',
@@ -26,6 +27,14 @@ export default function User(props) {
 
   const { user, setUser } = useUserState()
   const followBtn = document.querySelector('[data-btn]')
+
+  let followBtnText
+  
+  if (showUnfollow) {
+    followBtnText =  <span>Unfollow</span>
+    } else {
+    isFollowing ? followBtnText = <span>Following</span> : followBtnText = <span>Follow</span>
+  }
 
   useEffect(() => {
     setIsLoading(true)
@@ -113,7 +122,8 @@ export default function User(props) {
     if (isFollowing) {
       followBtn.classList.add('unfollow-btn')
       followBtn.classList.remove('follow-btn')
-      followBtn.innerHTML = '<span>Unfollow</span>'
+      // followBtn.innerHTML = '<span>Unfollow</span>'
+      setShowUnfollow(true)
     }
     
   }
@@ -122,13 +132,14 @@ export default function User(props) {
     if (isFollowing) {
       followBtn.classList.remove('unfollow-btn')
       followBtn.classList.add('follow-btn')
-      followBtn.innerHTML = '<span>Following</span>'
+      // followBtn.innerHTML = '<span>Following</span>'
+      setShowUnfollow(false)
     }
-    if (!isFollowing) {
-      followBtn.classList.remove('unfollow-btn')
-      followBtn.classList.add('follow-btn')
-      followBtn.innerHTML = '<span>Follow</span>'
-    }
+    // if (!isFollowing) {
+    //   followBtn.classList.remove('unfollow-btn')
+    //   followBtn.classList.add('follow-btn')
+    //   followBtn.innerHTML = '<span>Follow</span>'
+    // }
   }
 
   return (
@@ -170,11 +181,7 @@ export default function User(props) {
                     </div>
                   </div>
                   <div className="follow-btn" data-btn="follow" onClick={handleFollowClick} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                    {isFollowing ? 
-                      <span>Following</span>
-                      :
-                      <span>Follow</span>
-                    }
+                    {followBtnText}
                   </div>
                 </div>
                 }
