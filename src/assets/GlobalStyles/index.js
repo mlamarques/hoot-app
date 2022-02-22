@@ -21,7 +21,6 @@ const GlobalStyle = createGlobalStyle`
         --red-twitter: rgb(249, 24, 128);
         --red-twitter-shade: rgba(249, 24, 128, 0.1);
         --red-button-color: rgba(244, 33, 46, 1);
-        --red-button-background: rgba(249, 24, 128, 0.1);
     }
 
     *, *:before, *:after{

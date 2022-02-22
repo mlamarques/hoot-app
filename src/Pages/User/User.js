@@ -53,7 +53,7 @@ export default function User(props) {
         setIsLoading(false)
       })
     
-      user.follows.includes(userData._id) ? setIsFollowing(true) : setIsFollowing(false)
+    user.follows.includes(userData._id) ? setIsFollowing(true) : setIsFollowing(false)
     
   }, [params, user.follows, userData._id])
 
@@ -69,7 +69,7 @@ export default function User(props) {
         api
           .post('/follow', data)
           .then((res) => {
-            // localStorage.setItem("user", JSON.stringify({...props.user, follows: res.data.follows}))
+            localStorage.setItem("user", JSON.stringify({...user, follows: res.data.follows}))
             setUser(prev => ({
               ...prev,
               follows: res.data.follows
@@ -82,12 +82,28 @@ export default function User(props) {
             console.log('Error follow')
           })
       } catch (e) {
-        console.log('eee follow')
         console.log(e)
       }
       
     } else {
-      return
+      try {
+        api
+          .post('/unfollow', data)
+          .then((res) => {
+            localStorage.setItem("user", JSON.stringify({...user, follows: res.data.follows}))
+            setUser(prev => ({
+              ...prev,
+              follows: res.data.follows
+            }))
+            console.log('Success unfollow')
+          })
+          .catch(err => {
+            console.log(err)
+            console.log('Error follow')
+          })
+      } catch (e) {
+        console.log(e)
+      }
     }
     
     handleMouseLeave(event)
@@ -107,6 +123,11 @@ export default function User(props) {
       followBtn.classList.remove('unfollow-btn')
       followBtn.classList.add('follow-btn')
       followBtn.innerHTML = '<span>Following</span>'
+    }
+    if (!isFollowing) {
+      followBtn.classList.remove('unfollow-btn')
+      followBtn.classList.add('follow-btn')
+      followBtn.innerHTML = '<span>Follow</span>'
     }
   }
 
