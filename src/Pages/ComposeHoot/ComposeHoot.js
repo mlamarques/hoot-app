@@ -40,7 +40,7 @@ export default function ComposeHoot(props) {
     
     function handlePostHoot() {
         const data = {
-            owner: user.id,
+            owner: user._id,
             box_content: textboxValue,
             createdAt: new Date(),
         }

@@ -9,7 +9,7 @@ import IconShare from '../../assets/icons/IconShare';
 
 export default function HootCard(props) {
   return (
-    <div className="hoot__component" onClick={() => console.log('hoot clicked')}>
+    <div className="hoot__component">
         <HootCardStyle >
             <div className="hoot__container" >
                 <div className="container__header" >

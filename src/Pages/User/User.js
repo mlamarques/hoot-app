@@ -29,7 +29,7 @@ export default function User(props) {
   const followBtn = document.querySelector('[data-btn]')
 
   let followBtnText
-  
+
   if (showUnfollow) {
     followBtnText =  <span>Unfollow</span>
     } else {
@@ -166,7 +166,10 @@ export default function User(props) {
                 </div>
                 {userData.username === user.username ? 
                 <div className="profile--options__container">
-                  <div className="follow-btn" onClick={() => console.log('Edit Profile')}>
+                  <div className="follow-btn" onClick={() => {
+                    console.log('Edit Profile')
+                    navigate('/settings/account')
+                  }}>
                     <span>Edit profile</span>
                   </div>
                 </div>
