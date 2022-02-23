@@ -70,7 +70,7 @@ function SignUp() {
               .then(res => {
                 if (res.data.match) {
                   const user = {
-                    id: res.data._id,
+                    _id: res.data._id,
                     username: res.data.username,
                     img_url: res.data.img_url
                   }

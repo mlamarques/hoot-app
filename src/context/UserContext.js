@@ -4,7 +4,7 @@ export const UserContext = React.createContext({})
 
 export const UserProvider = (props) => {
     const [user, setUser] = useState({
-        id: '',
+        _id: '',
         username: '',
         img_url: '',
         follows: [],
@@ -17,7 +17,7 @@ export const UserProvider = (props) => {
             setUser(JSON.parse(userStorage))
         } else {
             setUser({
-                id: '',
+                _id: '',
                 username: '',
                 img_url: '',
                 follows: [],

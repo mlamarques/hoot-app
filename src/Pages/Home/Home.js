@@ -17,7 +17,7 @@ export default function Home(props) {
   useEffect(() => {
     setIsLoading(true)
     
-    api.get(`/feed/${user.id}`)
+    api.get(`/feed/${user._id}`)
       .then(res => {
         setUserFeed(res.data.hoots)
         setIsLoading(false)
@@ -42,14 +42,14 @@ export default function Home(props) {
               {userFeed.length === 0 ?
               <span>No feed</span>
               :
-              userFeed.map(item => {
+              userFeed?.map(item => {
                 return (
                   <HootCard
                     key={item?._id} 
                     box_content={item?.box_content} 
-                    img_url={item?.owner_avatar} 
-                    username={item?.owner_username}  
-                    time={item?.new_date}
+                    img_url={item?.owner_info?.img_url} 
+                    username={item?.owner_info?.username}  
+                    time={item?.date_formatted}
                   />
                 )
               })}
