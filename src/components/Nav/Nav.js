@@ -69,7 +69,7 @@ export default function Nav(props) {
                     </div>
                   </div>
                 </Link>
-                <Link to='/' className="nav__item">
+                <Link to='/messages' className="nav__item">
                   <div className="item--wrapper">
                     <div className="logo-item">
                       <IconMessages /> 

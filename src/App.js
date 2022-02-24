@@ -8,6 +8,7 @@ import Favorites from './Pages/Favorites/Favorites'
 import Home from './Pages/Home/Home'
 import User from './Pages/User/User';
 import Search from './Pages/Search/Search'
+import Messages from './Pages/Messages/Messages'
 import ComposeHoot from './Pages/ComposeHoot/ComposeHoot'
 import ChangePassword from './Pages/ChangePassword/ChangePassword'
 import Account from './Pages/Account/Account'
@@ -37,6 +38,7 @@ function App() {
             <Route path="/settings/account" element={<Account />} />
             <Route path="/settings/password" element={<ChangePassword />} />
             <Route path="/settings/" element={<Navigate to="/settings/account" />} />
+            <Route path="/messages" element={<Messages />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/search" element={<Search />} />
             <Route path="/home" element={<Home />} />

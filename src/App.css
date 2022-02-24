@@ -21,7 +21,7 @@ body {
   align-self: center;  
 }
 
-.home-page, .favorites-page, .search-page, .account-page, .user-page {
+.home-page, .favorites-page, .search-page, .messages-page, .account-page, .user-page {
   display: flex;
   flex: 1;
   position: relative;
