@@ -5,11 +5,32 @@ import IconOptions from '../../assets/icons/IconOptions';
 import IconComment from '../../assets/icons/IconComment';
 import IconResend from '../../assets/icons/IconResend';
 import IconLike from '../../assets/icons/IconLike';
+import IconLikeSelected from '../../assets/icons/IconLikeSelected';
 import IconShare from '../../assets/icons/IconShare';
+import { useState } from 'react';
 
 export default function HootCard(props) {
+  const [isLiked, setIsLiked] = useState(props.isLiked);
+  const [likesCount, setLikesCount] = useState(props.likesCount);
+  const [isCommented, setIsCommented] = useState(props.isCommented);
+  const [commentsCount, setCommentsCount] = useState(props.commentsCount);
+
+  function handleLikeClick() {
+    if (!isLiked) {
+      setLikesCount(prev => prev + 1)
+    }
+    if (isLiked) {
+      setLikesCount(prev => prev - 1)
+    }
+    setIsLiked(prev => !prev)
+    props.handleLikeClick()
+  }
+
   return (
-    <div className="hoot__component">
+    <div className="hoot__component" onClick={() => {
+      // console.log(props.hootId)
+      // console.log(props.userId)
+      }}>
         <HootCardStyle >
             <div className="hoot__container" >
                 <div className="container__header" >
@@ -63,7 +84,9 @@ export default function HootCard(props) {
                                   </div>
                                 </div>
                                 <div className="count--wrapper">
-                                  <span className="icon--count count-comment"></span>
+                                  <span className="icon--count count-comment">
+                                    { commentsCount <= 0 ? null : commentsCount }
+                                  </span>
                                 </div>
                               </div>
                               <div className="icon_container">
@@ -78,16 +101,18 @@ export default function HootCard(props) {
                                   <span className="icon--count count-resend">2</span>
                                 </div>
                               </div>
-                              <div className="icon_container">
+                              <div className="icon_container" onClick={handleLikeClick}>
                                 <div className="icon--wrapper icon-favorite">
                                   <div className="icon--background"></div>
-                                  <IconLike /> 
+                                  { isLiked ? <IconLikeSelected /> : <IconLike /> }
                                   <div className="tooltip" role="tooltip">
                                     <span >Like</span>
                                   </div>
                                 </div>
                                 <div className="count--wrapper">
-                                  <span className="icon--count count-favorite">544</span>
+                                  <span className="icon--count count-favorite" style={isLiked ? {color: "var(--red-twitter)"} : {}}>
+                                    { likesCount <= 0 ? null : likesCount }
+                                  </span>
                                 </div>
                               </div>
                               <div className="icon_container">

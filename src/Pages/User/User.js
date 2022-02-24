@@ -64,7 +64,7 @@ export default function User(props) {
     
     user.follows.includes(userData._id) ? setIsFollowing(true) : setIsFollowing(false)
     
-  }, [params, user.follows, userData._id])
+  }, [])
 
   function handleFollowClick(event) {
 
@@ -142,6 +142,22 @@ export default function User(props) {
     // }
   }
 
+  function handleLikeClick(value) {
+    api.post('/hoot/like', { userId: user._id, hootId: value })
+      .then(res => {
+        setUser(prev => ({
+          ...prev,
+          likes: res.data.user_likes
+        }))
+      })
+      .then(() => {})
+      .catch(err => console.log(err))
+  }
+
+  function handleIsHootLiked(hootId) {
+    return user?.likes?.includes(hootId) ? true : false
+  }
+
   return (
     <div className="user-page">
       
@@ -205,11 +221,16 @@ export default function User(props) {
                   return (
                     <HootCard
                       key={item?._id} 
-                      box_content={item?.box_content} 
+                      hootId={item?._id}
+                      userId={userData?._id}
+                      box_content={item?.box_content}
+                      likesCount={item?.likes_count}
+                      commentsCount={item?.comments_count}
                       img_url={userData?.img_url} 
-                      username={userData?.username} 
-                      time={item?.new_date}
-                      onClick={() => console.log(item?._id)}
+                      username={userData?.username}  
+                      time={item?.date_formatted}
+                      isLiked={ () => handleIsHootLiked(item?._id) } 
+                      handleLikeClick={ () => handleLikeClick(item?._id) }
                     />
                   )
                 })}

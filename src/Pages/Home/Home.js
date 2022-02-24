@@ -12,7 +12,7 @@ export default function Home(props) {
 
   let params = useParams();
 
-  const { user } = useUserState()
+  const { user, setUser } = useUserState()
 
   useEffect(() => {
     setIsLoading(true)
@@ -28,6 +28,23 @@ export default function Home(props) {
       })
   }, [])
 
+  function handleLikeClick(value) {
+    console.log('like clicked')
+    api.post('/hoot/like', { userId: user._id, hootId: value })
+      .then(res => {
+        setUser(prev => ({
+          ...prev,
+          likes: res.data.user_likes
+        }))
+      })
+      .then(() => {})
+      .catch(err => console.log(err))
+  }
+
+  function handleIsHootLiked(hootId) {
+    return user?.likes?.includes(hootId) ? true : false
+  }
+
   return (
     <div className="home-page">
       {isLoading && <Loading />}
@@ -38,7 +55,7 @@ export default function Home(props) {
             <h1>Home</h1>
           </div>
           <div className="feed__container">
-            <div className="hoots_container" onClick={() => console.log(userFeed)}>
+            <div className="hoots_container">
               {userFeed.length === 0 ?
               <span>No feed</span>
               :
@@ -46,10 +63,16 @@ export default function Home(props) {
                 return (
                   <HootCard
                     key={item?._id} 
-                    box_content={item?.box_content} 
+                    hootId={item?._id}
+                    userId={user._id}
+                    box_content={item?.box_content}
+                    isLiked={ () => handleIsHootLiked(item?._id) } 
+                    likesCount={item?.likes_count}
+                    commentsCount={item?.comments_count}
                     img_url={item?.owner_info?.img_url} 
                     username={item?.owner_info?.username}  
                     time={item?.date_formatted}
+                    handleLikeClick={ () => handleLikeClick(item?._id) }
                   />
                 )
               })}

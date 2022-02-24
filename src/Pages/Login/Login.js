@@ -77,6 +77,7 @@ function Login() {
             _id: res.data._id,
             username: res.data.username,
             img_url: res.data.img_url,
+            likes: res.data.likes,
             follows: res.data.follows
           }
           setIsPasswordValid(true)

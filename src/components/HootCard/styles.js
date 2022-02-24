@@ -237,6 +237,7 @@ export const HootCardStyle = styled.div`
                             min-height: 20px;
                             min-width: 0px;
                             overflow: visible;
+                            fill: var(--icon-empty);
                             transition-duration: 0.2s;
 
                             .icon--wrapper {
@@ -258,10 +259,6 @@ export const HootCardStyle = styled.div`
                                 svg {
                                     width: 1.25rem;
                                     height: 1.25rem;
-
-                                    path {
-                                        fill: var(--icon-empty);
-                                    }
                                 }
 
                                 .tooltip {
@@ -276,6 +273,7 @@ export const HootCardStyle = styled.div`
                                     transition-property: background-color, color;
                                     transition:  0.15s ease 0.75s;
                                     pointer-events: none;
+                                    user-select: none;
                                     z-index: 99;
 
                                     span {
