@@ -41,7 +41,7 @@ async methods as waterfall but didn't work.
 
 So, as we can see, my database has no relationship. Thats why I decided to refactor my database structure, and try another approach to the problem.
 
-I'm not gonna just link the two collection. I'm going to create a Hoot article inside Users:
+I'm just linked the two collections.
 
 ```mermaid
 classDiagram
@@ -50,6 +50,16 @@ classDiagram
 		username
 		avatar_link
 		follows
-		hoots Array
+		likes
 	}
+
+	class Hoot{
+		owner_id
+		content
+	}
+	User  --  Hoot
 ```
+
+## 25 Fev - Getting fields from Ref id
+using mongoose .populate() gets the filds from the Ref collection. I choose to only populate with some fields
+
