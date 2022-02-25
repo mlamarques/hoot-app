@@ -7,7 +7,7 @@ export const UserProvider = (props) => {
         _id: '',
         username: '',
         img_url: '',
-        follows: [],
+        following: [],
         likes: []
     }) 
 
@@ -20,7 +20,7 @@ export const UserProvider = (props) => {
                 _id: '',
                 username: '',
                 img_url: '',
-                follows: [],
+                following: [],
                 likes: []
             })
         }

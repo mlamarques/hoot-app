@@ -18,6 +18,7 @@ export default function User(props) {
     img_url: '',
     createdAt: '',
     date_formatted_simple: '',
+    following: '',
     list_hoots: []
   })
   const [isUserFound, setIsUserFound] = useState(false)
@@ -50,6 +51,7 @@ export default function User(props) {
             username: res.data.username,
             img_url: res.data.img_url,
             createdAt: res.data.createdAt,
+            following: res.data.following,
             date_formatted_simple: res.data.date_formatted_simple,
             list_hoots: res.data.newList
           }))
@@ -62,7 +64,7 @@ export default function User(props) {
         setIsLoading(false)
       })
     
-    user.follows.includes(userData._id) ? setIsFollowing(true) : setIsFollowing(false)
+    user.following.includes(userData._id) ? setIsFollowing(true) : setIsFollowing(false)
     
   }, [])
 
@@ -78,10 +80,10 @@ export default function User(props) {
         api
           .post('/follow', data)
           .then((res) => {
-            localStorage.setItem("user", JSON.stringify({...user, follows: res.data.follows}))
+            localStorage.setItem("user", JSON.stringify({...user, following: res.data.following}))
             setUser(prev => ({
               ...prev,
-              follows: res.data.follows
+              following: res.data.following
             }))
             // setIsFollowing(true)
             console.log('Success follow')
@@ -99,10 +101,10 @@ export default function User(props) {
         api
           .post('/unfollow', data)
           .then((res) => {
-            localStorage.setItem("user", JSON.stringify({...user, follows: res.data.follows}))
+            localStorage.setItem("user", JSON.stringify({...user, following: res.data.following}))
             setUser(prev => ({
               ...prev,
-              follows: res.data.follows
+              following: res.data.following
             }))
             console.log('Success unfollow')
           })
@@ -190,10 +192,7 @@ export default function User(props) {
                   </div>
                 </div>
                 :
-                <div className="profile--options__container" onClick={() => {
-                  console.log(user.follows)
-                  console.log(isFollowing)
-                  }}>
+                <div className="profile--options__container">
                   <div className="message-btn" onClick={() => console.log('Message User')}>
                     <div className="logo-item">
                       <IconMessages /> 
@@ -208,6 +207,10 @@ export default function User(props) {
               <div className="profile--info__container">
                 <h2>{userData.username}</h2>
                 <h3>Joined: {userData.date_formatted_simple}</h3>
+                <div className="follow__container">
+                  <span>{userData.following.length} <span>Following</span></span>
+                  <span>{userData.following.length} <span>Following</span></span>
+                </div>
               </div>
             </div>
           </div>

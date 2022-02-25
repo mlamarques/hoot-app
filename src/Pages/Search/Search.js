@@ -86,7 +86,7 @@ export default function Search(props) {
                       key={item?._id}
                       username={item?.username}
                       img_url={item?.img_url}
-                      followValue={(user?.follows.includes(item?._id) ? 'Following' : 'Follow')}
+                      followValue={(user?.following.includes(item?._id) ? 'Following' : 'Follow')}
                       />
                     )
                   })}
