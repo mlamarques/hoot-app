@@ -1,6 +1,6 @@
 import { UserStyle } from './styles'
 import Loading from '../../components/Loading/Loading'
-import { useNavigate, useParams  } from 'react-router-dom'
+import { Link, useNavigate, useParams  } from 'react-router-dom'
 import { api } from '../../services/api'
 import { useEffect, useState } from 'react'
 import HootCard from '../../components/HootCard/HootCard'
@@ -208,11 +208,22 @@ export default function User(props) {
                 }
               </div>
               <div className="profile--info__container">
-                <h2>{userData.username}</h2>
-                <h3>Joined: {userData.date_formatted_simple}</h3>
+                <div className="name__container">
+                  <h2 >{userData.username}</h2>
+                  <span className="username">@{userData.username}</span>
+                </div>
+                <h3 className="joined__container">Joined: {userData.date_formatted_simple}</h3>
                 <div className="follow__container">
-                  <span>{userData.following_count} <span>Following</span></span>
-                  <span>{userData.followers_count} <span>Followers</span></span>
+                  <Link to={'/home'} className="link-wrapper">
+                    <span className="follow-count">{userData.following_count}</span>
+                    &nbsp; {/* whitespace here to keep the underline continous */}
+                    <span className="follow-text">Following</span>
+                  </Link>
+                  <Link to={'/home'} className="link-wrapper">
+                    <span className="follow-count">{userData.followers_count}</span>
+                    &nbsp; {/* whitespace here to keep the underline continous */}
+                    <span className="follow-text">Followers</span>
+                  </Link>
                 </div>
               </div>
             </div>

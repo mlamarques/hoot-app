@@ -153,7 +153,43 @@ export const UserStyle = styled.div`
                 
             }
             
+            .profile--info__container {
 
+                .name__container {
+                    margin-bottom: 12px;
+                }
+
+                .joined__container {
+                    margin-bottom: 12px;
+                }
+
+                .follow__container {
+                    
+                    display: flex;
+                    flex-direction: row;
+
+                    .link-wrapper {
+                        display: flex;
+                        flex-direction: row;
+                        font-weight: 400;
+                        font-size: 1rem;
+                        line-height: 1.25rem;
+                        overflow-wrap: break-word;
+
+                        &:first-child {
+                        margin-right: 20px;
+                    }
+
+                        .follow-count {
+                            font-weight: 700;
+                        }
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
             
         }
     }
