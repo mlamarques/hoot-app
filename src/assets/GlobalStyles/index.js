@@ -2,6 +2,7 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
     /* https://www.schemecolor.com/cartoon-halloween-color-palette.php */
+    /* chroma key: rgb(0, 177, 64) */
     :root {
         --orange: hsl(30, 100%, 50%);
         --orange-hover: hsl(30, 90%, 48%);
@@ -12,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
         --eerie-black: #191919;
         --black: #000000;
         --black-shade: rgba(239, 243, 244, 0.1);
+        --white-shade: rgba(0, 0, 0, 0.1);
         --light-text: rgb(217, 217, 217);
         --icon-empty: rgb(110, 118, 125);
         --blue-twitter: rgb(29, 155, 240);

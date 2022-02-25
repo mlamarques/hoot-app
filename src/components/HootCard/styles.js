@@ -41,7 +41,7 @@ export const HootCardStyle = styled.div`
                     align-items: center;
                     justify-content: center;
                     border-radius: 9999px;
-                    background-color: var(--light-text);
+                    background-color: var(--white-shade);
                 }  
             }
 

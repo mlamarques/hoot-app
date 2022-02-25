@@ -52,7 +52,8 @@ export default function User(props) {
             img_url: res.data.img_url,
             createdAt: res.data.createdAt,
             following: res.data.following,
-            followers: res.data.followers,
+            following_count: res.data.following_count,
+            followers_count: res.data.followers_count,
             date_formatted_simple: res.data.date_formatted_simple,
             list_hoots: res.data.newList
           }))
@@ -67,7 +68,7 @@ export default function User(props) {
     
     user.following.includes(userData._id) ? setIsFollowing(true) : setIsFollowing(false)
     
-  }, [])
+  }, [params.user])
 
   function handleFollowClick(event) {
 
@@ -210,8 +211,8 @@ export default function User(props) {
                 <h2>{userData.username}</h2>
                 <h3>Joined: {userData.date_formatted_simple}</h3>
                 <div className="follow__container">
-                  <span>{userData.following.length} <span>Following</span></span>
-                  <span>{userData.followers.length} <span>Followers</span></span>
+                  <span>{userData.following_count} <span>Following</span></span>
+                  <span>{userData.followers_count} <span>Followers</span></span>
                 </div>
               </div>
             </div>
