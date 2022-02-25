@@ -8,6 +8,7 @@ export const UserProvider = (props) => {
         username: '',
         img_url: '',
         following: [],
+        followers: [],
         likes: []
     }) 
 
@@ -21,6 +22,7 @@ export const UserProvider = (props) => {
                 username: '',
                 img_url: '',
                 following: [],
+                followers: [],
                 likes: []
             })
         }

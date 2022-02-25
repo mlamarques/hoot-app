@@ -52,6 +52,7 @@ export default function User(props) {
             img_url: res.data.img_url,
             createdAt: res.data.createdAt,
             following: res.data.following,
+            followers: res.data.followers,
             date_formatted_simple: res.data.date_formatted_simple,
             list_hoots: res.data.newList
           }))
@@ -71,7 +72,7 @@ export default function User(props) {
   function handleFollowClick(event) {
 
     const data = {
-      username: user.username,
+      userId: user._id,
       followId: userData._id
     }
 
@@ -80,12 +81,12 @@ export default function User(props) {
         api
           .post('/follow', data)
           .then((res) => {
-            localStorage.setItem("user", JSON.stringify({...user, following: res.data.following}))
+            // localStorage.setItem("user", JSON.stringify({...user, following: res.data.following}))
             setUser(prev => ({
               ...prev,
               following: res.data.following
             }))
-            // setIsFollowing(true)
+            setIsFollowing(true)
             console.log('Success follow')
           })
           .catch(err => {
@@ -101,11 +102,12 @@ export default function User(props) {
         api
           .post('/unfollow', data)
           .then((res) => {
-            localStorage.setItem("user", JSON.stringify({...user, following: res.data.following}))
+            // localStorage.setItem("user", JSON.stringify({...user, following: res.data.following}))
             setUser(prev => ({
               ...prev,
               following: res.data.following
             }))
+            setIsFollowing(false)
             console.log('Success unfollow')
           })
           .catch(err => {
@@ -209,7 +211,7 @@ export default function User(props) {
                 <h3>Joined: {userData.date_formatted_simple}</h3>
                 <div className="follow__container">
                   <span>{userData.following.length} <span>Following</span></span>
-                  <span>{userData.following.length} <span>Following</span></span>
+                  <span>{userData.followers.length} <span>Followers</span></span>
                 </div>
               </div>
             </div>

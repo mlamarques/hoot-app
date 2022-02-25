@@ -77,8 +77,9 @@ function Login() {
             _id: res.data._id,
             username: res.data.username,
             img_url: res.data.img_url,
-            likes: res.data.likes,
-            following: res.data.following
+            likes: res.data.likes || [],
+            following: res.data.following || [],
+            followers: res.data.followers || [],
           }
           setIsPasswordValid(true)
           setIsLoading(false)
