@@ -37,7 +37,7 @@ function Login() {
     }
   }
 
-  async function handleUsername() {
+  function handleUsername() {
     // if (username.length !== 0) {
     //   setIsUSerNameValid(true)
     // }
@@ -46,12 +46,13 @@ function Login() {
       username: username
     }
     setIsLoading(true)
-    await api.post('/usercheck', data)
+    api.post('/usercheck', data)
       .then(res => {
         // console.log(res.data.message)
         // console.log(res.data.message)
         // res.data.isFound ? setIsUserNameValid(true) : console.log(res.data.message)
         res.data.isFound ? setIsUserNameValid(true) : notifyUserNotFound(res)
+        setUsername(res.data.username)
       })
       .then(() => setIsLoading(false))
       .catch(err => console.log(err))
