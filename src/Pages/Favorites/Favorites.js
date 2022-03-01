@@ -46,36 +46,36 @@ export default function Favorites(props) {
 
   return (
     <div className="favorites-page">
-      {isLoading && <Loading />}
       <FavoritesStyle>
       <div className="main__container">
         <div className="main__header">
           <h1>Favorites</h1>
         </div>
         <div className="feed__container">
-        <div className="hoots_container">
-              {likedHoots.length === 0 ?
-              <span>No favorite hoots yet</span>
-              :
-              likedHoots?.map(item => {
-                return (
-                  <HootCard
-                    key={item?._id} 
-                    hootId={item?._id}
-                    userId={user._id}
-                    box_content={item?.box_content}
-                    likesCount={item?.likes_count}
-                    commentsCount={item?.comments_count}
-                    img_url={item?.owner?.img_url} 
-                    username={item?.owner?.username}  
-                    time={item?.date_formatted}
-                    isLiked={ () => handleIsHootLiked(item?._id) } 
-                    handleLikeClick={ () => handleLikeClick(item?._id) }
-                  />
-                )
-              })}
-            </div>
-        </div>
+        {isLoading && <Loading />}
+          <div className="hoots_container">
+                {likedHoots.length === 0 ?
+                <span>No favorite hoots yet</span>
+                :
+                likedHoots?.map(item => {
+                  return (
+                    <HootCard
+                      key={item?._id} 
+                      hootId={item?._id}
+                      userId={user._id}
+                      box_content={item?.box_content}
+                      likesCount={item?.likes_count}
+                      commentsCount={item?.comments_count}
+                      img_url={item?.owner?.img_url} 
+                      username={item?.owner?.username}  
+                      time={item?.date_formatted}
+                      isLiked={ () => handleIsHootLiked(item?._id) } 
+                      handleLikeClick={ () => handleLikeClick(item?._id) }
+                    />
+                  )
+                })}
+              </div>
+          </div>
       </div>
       </FavoritesStyle>
     </div>

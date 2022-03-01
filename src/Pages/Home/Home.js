@@ -47,14 +47,14 @@ export default function Home(props) {
 
   return (
     <div className="home-page">
-      {isLoading && <Loading />}
         {/* -------------------------- Main -------------------------- */}
       <HomeStyle>
-        <div className="main__container">
+        <div className="main__container" onWheel={() => console.log('scroll')}>
           <div className="main__header">
             <h1>Home</h1>
           </div>
           <div className="feed__container">
+          {isLoading && <Loading />}
             <div className="hoots_container">
               {userFeed.length === 0 ?
               <span>No feed</span>

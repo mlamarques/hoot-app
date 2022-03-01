@@ -26,12 +26,24 @@ export const HomeStyle = styled.div`
             }
         }
 
-        .hoot--individual__container {
+        .feed__container {
+            display: flex;
+            position: relative;
+            height: 100%;
+
+            .hoots_container {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+            }
+        }
+
+        /* .hoot--individual__container {
             height: 200px;
             background-color: var(--deep-saffron);
             opacity: 0.5;
             border: 1px solid var(--orange);
-        }
+        } */
     }
 
     .alternative__container {

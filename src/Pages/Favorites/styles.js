@@ -26,11 +26,16 @@ export const FavoritesStyle = styled.div`
             }
         }
 
-        .hoot--individual__container {
-            height: 200px;
-            background-color: yellowgreen;
-            opacity: 0.5;
-            border: 1px solid var(--deep-saffron);
+        .feed__container {
+            display: flex;
+            position: relative;
+            height: 100%;
+
+            .hoots_container {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+            }
         }
     }
 
