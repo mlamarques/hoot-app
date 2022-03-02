@@ -39,7 +39,7 @@ export default function UserCardMessage(props) {
                     </div>
                     <div className="content-message">
                       <div className="last-message__container">
-                        <span className="last-message__value">this was my last message and is cut off at some point</span>
+                        <span className="last-message__value">{props?.lastMessage}</span>
                       </div>
                     </div>
                   </div>

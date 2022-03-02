@@ -14,7 +14,7 @@ export default function Favorites(props) {
   useEffect(() => {
     // setIsLoading(true)
     
-    api.get(`/messages/`)
+    api.post(`/messages`, { userId: user._id})
       .then(res => {
         setUserMessages(res.data.messages)
         // setIsLoading(false)
@@ -32,12 +32,19 @@ export default function Favorites(props) {
         <div className="main__header">
           <h1>Messages</h1>
         </div>
-        <div className="messages__container">
-          <UserCardMessage
-            username={'jonasdasdasdasdasdasdasdadsd'}
-            img_url={user.img_url}
-            time={'2/24/22'}
-          />
+        <div className="messages__container" onClick={() => console.log(userMessages)}>
+          {userMessages?.map(item => {
+            return (
+              <UserCardMessage
+                key={item._id}
+                username={item.party.find(elem => elem._id !== user._id).username}
+                img_url={item.party.find(elem => elem._id !== user._id).img_url}
+                time={item?.last_update_formatted}
+                lastMessage={item.content[item.content.length - 1].message}
+              />
+            )
+          })}
+          
         </div>
       </div>
       <div className="chat__container">

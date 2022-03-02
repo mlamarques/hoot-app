@@ -9,7 +9,7 @@ export const MessagesStyle = styled.div`
 
     .main__container {
         display: flex;
-        justify-self: center;
+        flex: 1;
         flex-direction: column;
         max-width: 600px;
         width: 100%;
@@ -34,11 +34,8 @@ export const MessagesStyle = styled.div`
             }
         }
 
-        .hoot--individual__container {
-            height: 200px;
-            background-color: yellowgreen;
-            opacity: 0.5;
-            border: 1px solid var(--deep-saffron);
+        .messages__container {
+            width: 100%;
         }
     }
 

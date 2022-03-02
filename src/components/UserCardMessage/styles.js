@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const UserCardMessageStyle = styled.div`
     display: flex;
     flex-direction: row;
-    max-width: 100%;
+    width: 100%;
     position: relative;
 
     .usercard-user__container {
@@ -63,14 +63,14 @@ export const UserCardMessageStyle = styled.div`
                 .info--header {
                     display: flex;
                     flex-direction: row;
-                    max-width: 100%;
+                    width: 100%;
                     min-width: 0px;
                     user-select: none;
 
                     .user-info--header {
                         display: flex;
                         flex-direction: column;
-                        flex-shrink: 1;
+                        flex: 1;
                         max-width: 100%;
                         min-width: 0px;
                         overflow: hidden;
