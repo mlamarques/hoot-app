@@ -2,6 +2,10 @@ import styled from 'styled-components'
 
 export const FavoritesStyle = styled.div`
 
+    display: flex;
+    position: relative;
+    width: 990px;
+    
     .main__container {
         display: flex;
         justify-self: center;

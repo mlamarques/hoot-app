@@ -2,6 +2,11 @@ import styled from 'styled-components'
 
 export const ChangePasswordStyle = styled.div`
 
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 990px;
+    
     .main__container {
         display: flex;
         justify-self: center;

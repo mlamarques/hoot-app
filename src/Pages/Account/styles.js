@@ -4,6 +4,7 @@ export const AccountStyle = styled.div`
     display: flex;
     flex-direction: row;
     position: relative;
+    width: 990px;
 
     .main__container {
         display: flex;

@@ -1,5 +1,8 @@
 html {
   box-sizing: border-box;
+  overflow: auto scroll;
+  overscroll-behavior-y: none;
+  height: 100%;
 }
 
 body {
@@ -17,23 +20,27 @@ body {
 }
 
 .App {
+  height: 100%;
   display: flex;
-  align-self: center;  
+  flex: 1 1 0%;
+  flex-direction: row;
+  width: 100%;
 }
 
 .home-page, .favorites-page, .search-page, .messages-page, .account-page, .user-page {
   display: flex;
-  flex: 1;
-  position: relative;
-  width: 100%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  align-items: flex-start;
   height: 100vh;
-  overflow-Y: scroll;
   z-index: 0;
 }
 
 .nav__component {
   display: flex;
-  flex: 0.45;
+  flex-grow: 1;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 .compose-hoot__component {

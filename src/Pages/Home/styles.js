@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
 export const HomeStyle = styled.div`
+    display: flex;
+    position: relative;
+    width: 990px;
 
     .main__container {
         display: flex;
@@ -47,7 +50,7 @@ export const HomeStyle = styled.div`
     }
 
     .alternative__container {
-        width: 100%;
+        
     }
 `
 

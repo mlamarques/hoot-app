@@ -12,7 +12,8 @@ import { useUserState } from '../../context/UserContext'
 
 export default function Nav(props) {
     const style = {
-      display: 'grid'
+      // display: 'grid'
+      display: 'flex'
     }
 
     let navigate = useNavigate()

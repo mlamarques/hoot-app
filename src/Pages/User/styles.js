@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const UserStyle = styled.div`
     position: relative;
+    width: 990px;
 
     .main__container {
         display: flex;

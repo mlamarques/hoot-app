@@ -38,7 +38,8 @@ function App() {
             <Route path="/settings/account" element={<Account />} />
             <Route path="/settings/password" element={<ChangePassword />} />
             <Route path="/settings/" element={<Navigate to="/settings/account" />} />
-            <Route path="/messages" element={<Messages />} />
+            <Route path="/messages/:id" element={<Messages />} />
+            <Route path="/messages/" element={<Messages />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/search" element={<Search />} />
             <Route path="/home" element={<Home />} />

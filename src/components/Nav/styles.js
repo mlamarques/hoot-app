@@ -1,15 +1,16 @@
 import styled from 'styled-components'
 
 export const NavStyle = styled.div`
-
-    justify-self: end;
+    width: 275px;
 
     .menu__container {
         display: flex;
         /* max-width: 275px; */
         /* width: 100%; */
-        width: 275px;
+        position: fixed;
+        top: 0px;
         height: 100%;
+        width: 275px;
         flex-direction: column;
         justify-content: space-between;
         padding-left: 12px;
@@ -18,6 +19,7 @@ export const NavStyle = styled.div`
 
         .menu--wrapper {
             align-items: flex-start;
+            
 
             .header--logo {
                 display: flex;

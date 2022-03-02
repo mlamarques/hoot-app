@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
 export const SearchStyle = styled.div`
+    display: flex;
+    position: relative;
+    height: 100%;
+    width: 990px;
 
     .main__container {
         display: flex;
