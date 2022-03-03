@@ -63,3 +63,10 @@ classDiagram
 ## 25 Fev - Getting fields from Ref id
 using mongoose .populate() gets the filds from the Ref collection. I choose to only populate with some fields
 
+
+
+
+## What's next?
+- use [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) to secure the connection and the data
+- get a [free TLS certificate](https://letsencrypt.org/about/)
+- Cache request results

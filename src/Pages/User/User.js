@@ -163,6 +163,10 @@ export default function User(props) {
     return user?.likes?.includes(hootId) ? true : false
   }
 
+  function handleSendMessage() {
+    navigate(`/messages/${user._id}-${userData._id}`)
+  }
+
   return (
     <div className="user-page">
       
@@ -196,7 +200,7 @@ export default function User(props) {
                 </div>
                 :
                 <div className="profile--options__container">
-                  <div className="message-btn" onClick={() => console.log('Message User')}>
+                  <div className="message-btn" onClick={() => handleSendMessage()}>
                     <div className="logo-item">
                       <IconMessages /> 
                     </div>

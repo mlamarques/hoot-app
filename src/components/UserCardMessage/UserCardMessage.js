@@ -10,14 +10,14 @@ export default function UserCardMessage(props) {
     width: '100%',
   };
 
-  const currentOptionStyle = {
+  const selectedCard = {
     borderRight: "2px solid var(--orange)",
     backgroundColor: "var(--mellow-apricot-shade)"
   }
 
   return (
     // style={{pointerEvents: isSettingsShown && "none"}}
-      <div className="usercard__component"  style={usercardStyle}> 
+      <div className="usercard__component"  style={props.isSelected ? selectedCard : usercardStyle} onClick={props.handleClick}> 
         <UserCardMessageStyle>
           <div className="usercard-user__container">
             <Link to={`/${props.username}`} className="user--avatar__container">

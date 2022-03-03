@@ -7,14 +7,15 @@ export const MessagesStyle = styled.div`
     width: 990px;
     height: 100%;
 
-    .main__container {
+    .main__container--header {
         display: flex;
         flex: 1;
         flex-direction: column;
         max-width: 600px;
         width: 100%;
         height: 100%;
-        border: 1px solid rgba(0, 0, 0, 0.7);
+        border-left: 1px solid rgba(0, 0, 0, 0.7);
+        border-right: 1px solid rgba(0, 0, 0, 0.7);
         overflow: hidden;
         overflow-y: auto;
 
@@ -27,6 +28,7 @@ export const MessagesStyle = styled.div`
             padding-right: 16px;
             align-items: center;
             background-color: var(--mellow-apricot-transparent);
+            border-bottom: 1px solid black;
             z-index: 3;
             
             h1 {
@@ -72,7 +74,7 @@ export const MessagesStyle = styled.div`
         .chat-full--wrapper {
             display: flex;
             flex-direction: column;
-            position: relative
+            position: relative;
             width: 100%;
             min-width: 0px;
 
@@ -82,7 +84,7 @@ export const MessagesStyle = styled.div`
                 position: sticky;
                 top: 0;
                 backface-visibility: hidden;
-                height: 53px;
+                height: 55px;
                 flex-shrink: 0;
                 width: 100%;
                 min-width: 0px;
@@ -135,8 +137,12 @@ export const MessagesStyle = styled.div`
         .chat-body__container {
             display: flex;
             position: relative;
+            height: 100%;
             flex-direction: column;
+            justify-content: flex-end;
             padding-top: 53px;
+            padding-left: 16px;
+            padding-right: 16px;
             margin-top: -53px;
             overflow-y: scroll;
         }
