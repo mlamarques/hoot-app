@@ -148,6 +148,7 @@ export default function User(props) {
   }
 
   function handleLikeClick(value) {
+    
     api.post('/hoot/like', { userId: user._id, hootId: value })
       .then(res => {
         setUser(prev => ({

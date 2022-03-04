@@ -20,7 +20,7 @@ export default function UserCardMessage(props) {
       <div className="usercard__component"  style={props.isSelected ? selectedCard : usercardStyle} onClick={props.handleClick}> 
         <UserCardMessageStyle>
           <div className="usercard-user__container">
-            <Link to={`/${props.username}`} className="user--avatar__container" onClick={() => this.stopPropagation()}>
+            <Link to={`/${props.username}`} className="user--avatar__container" onClick={(e) => e.stopPropagation()}>
               <div className="user--avatar__wrapper">
                   <img className="user--avatar" src={props.img_url} alt="robot avatar" />
               </div>

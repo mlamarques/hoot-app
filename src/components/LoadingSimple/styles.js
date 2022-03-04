@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const LoadingSimpleStyle = styled.div`
+    width: 100%;
     
     .loading__component {
         display: flex;

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import UserCardMessage from '../../components/UserCardMessage/UserCardMessage'
 import ChatMessage from '../../components/ChatMessage/ChatMessage'
+import LoadingSimple from '../../components/LoadingSimple/LoadingSimple'
 import { useUserState } from '../../context/UserContext';
 import { api } from '../../services/api';
 import {MessagesStyle} from './styles'
@@ -19,8 +20,9 @@ export default function Favorites(props) {
     img_url: null,
   })
   const [selectedChat, setSelectedChat] = useState([])
-  const [selectedMessageId, setSelectedMessageId] = useState(params.id || '')
+  const [selectedMessageId, setSelectedMessageId] = useState('')
   const [newMessage, setNewMessage] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     // setIsLoading(true)
@@ -35,7 +37,7 @@ export default function Favorites(props) {
         // setIsLoading(false)
       })
     
-  }, [])
+  }, [selectedChat])
 
   useEffect(() => {
     if (params.id) {
@@ -64,7 +66,6 @@ export default function Favorites(props) {
       const chatHeight =  document.querySelector('.chat-body__container')
       chatHeight?.scrollTo(0, chatHeight?.scrollHeight)
     }
-
     // const messageSelected = userMessages.find(msg => msg.party)
   }, [])
 
@@ -93,8 +94,18 @@ export default function Favorites(props) {
 
   function sendNewMessage() {
     console.log('message send')
-    console.log(newMessage)
-    setNewMessage('')
+    setIsLoading(true)
+
+    api.post(`messages/${params.id}`, { userId: user._id, newMessage: newMessage})
+      .then(res => {
+        setSelectedChat(res.data.updated.content)
+        setNewMessage('')
+        setIsLoading(false)
+      })
+      .catch(err => {
+        console.log(err)
+        setIsLoading(false)
+      })
   }
 
   return (
@@ -105,6 +116,17 @@ export default function Favorites(props) {
           <h1>Messages</h1>
         </div>
         <div className="messages__container">
+          {(!selectedChat.length && params.id) && 
+            <UserCardMessage
+              key={selectedUser?._id}
+              username={selectedUser?.username}
+              img_url={selectedUser?.img_url}
+              time={''}
+              lastMessage={''}
+              handleClick={() => console.log('clicked: ', selectedUser?._id)}
+              isSelected={true}
+            />  
+          }
           {userMessages?.map(item => {
             return (
               <UserCardMessage
@@ -114,7 +136,7 @@ export default function Favorites(props) {
                 time={item?.last_update_formatted}
                 lastMessage={item?.content[item?.content.length - 1].message}
                 handleClick={() => handleMessageClick(item?.party, item?.content)}
-                isSelected={selectedMessageId === params.id ? true : false}
+                isSelected={item?.party.find(elem => elem._id !== user._id)._id === selectedUser._id ? true : false}
               />
             ) 
           })}
@@ -137,13 +159,18 @@ export default function Favorites(props) {
             </div>
           </div>
           <div className="chat-body__container">
+            {isLoading && 
+            <div className="loading__container" style={{display: 'flex', position: 'absolute', bottom: 0, left: 0, width: '100%'}}>
+              <LoadingSimple />
+            </div>
+            }
             {selectedChat?.map((item, n) => {
               return (
                 <ChatMessage
                   key={n}
                   img_url={item?.userId === user._id ? '' : selectedUser.img_url}
                   message={item?.message}
-                  date={item?.createdAt}
+                  date={item?.date_formatted}
                   otherUser={item?.userId === user._id ? false : true}
                 />
               )
