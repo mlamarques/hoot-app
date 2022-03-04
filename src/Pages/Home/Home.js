@@ -1,5 +1,5 @@
 import {HomeStyle} from './styles'
-import Loading from '../../components/Loading/Loading'
+import LoadingHoot from '../../components/LoadingHoot/LoadingHoot'
 import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
 import { useParams } from 'react-router-dom';
@@ -54,7 +54,7 @@ export default function Home(props) {
             <h1>Home</h1>
           </div>
           <div className="feed__container">
-          {isLoading && <Loading />}
+          {isLoading && <LoadingHoot />}
             <div className="hoots_container">
               {userFeed.length === 0 ?
               <span>No feed</span>
