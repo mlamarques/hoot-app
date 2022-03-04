@@ -132,99 +132,97 @@ export const MessagesStyle = styled.div`
                 
             }
 
-        }    
-        
-        .chat-body__container {
-            display: flex;
-            position: relative;
-            height: 100%;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding-top: 53px;
-            padding-left: 16px;
-            padding-right: 16px;
-            margin-top: -53px;
-            overflow-y: scroll;
-        }
-
-        .compose__container {
-            display: flex;
-            flex-direction: row;
-            flex-shrink: 0;
-            position: sticky;
-            bottom: 0;
-            align-items: center;
-            height: 53px;
-            min-height: 0;
-            width: 100%;
-            padding: 4px;
-            background-color: var(--mellow-apricot);
-            border-top: 1px solid black;
-
-            .input--wrapper {
-                position: relative;
+            .chat-body__container {
                 display: flex;
-                flex: 1;
-                height: 40px;
+                position: relative;
+                height: 100%;
+                flex-direction: column;
+                padding-top: 55px;
+                padding-left: 16px;
+                padding-right: 16px;
+                margin-top: -55px;
+                overflow-y: scroll;
+            }
+
+            .compose__container {
+                display: flex;
+                flex-direction: row;
+                flex-shrink: 0;
+                position: sticky;
+                bottom: 0;
                 align-items: center;
-                border: 1px solid black;
-                border-radius: 9999px;
+                height: 53px;
+                min-height: 0;
+                width: 100%;
+                padding: 4px;
+                background-color: var(--mellow-apricot);
+                border-top: 1px solid black;
 
-                &:focus-within {
-                    border: 2px solid var(--orange);
-                }
-
-                .label__container {
-                    position: absolute;
-                    left: 12px;
-                    /* transform: translate(0, 50%;) */
-                }
-
-                .new-message--input {
+                .input--wrapper {
+                    position: relative;
                     display: flex;
                     flex: 1;
-                    position: relative;
-                    outline: none;
-                    background: none;
-                    border: 0;
-                    color: rgb(32, 35, 36);
-                    font-size: 1rem;
-                    font-weight: 400;
-                    line-height: 1;
-                    padding: 4px 12px;
-                }
-            }
-
-            .send-message__container {
-                display: flex;
-                margin-left: 4px;
-                cursor: pointer;
-
-                &:hover {
-                    .send-message--wrapper {
-                        background-color: var(--mellow-apricot-shade);
-                        border: 0px solid black;
-                        border-radius: 9999px;
-                    }
-                }
-
-                .send-message--wrapper {
-                    display: flex;
-                    width: 34px;
-                    height: 34px;
+                    height: 40px;
                     align-items: center;
-                    justify-content: center;
-                    transition-duration: 0.2s;
+                    border: 1px solid black;
+                    border-radius: 9999px;
 
-                    .send-message--icon {
+                    &:focus-within {
+                        border: 2px solid var(--orange);
+                    }
+
+                    .label__container {
+                        position: absolute;
+                        left: 12px;
+                        /* transform: translate(0, 50%;) */
+                    }
+
+                    .new-message--input {
                         display: flex;
-                        width: 20px;
-                        height: 20px;
-                        fill: var(--orange);
+                        flex: 1;
+                        position: relative;
+                        outline: none;
+                        background: none;
+                        border: 0;
+                        color: rgb(32, 35, 36);
+                        font-size: 1rem;
+                        font-weight: 400;
+                        line-height: 1;
+                        padding: 4px 12px;
+                    }
+                }
+
+                .send-message__container {
+                    display: flex;
+                    margin-left: 4px;
+                    cursor: pointer;
+
+                    &:hover {
+                        .send-message--wrapper {
+                            background-color: var(--mellow-apricot-shade);
+                            border: 0px solid black;
+                            border-radius: 9999px;
+                        }
+                    }
+
+                    .send-message--wrapper {
+                        display: flex;
+                        width: 34px;
+                        height: 34px;
+                        align-items: center;
+                        justify-content: center;
+                        transition-duration: 0.2s;
+
+                        .send-message--icon {
+                            display: flex;
+                            width: 20px;
+                            height: 20px;
+                            fill: var(--orange);
+                        }
                     }
                 }
             }
-        }
+        } 
     }
 `
 

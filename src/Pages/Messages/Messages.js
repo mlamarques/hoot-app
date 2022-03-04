@@ -24,6 +24,9 @@ export default function Favorites(props) {
   const [newMessage, setNewMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
+  const chatHeight =  document.querySelector('.chat-body__container')
+      chatHeight?.scrollTo(0, chatHeight?.scrollHeight)
+
   useEffect(() => {
     // setIsLoading(true)
     
@@ -63,8 +66,8 @@ export default function Favorites(props) {
           }
         })
 
-      const chatHeight =  document.querySelector('.chat-body__container')
-      chatHeight?.scrollTo(0, chatHeight?.scrollHeight)
+      // const chatHeight =  document.querySelector('.chat-body__container')
+      // chatHeight?.scrollTo(0, chatHeight?.scrollHeight)
     }
     // const messageSelected = userMessages.find(msg => msg.party)
   }, [])
