@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const ChatMessageStyle = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    width: 100%;
 
     .main__container {
         display: flex;
@@ -13,6 +13,7 @@ export const ChatMessageStyle = styled.div`
         
         .avatar__container {
             display:flex;
+            flex-shrink: 0;
             position: relative;
             height: 100%;
             width: 56px;
@@ -21,7 +22,7 @@ export const ChatMessageStyle = styled.div`
             .avatar--wrapper {
                 position: absolute;
                 display: block;
-                right: 0;
+                left: 0;
                 width: 40px;
                 height: 40px;
             }
@@ -35,7 +36,7 @@ export const ChatMessageStyle = styled.div`
             min-width: 0;
             padding: 16px 12px;
             border: solid 0px black;
-            background-color: var(--orange);
+            background-color: var(--mellow-apricot-shade);
             border-radius: 16px;
             font-size: 1rem;
             line-height: 1.25rem;
@@ -49,11 +50,12 @@ export const ChatMessageStyle = styled.div`
         display: flex;
         width: 87.5%;
         margin-top: 2px;
+        margin-left: 56px;
         justify-content: flex-end;
         overflow: hidden;
 
         .date--wrapper {
-            margin-left: 52px;
+            
             font-size: 0.75rem;
             line-height: 1rem;
             color: rgb(110, 118, 125);

@@ -149,6 +149,7 @@ export const MessagesStyle = styled.div`
 
         .compose__container {
             display: flex;
+            flex-direction: row;
             flex-shrink: 0;
             position: sticky;
             bottom: 0;
@@ -159,6 +160,70 @@ export const MessagesStyle = styled.div`
             padding: 4px;
             background-color: var(--mellow-apricot);
             border-top: 1px solid black;
+
+            .input--wrapper {
+                position: relative;
+                display: flex;
+                flex: 1;
+                height: 40px;
+                align-items: center;
+                border: 1px solid black;
+                border-radius: 9999px;
+
+                &:focus-within {
+                    border: 2px solid var(--orange);
+                }
+
+                .label__container {
+                    position: absolute;
+                    left: 12px;
+                    /* transform: translate(0, 50%;) */
+                }
+
+                .new-message--input {
+                    display: flex;
+                    flex: 1;
+                    position: relative;
+                    outline: none;
+                    background: none;
+                    border: 0;
+                    color: rgb(32, 35, 36);
+                    font-size: 1rem;
+                    font-weight: 400;
+                    line-height: 1;
+                    padding: 4px 12px;
+                }
+            }
+
+            .send-message__container {
+                display: flex;
+                margin-left: 4px;
+                cursor: pointer;
+
+                &:hover {
+                    .send-message--wrapper {
+                        background-color: var(--mellow-apricot-shade);
+                        border: 0px solid black;
+                        border-radius: 9999px;
+                    }
+                }
+
+                .send-message--wrapper {
+                    display: flex;
+                    width: 34px;
+                    height: 34px;
+                    align-items: center;
+                    justify-content: center;
+                    transition-duration: 0.2s;
+
+                    .send-message--icon {
+                        display: flex;
+                        width: 20px;
+                        height: 20px;
+                        fill: var(--orange);
+                    }
+                }
+            }
         }
     }
 `

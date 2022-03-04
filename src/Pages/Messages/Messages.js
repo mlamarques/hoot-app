@@ -5,8 +5,13 @@ import ChatMessage from '../../components/ChatMessage/ChatMessage'
 import { useUserState } from '../../context/UserContext';
 import { api } from '../../services/api';
 import {MessagesStyle} from './styles'
+import IconSendMessage from '../../assets/icons/IconSendMessage'
 
 export default function Favorites(props) {
+  const { user } = useUserState()
+  let params = useParams();
+  let navigate = useNavigate()
+
   const [userMessages, setUserMessages] = useState([])
   const [selectedUser, setSelectedUser] = useState({
     _id: null,
@@ -14,11 +19,8 @@ export default function Favorites(props) {
     img_url: null,
   })
   const [selectedChat, setSelectedChat] = useState([])
-  const [selectedMessageId, setSelectedMessageId] = useState('')
-
-  const { user } = useUserState()
-  let params = useParams();
-  let navigate = useNavigate()
+  const [selectedMessageId, setSelectedMessageId] = useState(params.id || '')
+  const [newMessage, setNewMessage] = useState('')
 
   useEffect(() => {
     // setIsLoading(true)
@@ -71,7 +73,6 @@ export default function Favorites(props) {
     
     const url = `/messages/${user1._id}-${user2._id}`
     const messageWithUser = party.find(elem => elem._id !== user._id)
-    // console.log('msgs: ', userMessages)
     setSelectedUser({
       _id: messageWithUser._id,
       username: messageWithUser.username,
@@ -84,6 +85,18 @@ export default function Favorites(props) {
 
     navigate(url)
   }
+
+  function handleChange(event) {
+    const { value } = event.target
+    setNewMessage(value)
+  }
+
+  function sendNewMessage() {
+    console.log('message send')
+    console.log(newMessage)
+    setNewMessage('')
+  }
+
   return (
     <div className="messages-page">
       <MessagesStyle>
@@ -103,7 +116,7 @@ export default function Favorites(props) {
                 handleClick={() => handleMessageClick(item?.party, item?.content)}
                 isSelected={selectedMessageId === params.id ? true : false}
               />
-            )
+            ) 
           })}
         </div>
       </div>
@@ -128,7 +141,7 @@ export default function Favorites(props) {
               return (
                 <ChatMessage
                   key={n}
-                  img_url={item?.userId === user._id ? user.img_url : selectedUser.img_url}
+                  img_url={item?.userId === user._id ? '' : selectedUser.img_url}
                   message={item?.message}
                   date={item?.createdAt}
                   otherUser={item?.userId === user._id ? false : true}
@@ -137,7 +150,24 @@ export default function Favorites(props) {
             })}
           </div>
           <div className="compose__container">
-            <span>Type here</span>
+            <div className="input--wrapper">
+              {newMessage.length === 0 &&
+              <div className="label__container">
+                <span>Start a new message</span>
+              </div>
+              }
+              <input className="new-message--input" type="text" value={newMessage} onChange={handleChange} />
+            </div>
+            <div className="send-message__container" 
+              style={newMessage.length === 0 ? {opacity: 0.5, pointerEvents: 'none'} : {}}
+              onClick={sendNewMessage}
+            >
+              <div className="send-message--wrapper">
+                <div className="send-message--icon">
+                  <IconSendMessage />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         :
