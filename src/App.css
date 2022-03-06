@@ -27,7 +27,7 @@ body {
   width: 100%;
 }
 
-.home-page, .favorites-page, .search-page, .messages-page, .account-page, .user-page {
+.home-page, .favorites-page, .search-page, .messages-page, .account-page, .user-page, .change-password-page {
   display: flex;
   flex-grow: 1;
   flex-shrink: 1;
