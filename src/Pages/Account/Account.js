@@ -6,6 +6,7 @@ import { useUserState } from '../../context/UserContext'
 import {AccountStyle} from './styles'
 import IconArrowFoward from '../../assets/icons/IconArrowFoward'
 import IconUser from '../../assets/icons/IconUser'
+import IconPassword from '../../assets/icons/IconPassword'
 import IconDeactivate from '../../assets/icons/IconDeactivate'
 
 export default function Account(props) {
@@ -61,6 +62,17 @@ export default function Account(props) {
                 </div>
                 <div className="text__container">
                   <span>Your account</span>
+                </div>
+                <IconArrowFoward />
+              </Link>
+            </div>
+            <div className="account-item__container password-change__item">
+              <Link className="option-item--link" to={"/settings/password"} >
+                <div className="icon__container">
+                  <IconPassword />
+                </div>
+                <div className="text__container">
+                  <span>Change your password</span>
                 </div>
                 <IconArrowFoward />
               </Link>
