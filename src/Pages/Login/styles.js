@@ -359,6 +359,27 @@ export const LoginStyle = styled.div`
             }
         }
     }
+
+    .author__container {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        user-select: none;
+
+        .author-name {
+            margin-left: 4px;
+            padding: 4px 6px;
+            font-weight: 600;
+            border: 0px solid black;
+            border-radius: 9px;
+            transition: 0.25s ease;
+
+            &:hover {
+                background-color: var(--light-text);
+                box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 28px;
+            }
+        }
+    }
     
 `
 
