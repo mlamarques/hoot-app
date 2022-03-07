@@ -1,4 +1,4 @@
-import {React, useContext, useState} from 'react';
+import {React, useContext, useState, useEffect} from 'react';
 import { useNavigate  } from 'react-router-dom';
 import { api } from '../../services/api'
 import { UserContext } from '../../context/UserContext'
@@ -18,7 +18,7 @@ function SignUp() {
   const [usernameMessage, setUsernameMessage] = useState('please enter your username')
   const [isPasswordValid, setIsPasswordValid] = useState(true)
   const [isPasswordShown, setIsPasswordShown] = useState(false)
-  const [passwordMessage, setPasswordMessage] = useState('please enter your password')
+  const [passwordMessage, setPasswordMessage] = useState('')
   const [showNotifications, setShowNotifications] = useState(false)
   const [notificationValue, setNotificationValue] = useState("")
   const [isLoading, setIsLoading] = useState(false)
@@ -32,6 +32,13 @@ function SignUp() {
     pointerEvents: 'none'
   }
 
+  useEffect(() => {
+    if (password.length > 0) {
+      handlePassword()
+    }
+    
+  }, [password])
+
   function handleChange(event) {
     const { name, value } = event.target
 
@@ -41,7 +48,6 @@ function SignUp() {
     }
     if (name === 'password') {
       setPassword(value)
-      handlePassword()
     }
   }
 
