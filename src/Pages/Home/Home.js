@@ -29,7 +29,6 @@ export default function Home(props) {
   }, [])
 
   function handleLikeClick(value) {
-    console.log('like clicked')
     api.post('/hoot/like', { userId: user._id, hootId: value })
       .then(res => {
         setUser(prev => ({

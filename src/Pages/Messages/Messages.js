@@ -96,7 +96,6 @@ export default function Favorites(props) {
   }
 
   function sendNewMessage() {
-    console.log('message send')
     setIsLoading(true)
 
     api.post(`messages/${params.id}`, { userId: user._id, newMessage: newMessage})
@@ -126,7 +125,6 @@ export default function Favorites(props) {
               img_url={selectedUser?.img_url}
               time={''}
               lastMessage={''}
-              handleClick={() => console.log('clicked: ', selectedUser?._id)}
               isSelected={true}
             />  
           }

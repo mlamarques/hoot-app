@@ -88,7 +88,6 @@ export default function User(props) {
               following: res.data.following
             }))
             setIsFollowing(true)
-            console.log('Success follow')
           })
           .catch(err => {
             console.log(err)
@@ -109,7 +108,6 @@ export default function User(props) {
               following: res.data.following
             }))
             setIsFollowing(false)
-            console.log('Success unfollow')
           })
           .catch(err => {
             console.log(err)
@@ -193,7 +191,6 @@ export default function User(props) {
                 {userData.username === user.username ? 
                 <div className="profile--options__container">
                   <div className="follow-btn" onClick={() => {
-                    console.log('Edit Profile')
                     navigate('/settings/account')
                   }}>
                     <span>Edit profile</span>
