@@ -1,5 +1,5 @@
 import {React, useContext, useState, useEffect} from 'react';
-import { useNavigate  } from 'react-router-dom';
+import { Link, useNavigate  } from 'react-router-dom';
 import { api } from '../../services/api'
 import { UserContext } from '../../context/UserContext'
 import Logo from '../../assets/Logo'
@@ -207,6 +207,10 @@ function Login() {
           }
         </div>
         {showNotifications && <Notification text={notificationValue} />}
+        <div className="author__container">
+         <span>Created by</span>
+         <a href="https://github.com/mlamarques" className="author-name"><span>Marcos Lamarques</span></a>  
+        </div>
       </LoginStyle>
     </div>
     );
