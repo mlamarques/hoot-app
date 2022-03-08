@@ -42,6 +42,8 @@ export default function UserCard(props) {
                   <img className="user--avatar" src={props.img_url} alt="robot avatar" />
               </div>
             </div>
+            {props.windowSize > 1280 &&
+            <>
             <div className="user--info__container">
               <div className="user--info--wrapper">
                 <span className="user--name">{props.username}</span>
@@ -65,6 +67,8 @@ export default function UserCard(props) {
                 </div>
               }
             </div>
+            </>
+            }
           </div> 
         </UserCardStyle>
       </div>

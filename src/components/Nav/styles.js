@@ -50,7 +50,7 @@ export const NavStyle = styled.div`
             .nav__container {
                 display: flex;
                 flex-direction: column;
-                align-items: stretch;
+                align-items: center;
                 width: 100%;
 
                 .nav__item {
@@ -124,6 +124,84 @@ export const NavStyle = styled.div`
                 }
             }
         }
-    }
+
+        @media only screen and (max-width: 1280px) {
+            width: 88px;
+            padding: 0 12px;
+
+            .nav__container {
+                height: 100%;
+            }
+
+            .header--logo {
+                justify-content: center !important;
+                align-items: center;
+            }
+            
+            .nav__item {
+                height: 100%;
+                justify-content: center;
+
+                .item--wrapper {
+                    padding: 8px !important;
+                }
+            }
+
+            .nav__compose {
+                justify-content: center;
+                align-items: center;
+                width: unset !important;
+                margin-bottom: 16px;
+                
+
+                .compose--wrapper {
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+            
+        }
+
+        @media only screen and (max-width: 500px) {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+
+            .menu--wrapper {
+                display: flex;
+                width: 100%;
+                height: 100%;
+                
+                .nav__container {
+                    display: flex;
+                    flex-direction: row;
+
+                    .nav__item {
+                    }
+
+                    .nav__compose {
+                        position: absolute;
+                        right: 20px;
+                        bottom: 20px;
+                        display: flex;
+                        margin: 0;
+                        transform: translate(0,-3.5rem);
+                    }
+                }
+            }
+        }
     
+    }
+
+    @media only screen and (max-width: 1280px) {
+        width: 88px;
+    }
+
+    @media only screen and (max-width: 500px) {
+        width: 100%;
+        height: 100%;
+    }
 `

@@ -53,3 +53,20 @@ body {
   height: 100vh;
   background-color: rgba(91, 112, 131, 0.4);
 }
+
+@media only screen and (max-width: 500px) {
+
+  .nav__component {
+    position: fixed;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    display: flex;
+    height: 3.5rem;
+    align-items: center;
+    justify-content: space-around;
+    border-top: 1px solid rgb(47, 51, 54);
+    z-index: 99;
+  }
+
+}
