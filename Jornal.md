@@ -71,4 +71,4 @@ when creating a new project in vercel, in the configuration, overwrite build set
 - use [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) to secure the connection and the data
 - get a [free TLS certificate](https://letsencrypt.org/about/)
 - Cache request results
-- 
+- Add another language support

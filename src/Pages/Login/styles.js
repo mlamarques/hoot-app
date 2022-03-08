@@ -48,7 +48,7 @@ export const LoginStyle = styled.div`
             border: 2px solid transparent;
             border-radius: 9px;
             /* width: 100%; */
-            min-width: 364px;
+            width: 364px;
             max-width: 364px;
             margin-bottom: 16px;
             align-self: center;
@@ -99,7 +99,7 @@ export const LoginStyle = styled.div`
         }
 
         .btn--next {
-            min-width: 364px;
+            width: 364px;
             max-width: 364px;
             min-height: 36px;
             align-self: center;
@@ -133,7 +133,7 @@ export const LoginStyle = styled.div`
         }
 
         .btn--forget-password {
-            min-width: 364px;
+            width: 364px;
             max-width: 364px;
             min-height: 36px;
             align-self: center;
@@ -165,7 +165,7 @@ export const LoginStyle = styled.div`
         }
 
         .create-account__container {
-            min-width: 364px;
+            width: 364px;
             max-width: 364px;
             align-self: center;
             margin-top: 40px;
@@ -361,7 +361,7 @@ export const LoginStyle = styled.div`
     }
 
     .author__container {
-        position: absolute;
+        position: fixed;
         right: 20px;
         bottom: 20px;
         user-select: none;
@@ -404,6 +404,10 @@ export const LoginStyle = styled.div`
             .logo__container {
                 margin-top: 12px;
                 height: 60px;
+            }
+
+            .username__container, .btn--next, .btn--forget-password, .create-account__container {
+                width: 100%;
             }
         }
 
