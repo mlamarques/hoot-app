@@ -10,7 +10,7 @@ import IconNotVisible from '../../assets/icons/IconNotVisible'
 import IconArrowBack from '../../assets/icons/IconArrowBack'
 import {LoginStyle} from './styles'
 
-function Login() {
+function Login(props) {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -207,10 +207,11 @@ function Login() {
           }
         </div>
         {showNotifications && <Notification text={notificationValue} />}
+        {props.windowSize.height > 500 &&
         <div className="author__container">
          <span>Created by</span>
          <a href="https://github.com/mlamarques" className="author-name"><span>Marcos Lamarques</span></a>  
-        </div>
+        </div>}
       </LoginStyle>
     </div>
     );

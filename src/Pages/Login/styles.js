@@ -365,6 +365,7 @@ export const LoginStyle = styled.div`
         right: 20px;
         bottom: 20px;
         user-select: none;
+        z-index: 1;
 
         .author-name {
             margin-left: 4px;
