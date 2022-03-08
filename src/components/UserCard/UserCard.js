@@ -7,7 +7,7 @@ import IconOptions from '../../assets/icons/IconOptions'
 export default function UserCard(props) {
   const [isComponentVisible, setIsComponentVisible] = useState(false)
   
-  function handleClick(event) {
+  function handleClick() {
     setIsComponentVisible(prev => !prev)
   }
 
@@ -52,7 +52,7 @@ export default function UserCard(props) {
             
           </div> 
           {isComponentVisible && 
-                <div className="usercard__options" onClick={(e) => handleClick(e)} style={{ animation: `${isComponentVisible ? "fadeIn" : "fadeOut"} 0.5s ease-in-out` }} >
+                <div className="usercard__options" onClick={handleClick} style={{ animation: `${isComponentVisible ? "fadeIn" : "fadeOut"} 0.5s ease-in-out` }} >
                   <div className="options_wrapper" onClick={(event) => event.stopPropagation()}style={props.navWidth > 284 ? optionsFullWidth : optionsSmallWidth}>
                     <div className="a">
                       <div className="ainside">
