@@ -157,7 +157,7 @@ function SignUp() {
   }
 
   return (
-    <div className="login-page">
+    <div className="sign-in-page">
       {isLoading && <Loading />}
       <LoginStyle>
         <div className="sign-in__container"id="sign-in__container">

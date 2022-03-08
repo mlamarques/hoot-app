@@ -363,6 +363,33 @@ export const LoginStyle = styled.div`
             }
         }
     }
+
+    @media only screen and (max-width: 675px) {
+        display: flex;
+        height: 100vh;
+        width: 100vw;
+        justify-content: center;
+        background-color: var(--eerie-black);
+
+        .sign-in__container {
+            display: flex;
+            width: 364px;
+            height: 500px;
+            padding: 0 32px;
+            border-radius: 0;
+
+            .go-back--wrapper {
+                position: fixed;
+                top: 8px;
+                left: 8px;
+            }
+
+            .logo__container {
+                margin-top: 12px;
+                height: 60px;
+            }
+        }
+    }
     
 `
 
