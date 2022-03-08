@@ -19,19 +19,39 @@ import GlobalStyles from './assets/GlobalStyles'
 
 
 function App() {
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  })
+
   let location = useLocation()
   let state = location.state
 
   const { user } = useUserState()
+
+  useEffect(() => {
+
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      })
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+    
+  }, [])
 
   // Check if server is up
 
   return (
     <div className="App">
       <GlobalStyles/>
-        {(location.pathname !== "/signup" && location.pathname !== "/login") && <Nav username={user.username} img_url={user.img_url} />}
+        {(location.pathname !== "/signup" && location.pathname !== "/login") && <Nav username={user.username} img_url={user.img_url} windowSize={windowSize} />}
         <Routes location={state?.backgroundLocation || location}>
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login windowSize={windowSize} />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/"  element={<PrivateRoutes />}>
             <Route path="/settings/another" element={<AnotherSetting />} />
