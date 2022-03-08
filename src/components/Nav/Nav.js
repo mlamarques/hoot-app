@@ -1,16 +1,32 @@
 import {NavStyle} from './styles'
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import LogoSimp from '../../assets/LogoSimp'
 import IconHome from '../../assets/icons/IconHome'
 import IconFavorite from '../../assets/icons/IconFavorite'
 import IconMessages from '../../assets/icons/IconMessages'
 import IconSearch from '../../assets/icons/IconSearch'
 import IconProfile from '../../assets/icons/IconProfile'
+import IconCompose from '../../assets/icons/IconCompose'
 import UserCard from '../UserCard/UserCard';
-import { useNavigate } from 'react-router-dom'
 import { useUserState } from '../../context/UserContext'
+import { useState, useEffect } from 'react';
 
 export default function Nav(props) {
+  const [windowSize, setWindowSize] = useState(window.innerWidth)
+
+  useEffect(() => {
+    
+
+    function handleResize() {
+      setWindowSize(window.innerWidth)
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+    
+  }, [])
+
     const style = {
       // display: 'grid'
       display: 'flex'
@@ -40,24 +56,26 @@ export default function Nav(props) {
 
     return (
       
-      <div className="nav__component" style={style}>
+      <div className="nav__component" style={style} onClick={() => console.log(windowSize)}>
         <NavStyle>
           <div className="menu__container">
             <div className="menu--wrapper">
+              {windowSize > 500 &&
               <div className="header--logo">
                 <Link to='/' className="logo--redirect">
                   <LogoSimp />
                 </Link>
-              </div>
+              </div>}
               <nav className="nav__container">
                 <Link to='/home' className="nav__item">
                   <div className="item--wrapper">
                     <div className="logo-item">
                       <IconHome /> 
                     </div>
+                    {windowSize > 1280 &&
                     <div className="logo-text">
                       <span className="logo-text--value">Home</span>
-                    </div>
+                    </div>}
                   </div>
                 </Link>
                 <Link to='/favorites' className="nav__item">
@@ -65,9 +83,10 @@ export default function Nav(props) {
                     <div className="logo-item">
                       <IconFavorite /> 
                     </div>
+                    {windowSize > 1280 &&
                     <div className="logo-text">
                       <span className="logo-text--value">Favorites</span>
-                    </div>
+                    </div>}
                   </div>
                 </Link>
                 <Link to='/messages' className="nav__item">
@@ -75,9 +94,10 @@ export default function Nav(props) {
                     <div className="logo-item">
                       <IconMessages /> 
                     </div>
+                    {windowSize > 1280 &&
                     <div className="logo-text">
                       <span className="logo-text--value">Messages</span>
-                    </div>
+                    </div>}
                   </div>
                 </Link>
                 <Link to='/search' className="nav__item">
@@ -85,9 +105,10 @@ export default function Nav(props) {
                     <div className="logo-item">
                       <IconSearch /> 
                     </div>
+                    {windowSize > 1280 &&
                     <div className="logo-text">
                       <span className="logo-text--value">Search</span>
-                    </div>
+                    </div>}
                   </div>
                 </Link>
                 <Link to={`/${user.username}`} className="nav__item">
@@ -95,21 +116,27 @@ export default function Nav(props) {
                     <div className="logo-item">
                       <IconProfile /> 
                     </div>
+                    {windowSize > 1280 &&
                     <div className="logo-text">
                       <span className="logo-text--value">Profile</span>
-                    </div>
+                    </div>}
                   </div>
                 </Link>
                 <Link to='/compose/hoot' className="nav__compose" state={{ backgroundLocation: location }}>
-                  <div className="item--wrapper">
-                    <div className="logo-text">
-                      <span className="logo-text--value">Hoot</span>
+                  <div className="compose--wrapper">
+                    {windowSize > 1280 ?
+                    <div className="compose-text">
+                      <span className="compose-text--value">Hoot</span>
                     </div>
+                    :
+                    <IconCompose />
+                    }
                   </div>
                 </Link>
               </nav>
             </div>
-            <UserCard handleClick={handleLogout} username={props.username || ""} img_url={props.img_url} />
+            {windowSize > 500 &&
+            <UserCard handleClick={handleLogout} username={props.username || ""} img_url={props.img_url} windowSize={windowSize} />}
           </div>
         </NavStyle>
       </div>

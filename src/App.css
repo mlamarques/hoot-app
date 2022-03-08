@@ -11,7 +11,7 @@ body {
   margin: 0;
 }
 
-.login-page {
+.login-page, .sign-in-page {
   display: grid;
   width: 100%;
   height: 100vh;
@@ -52,4 +52,30 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: rgba(91, 112, 131, 0.4);
+}
+
+@media only screen and (max-width: 500px) {
+
+  .nav__component {
+    position: fixed;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    display: flex;
+    height: 3.5rem;
+    align-items: center;
+    justify-content: space-around;
+    border-top: 1px solid rgb(47, 51, 54);
+    z-index: 99;
+  }
+
+}
+
+@media only screen and (max-width: 675px) {
+  .sign-in-page.sign-in__container {
+    all: unset;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+  }
 }
