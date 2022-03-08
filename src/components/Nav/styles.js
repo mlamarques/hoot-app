@@ -15,7 +15,7 @@ export const NavStyle = styled.div`
         justify-content: space-between;
         padding-left: 12px;
         padding-right: 12px;
-        border: 1px solid rgba(0, 0, 0, 0.2);
+        /* border: 1px solid rgba(0, 0, 0, 0.2); */
 
         .menu--wrapper {
             align-items: flex-start;

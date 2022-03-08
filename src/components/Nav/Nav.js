@@ -9,7 +9,7 @@ import IconProfile from '../../assets/icons/IconProfile'
 import IconCompose from '../../assets/icons/IconCompose'
 import UserCard from '../UserCard/UserCard';
 import { useUserState } from '../../context/UserContext'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Nav(props) {
   // const [windowSize, setWindowSize] = useState(window.innerWidth)
@@ -31,6 +31,9 @@ export default function Nav(props) {
       // display: 'grid'
       display: 'flex'
     }
+
+    const ref = useRef(1)
+    console.log(ref.current.offsetWidth)
 
     let navigate = useNavigate()
     let location = useLocation();
@@ -56,7 +59,7 @@ export default function Nav(props) {
 
     return (
       
-      <div className="nav__component" style={style}>
+      <div className="nav__component" ref={ref} style={style}>
         <NavStyle>
           <div className="menu__container">
             <div className="menu--wrapper">
@@ -136,7 +139,7 @@ export default function Nav(props) {
               </nav>
             </div>
             {props.windowSize.width > 500 &&
-            <UserCard handleClick={handleLogout} username={props.username || ""} img_url={props.img_url} windowSize={props.windowSize.width} />}
+            <UserCard handleClick={handleLogout} username={props.username || ""} img_url={props.img_url} windowSize={props.windowSize.width} navWidth={ref.current.offsetWidth} />}
           </div>
         </NavStyle>
       </div>

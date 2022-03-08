@@ -41,6 +41,7 @@ body {
   flex-grow: 1;
   align-items: flex-end;
   justify-content: flex-end;
+  z-index: 9;
 }
 
 .compose-hoot__component {

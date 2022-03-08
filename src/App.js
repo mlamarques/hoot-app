@@ -23,6 +23,7 @@ function App() {
     width: window.innerWidth,
     height: window.innerHeight,
   })
+  const [navWidth, setNavWidth] = useState(275)
 
   let location = useLocation()
   let state = location.state
@@ -36,6 +37,9 @@ function App() {
         width: window.innerWidth,
         height: window.innerHeight,
       })
+
+      // let navWidth = document.querySelector('.nav__component')
+      setNavWidth(document.querySelector('.nav__component').offsetWidth)
     }
 
     window.addEventListener("resize", handleResize);
@@ -49,7 +53,7 @@ function App() {
   return (
     <div className="App">
       <GlobalStyles/>
-        {(location.pathname !== "/signup" && location.pathname !== "/login") && <Nav username={user.username} img_url={user.img_url} windowSize={windowSize} />}
+        {(location.pathname !== "/signup" && location.pathname !== "/login") && <Nav username={user.username} img_url={user.img_url} windowSize={windowSize} navWidth={navWidth} />}
         <Routes location={state?.backgroundLocation || location}>
           <Route path="/login" element={<Login windowSize={windowSize} />} />
           <Route path="/signup" element={<SignUp />} />
