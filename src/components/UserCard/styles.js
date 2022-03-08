@@ -76,24 +76,27 @@ export const UserCardStyle = styled.div`
                 height: 1.25em;
             }
         }
+    }
 
-        .usercard__options {
-            position: absolute;
+    .usercard__options {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        user-select: none;
+
+        .options_wrapper {
+            position: fixed;
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%;
-            height: 160px;
-            left: 0;
-            bottom: 100%;
-            z-index: 99;
-
+            color: white;
+            width: 250px;
+            bottom: 90px;
+            
             .a {
-                position: relative;
-                color: white;
-                height: 100%;
-                width: 300px;
-                bottom: 10px;
+                width: 100%;
                 padding: 12px 0;
                 border-radius: 9px;
                 background-color: black;
@@ -101,6 +104,7 @@ export const UserCardStyle = styled.div`
 
                 .ainside {
                     height: 50%;
+                    width: 100%;
                 }
 
                 .binside {
@@ -112,6 +116,7 @@ export const UserCardStyle = styled.div`
                     margin-bottom: 10px;
 
                     &:hover {
+                        cursor: pointer; 
                         background-color: var(--black-shade);
                     }
 
@@ -123,14 +128,28 @@ export const UserCardStyle = styled.div`
 
             .b {
                 position: relative;
-                bottom: 10px;
+                bottom: 0;
                 width: 20px;
                 border-left: 10px solid transparent;
                 border-right: 10px solid transparent;
                 border-top: 10px solid var(--black);
             }
-
         }
+
+        @media only screen and (max-width: 1280px) {
+            .options_wrapper {
+                align-items: flex-start;
+            }
+
+            .a {
+            }
+
+            .b {
+                position: absolute;
+                left: 30px;
+            }
+        }   
+
     }
 
     @keyframes fadeIn {

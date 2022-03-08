@@ -5,25 +5,10 @@ import { Link } from 'react-router-dom';
 import IconOptions from '../../assets/icons/IconOptions'
 
 export default function UserCard(props) {
-  const [isAnimationShown, setIsanimationShown] = useState(true)
-
-  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false)
-
-  function handleClick() {
-    if (isComponentVisible) {
-      setIsanimationShown(false)
-      setTimeout(() => {
-        setIsComponentVisible(false)
-        setIsanimationShown(true)
-      }, 400)
-    } else {
-      setIsComponentVisible(true)
-    }
-  }
-
-  function handleInsideClick(event) {
-    event.preventDefault()
-    event.stopPropagation()
+  const [isComponentVisible, setIsComponentVisible] = useState(false)
+  
+  function handleClick(event) {
+    setIsComponentVisible(prev => !prev)
   }
 
   const usercardStyle = {
@@ -31,6 +16,14 @@ export default function UserCard(props) {
     position: 'relative',
     width: '100%',
   };
+
+  const optionsFullWidth = {
+    left: (props.navWidth - 262),
+  }
+
+  const optionsSmallWidth = {
+    left: (props.navWidth - 85),
+  }
 
   return (
     // style={{pointerEvents: isSettingsShown && "none"}}
@@ -43,33 +36,37 @@ export default function UserCard(props) {
               </div>
             </div>
             {props.windowSize > 1280 &&
-            <>
-            <div className="user--info__container">
-              <div className="user--info--wrapper">
-                <span className="user--name">{props.username}</span>
-                <span className="user--username">@{props.username}</span>
+              <>
+              <div className="user--info__container">
+                <div className="user--info--wrapper">
+                  <span className="user--name">{props.username}</span>
+                  <span className="user--username">@{props.username}</span>
+                </div>
               </div>
-            </div>
-            <div className="icon--option__container">
-                <IconOptions />
-            </div>
-            <div ref={ref}>
-              {isComponentVisible && 
-                <div className="usercard__options" onClick={(event) => handleInsideClick(event)} style={{ animation: `${isAnimationShown ? "fadeIn" : "fadeOut"} 0.5s ease-in-out` }} >
-                  <div className="a">
-                    <div className="ainside"></div>
-                    {/* link to logout route */}
-                    <div className="binside" onClick={() => props.handleClick()} >
-                      <span >Log out</span>
+              <div className="icon--option__container">
+                  <IconOptions />
+              </div>
+                
+              </>
+            }
+            
+          </div> 
+          {isComponentVisible && 
+                <div className="usercard__options" onClick={(e) => handleClick(e)} style={{ animation: `${isComponentVisible ? "fadeIn" : "fadeOut"} 0.5s ease-in-out` }} >
+                  <div className="options_wrapper" onClick={(event) => event.stopPropagation()}style={props.navWidth > 284 ? optionsFullWidth : optionsSmallWidth}>
+                    <div className="a">
+                      <div className="ainside">
+                        <span>{}</span>
+                      </div>
+                        {/* link to logout route */}
+                        <div className="binside" onClick={() => props.handleClick()} >
+                          <span >Log out</span>
+                      </div>
                     </div>
+                    <div className="b"></div>
                   </div>
-                  <div className="b"></div>
                 </div>
               }
-            </div>
-            </>
-            }
-          </div> 
         </UserCardStyle>
       </div>
   );
