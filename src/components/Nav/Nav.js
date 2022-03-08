@@ -9,10 +9,11 @@ import IconProfile from '../../assets/icons/IconProfile'
 import IconCompose from '../../assets/icons/IconCompose'
 import UserCard from '../UserCard/UserCard';
 import { useUserState } from '../../context/UserContext'
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, createRef } from 'react';
 
 export default function Nav(props) {
-  // const [windowSize, setWindowSize] = useState(window.innerWidth)
+  const [navWidth, setNavWidth] = useState(0)
+  const [hasMainMount, setHasMainMount] = useState(false)
 
   // useEffect(() => {
     
@@ -32,8 +33,27 @@ export default function Nav(props) {
       display: 'flex'
     }
 
-    const ref = useRef(1)
-    console.log(ref.current.offsetWidth)
+    const ref = createRef()
+
+    useEffect(() => {
+      // if (ref.current) {
+      //   const { current } = ref
+      //   const boundingRect = current.getBoundingClientRect()
+      //   const { width, height } = boundingRect
+        
+      //   // setTimeout(() => setNavWidth(Math.round(width)),
+      //   //   500
+      //   // );
+      //   setNavWidth(Math.round(width))
+      // }
+
+      const observer = new ResizeObserver(entries => {
+        setNavWidth(entries[0].contentRect.width)
+      })
+      observer.observe(ref.current)
+      return () => ref.current && observer.unobserve(ref.current)
+      
+    }, [])
 
     let navigate = useNavigate()
     let location = useLocation();
@@ -108,7 +128,7 @@ export default function Nav(props) {
                     <div className="logo-item">
                       <IconSearch /> 
                     </div>
-                    {props.windowSize > 1280 &&
+                    {props.windowSize.width > 1280 &&
                     <div className="logo-text">
                       <span className="logo-text--value">Search</span>
                     </div>}
@@ -139,7 +159,7 @@ export default function Nav(props) {
               </nav>
             </div>
             {props.windowSize.width > 500 &&
-            <UserCard handleClick={handleLogout} username={props.username || ""} img_url={props.img_url} windowSize={props.windowSize.width} navWidth={ref.current.offsetWidth} />}
+            <UserCard handleClick={handleLogout} username={props.username || ""} img_url={props.img_url} windowSize={props.windowSize.width} navWidth={navWidth} />}
           </div>
         </NavStyle>
       </div>
