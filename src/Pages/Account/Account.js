@@ -24,7 +24,7 @@ export default function Account(props) {
   }
 
   return (
-    <div className="account-page">
+    <div className="account-page" style={{ height: '100%'}}>
       {isLoading && <Loading />}
       
         {/* -------------------------- Main -------------------------- */}

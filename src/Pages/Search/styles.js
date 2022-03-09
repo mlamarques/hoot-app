@@ -13,8 +13,8 @@ export const SearchStyle = styled.div`
         max-width: 600px;
         width: 100%;
         height: 100%;
-        border: 1px solid rgba(0, 0, 0, 0.7);
-        border-left: none;
+        min-height: 100vh;
+        border-right: 1px solid rgba(0, 0, 0, 0.7);
 
         .main__header {
             display: flex;

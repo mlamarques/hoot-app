@@ -45,7 +45,7 @@ export default function Search(props) {
   }
 
   return (
-    <div className="search-page">
+    <div className="search-page" style={{height: '100%'}}>
       <SearchStyle>
       <div className="main__container">
         <div className="main__header">

@@ -37,6 +37,7 @@ export const MessagesStyle = styled.div`
 
         .messages__container {
             width: 100%;
+            padding-bottom: 50vh;
         }
     }
 
