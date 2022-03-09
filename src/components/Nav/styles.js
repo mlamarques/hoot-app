@@ -1,8 +1,10 @@
 import styled from 'styled-components'
 
 export const NavStyle = styled.div`
+    display: flex;  
     width: 275px;
-
+    justify-content: center;
+    
     .menu__container {
         display: flex;
         /* max-width: 275px; */
@@ -15,11 +17,10 @@ export const NavStyle = styled.div`
         justify-content: space-between;
         padding-left: 12px;
         padding-right: 12px;
-        /* border: 1px solid rgba(0, 0, 0, 0.2); */
+        
 
         .menu--wrapper {
             align-items: flex-start;
-            
 
             .header--logo {
                 display: flex;
@@ -160,6 +161,11 @@ export const NavStyle = styled.div`
                 }
             }
             
+        }
+
+        @media only screen and (max-width: 1008px) {
+            width: 68px;
+            padding: 0 4px;
         }
 
         @media only screen and (max-width: 500px) {

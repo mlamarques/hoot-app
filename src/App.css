@@ -21,17 +21,17 @@ body {
 
 .App {
   display: flex;
+  flex-direction: row;
   flex: 1 1 0%;
   height: 100%;
   width: 100%;
-  flex-direction: row;
 }
 
 .home-page, .favorites-page, .search-page, .messages-page, .account-page, .user-page, .change-password-page {
   display: flex;
   flex-grow: 1;
   flex-shrink: 1;
-  align-items: flex-start;
+  justify-content: flex-start;
   height: 100vh;
   z-index: 0;
 }
@@ -41,7 +41,7 @@ body {
   flex-grow: 1;
   align-items: flex-end;
   justify-content: flex-end;
-  z-index: 9;
+  z-index: 3;
 }
 
 .compose-hoot__component {
@@ -53,6 +53,27 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: rgba(91, 112, 131, 0.4);
+}
+
+@media only screen and (max-width: 1008px) {
+  .nav__component {
+    width: 68px;
+  }
+}
+
+@media only screen and (max-width: 988px) {
+
+  .home-page, .favorites-page, .search-page, .messages-page, .account-page, .user-page, .change-password-page {
+    flex-grow: 2;
+  }
+}
+
+@media only screen and (max-width: 688px) {
+
+  .home-page, .favorites-page, .search-page, .messages-page, .account-page, .user-page, .change-password-page {
+    flex-grow: 1;
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 500px) {
@@ -68,6 +89,7 @@ body {
     bottom: 0px;
     display: flex;
     height: 3.5rem;
+    width: 100%;
     align-items: center;
     justify-content: space-around;
     border-top: 1px solid rgb(47, 51, 54);

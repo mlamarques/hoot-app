@@ -14,7 +14,6 @@ export const MessagesStyle = styled.div`
         max-width: 600px;
         width: 100%;
         height: 100%;
-        border-left: 1px solid rgba(0, 0, 0, 0.7);
         border-right: 1px solid rgba(0, 0, 0, 0.7);
         overflow: hidden;
         overflow-y: auto;
@@ -94,6 +93,24 @@ export const MessagesStyle = styled.div`
                 background-color: var(--mellow-apricot-transparent);
                 border-bottom: 1px solid black;
                 z-index: 2;
+
+                .go-back--wrapper {
+                    position: relative;
+                    height: 36px;
+                    width: 36px;
+                    margin-right: 16px;
+                    border-radius: 9999px;
+                    transition-duration: 0.5s;
+                    cursor: pointer;
+
+                    svg {
+                        fill: black;
+                    }
+
+                    &:hover {
+                        background-color: var(--deep-saffron);
+                    }
+                }
 
                 .user-avatar--wrapper {
                     display: flex;
@@ -223,6 +240,19 @@ export const MessagesStyle = styled.div`
                 }
             }
         } 
+    }
+
+    @media only screen and (max-width: 1078px) {
+        width: 920px;
+    }
+
+    @media only screen and (max-width: 988px) {
+        width: 600px;
+    }
+
+    @media only screen and (max-width: 688px) {
+        max-width: 600px;
+        width: 100%;
     }
 `
 

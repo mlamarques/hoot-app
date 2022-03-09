@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import Loading from '../../components/Loading/Loading'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { api } from '../../services/api'
 import { useUserState } from '../../context/UserContext'
 import {AccountStyle} from './styles'
@@ -8,9 +8,15 @@ import IconArrowFoward from '../../assets/icons/IconArrowFoward'
 import IconUser from '../../assets/icons/IconUser'
 import IconPassword from '../../assets/icons/IconPassword'
 import IconDeactivate from '../../assets/icons/IconDeactivate'
+import IconArrowBack from '../../assets/icons/IconArrowBack'
 
 export default function Account(props) {
   const [isLoading, setIsLoading] = useState(false)
+
+  let params = useParams();
+  let location = useLocation()
+  let navigate = useNavigate()
+  console.log(location.pathname)
 
   const currentOptionStyle = {
     borderRight: "2px solid var(--orange)",
@@ -23,6 +29,7 @@ export default function Account(props) {
       
         {/* -------------------------- Main -------------------------- */}
       <AccountStyle>
+        {!(props.windowSize.width <= 988 && location.pathname === '/settings/account') &&
         <div className="main__container">
           <div className="main__header">
             <h2>Settings</h2>
@@ -45,11 +52,17 @@ export default function Account(props) {
               </Link>
             </div>
           </div>
-        </div>
+        </div>}
         {/* -------------------------- Alt -------------------------- */}
+        {((props.windowSize.width >= 988 && location.pathname !== '/settings/account') || location.pathname === '/settings/account') &&
         <div className="alternative__container">
           <div className="main__header">
-            <h2>Your account</h2>
+            <div className="go-back--wrapper" onClick={() => navigate(-1)}>
+              <IconArrowBack />
+            </div>
+            <div className="title--wrapper">
+              <span>Your account</span>
+            </div>
           </div>
           <div className="account-info__container">
             <div className="info-description">
@@ -89,7 +102,7 @@ export default function Account(props) {
               </Link>
             </div>
           </div>
-        </div>
+        </div>}
       </AccountStyle>
     </div>
   );

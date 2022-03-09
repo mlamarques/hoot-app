@@ -4,7 +4,8 @@ export const UserCardStyle = styled.div`
     display: flex;
     flex: 1;
     max-width: 100%;
-    margin-bottom: 16px;
+    min-width: 64px;
+    margin: 16px 0;
 
     .usercard--wrapper {
         display: flex;

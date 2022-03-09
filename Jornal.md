@@ -67,8 +67,18 @@ using mongoose .populate() gets the filds from the Ref collection. I choose to o
 ## 7 march - Deploy vercel
 when creating a new project in vercel, in the configuration, overwrite build settings with: CI= npm run build
 
+## 8 march - Using window size to render isComponents
+I was making the app responsive to smaller devices, and was planning to using only CSS. But at some point I noticed I'd have to use some variable to store the
+window size so I could render components using ternary.
+
+I had to refector my user card component (the one that logs you out), because its structure was too hard for making it responsive, and I also wanted to
+be closer to the twitter app. I made it position fixed, and used the component Ref to get the width of the Nav bar. I had some difficulty with getting
+the component width using useEffect, because the Nav component was rendering before the Main component was mount, so the Ref was setting the width before all
+component of the page were rendered, so I did some research and found a solution using ResizeObserver.
+
 ## What's next?
 - use [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) to secure the connection and the data
 - get a [free TLS certificate](https://letsencrypt.org/about/)
 - Cache request results
 - Add another language support
+- Use websockets for messaging

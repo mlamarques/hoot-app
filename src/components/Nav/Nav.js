@@ -1,5 +1,5 @@
 import {NavStyle} from './styles'
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import LogoSimp from '../../assets/LogoSimp'
 import IconHome from '../../assets/icons/IconHome'
 import IconFavorite from '../../assets/icons/IconFavorite'
@@ -14,6 +14,7 @@ import { useState, useEffect, useRef, createRef } from 'react';
 export default function Nav(props) {
   const [navWidth, setNavWidth] = useState(0)
   const [hasMainMount, setHasMainMount] = useState(false)
+  
 
   // useEffect(() => {
     
@@ -30,7 +31,8 @@ export default function Nav(props) {
 
     const style = {
       // display: 'grid'
-      display: 'flex'
+      display: 'flex',
+      borderRight: '1px solid rgba(0, 0, 0, 0.7)'
     }
 
     const ref = createRef()
@@ -145,6 +147,7 @@ export default function Nav(props) {
                     </div>}
                   </div>
                 </Link>
+                {(location.pathname === '/home' || props.windowSize.width > 500) &&
                 <Link to='/compose/hoot' className="nav__compose" state={{ backgroundLocation: location }}>
                   <div className="compose--wrapper">
                     {props.windowSize.width > 1280 ?
@@ -155,7 +158,7 @@ export default function Nav(props) {
                     <IconCompose />
                     }
                   </div>
-                </Link>
+                </Link>}
               </nav>
             </div>
             {props.windowSize.width > 500 &&

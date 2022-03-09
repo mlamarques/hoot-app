@@ -15,6 +15,7 @@ export default function UserCard(props) {
     display: 'flex',
     position: 'relative',
     width: '100%',
+    justifyContent: 'center'
   };
 
   const optionsFullWidth = {

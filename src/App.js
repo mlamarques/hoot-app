@@ -45,21 +45,20 @@ function App() {
   }, [])
 
   // Check if server is up
-
   return (
     <div className="App">
       <GlobalStyles/>
-        {(location.pathname !== "/signup" && location.pathname !== "/login") && <Nav username={user.username} img_url={user.img_url} windowSize={windowSize} />}
+        {((location.pathname !== "/signup" && location.pathname !== "/login") && !(windowSize.width < 500 && RegExp(/^(\/messages\/)/).exec(location.pathname))) && <Nav username={user.username} img_url={user.img_url} windowSize={windowSize} />}
         <Routes location={state?.backgroundLocation || location}>
           <Route path="/login" element={<Login windowSize={windowSize} />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/"  element={<PrivateRoutes />}>
-            <Route path="/settings/another" element={<AnotherSetting />} />
-            <Route path="/settings/account" element={<Account />} />
-            <Route path="/settings/password" element={<ChangePassword />} />
-            <Route path="/settings/" element={<Navigate to="/settings/account" />} />
-            <Route path="/messages/:id" element={<Messages />} />
-            <Route path="/messages/" element={<Messages />} />
+            <Route path="/settings/another" element={<AnotherSetting windowSize={windowSize} />} />
+            <Route path="/settings/account" element={<Account windowSize={windowSize} />} />
+            <Route path="/settings/password" element={<ChangePassword windowSize={windowSize} />} />
+            <Route path="/settings/" element={windowSize.width >= 988 ? <Navigate to="/settings/account" /> : <Account windowSize={windowSize} />} />
+            <Route path="/messages/:id" element={<Messages windowSize={windowSize} />} />
+            <Route path="/messages/" element={<Messages windowSize={windowSize} />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/search" element={<Search />} />
             <Route path="/home" element={<Home />} />
@@ -70,7 +69,7 @@ function App() {
         </Routes>
         {state?.backgroundLocation && (
           <Routes>
-            <Route path="/compose/hoot" element={<ComposeHoot />} />
+            <Route path="/compose/hoot" element={<ComposeHoot windowSize={windowSize} />} />
           </Routes>
         )}
     </div>

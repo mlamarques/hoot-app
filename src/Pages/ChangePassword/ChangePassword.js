@@ -20,6 +20,7 @@ export default function ChangePassword(props) {
 
       {/* -------------------------- Main -------------------------- */}
       <ChangePasswordStyle>
+        {props.windowSize.width >= 988 &&
         <div className="main__container">
           <div className="main__header">
             <h2>Settings</h2>
@@ -42,7 +43,7 @@ export default function ChangePassword(props) {
               </Link>
             </div>
           </div>
-        </div>
+        </div>}
         {/* -------------------------- Alt -------------------------- */}
         <div className="alternative__container">
           <div className="main__header">
