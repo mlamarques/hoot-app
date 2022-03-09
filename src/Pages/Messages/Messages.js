@@ -7,6 +7,7 @@ import { useUserState } from '../../context/UserContext';
 import { api } from '../../services/api';
 import {MessagesStyle} from './styles'
 import IconSendMessage from '../../assets/icons/IconSendMessage'
+import IconArrowBack from '../../assets/icons/IconArrowBack';
 
 export default function Favorites(props) {
   const { user } = useUserState()
@@ -113,6 +114,7 @@ export default function Favorites(props) {
   return (
     <div className="messages-page">
       <MessagesStyle>
+      {!(props.windowSize.width <= 988 && params.id) &&
       <div className="main__container--header">
         <div className="main__header">
           <h1>Messages</h1>
@@ -142,11 +144,16 @@ export default function Favorites(props) {
             ) 
           })}
         </div>
-      </div>
+      </div>}
+      {((props.windowSize.width >= 988 && !params.id) || params.id) &&
       <div className="chat__container">
         {params.id ?
         <div className="chat-full--wrapper">
           <div className="chat__header">
+            {props.windowSize.width <= 987 &&
+            <div className="go-back--wrapper" onClick={() => navigate(-1)}>
+              <IconArrowBack />
+            </div>}
             <div className="user-avatar--wrapper">
               <img src={selectedUser.img_url} alt="user avatar" />
             </div>
@@ -204,7 +211,7 @@ export default function Favorites(props) {
           <span className="text-empty">Choose one from your existing messages, or start a new one.</span>
         </div>
         }
-      </div>
+      </div>}
       </MessagesStyle>
     </div>
   );

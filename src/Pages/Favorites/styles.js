@@ -10,9 +10,11 @@ export const FavoritesStyle = styled.div`
         display: flex;
         justify-self: center;
         flex-direction: column;
-        width: 600px;
+        max-width: 600px;
+        width: 100%;
         height: 100vh;
         border: 1px solid rgba(0, 0, 0, 0.7);
+        border-left: none;
 
         .main__header {
             display: flex;
@@ -44,6 +46,19 @@ export const FavoritesStyle = styled.div`
     }
 
     .alternative__container {
+        width: 100%;
+    }
+
+    @media only screen and (max-width: 1078px) {
+        width: 920px;
+    }
+
+    @media only screen and (max-width: 988px) {
+        width: 600px;
+    }
+
+    @media only screen and (max-width: 688px) {
+        max-width: 600px;
         width: 100%;
     }
 `

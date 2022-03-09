@@ -13,6 +13,7 @@ export const AnotherSettingStyle = styled.div`
         width: 390px;
         height: 100vh;
         border: 1px solid rgba(0, 0, 0, 0.7);
+        border-left: none;
 
         .main__header {
             display: flex;
@@ -61,10 +62,12 @@ export const AnotherSettingStyle = styled.div`
     }
 
     .alternative__container {
+        display: flex;
+        flex-direction: column;
+        position: relative;
         max-width: 600px;
         width: 100%;
-        position: absolute;
-        transform: translate(390px, 0);
+        border-right: 1px solid rgba(0, 0, 0, 0.7);
 
         .info-description {
             width: 100%;
@@ -113,6 +116,19 @@ export const AnotherSettingStyle = styled.div`
             }
         }
 
+    }
+
+    @media only screen and (max-width: 1078px) {
+        width: 920px;
+    }
+
+    @media only screen and (max-width: 988px) {
+        width: 600px;
+    }
+
+    @media only screen and (max-width: 688px) {
+        max-width: 600px;
+        width: 100%;
     }
 `
 

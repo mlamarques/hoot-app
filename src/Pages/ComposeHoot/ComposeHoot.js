@@ -15,6 +15,7 @@ export default function ComposeHoot(props) {
     const [isLoading, setIsLoading] = useState(false)
     // const ref = useRef(null);
     const modalRef = useRef();
+    const focusDiv = useRef()
     
     let navigate = useNavigate()
 
@@ -37,6 +38,10 @@ export default function ComposeHoot(props) {
             document.removeEventListener('keydown', closeCompose, true);
         };
     });
+
+    useEffect(() => {
+        if(focusDiv.current) focusDiv.current.focus(); 
+    }, [focusDiv]);
     
     function handlePostHoot() {
         const data = {
@@ -97,7 +102,7 @@ export default function ComposeHoot(props) {
     const myFormatedText = <span onChange={(event) => event.target.selectionStart = textboxValue.length}>{textboxValue}</span>
 
     return (
-        <div className="compose-hoot__component" onClick={closeCompose} ref={modalRef} onMouseDown={() => setIsCloseAllowed(true)}>
+        <div className="compose-hoot__component" onClick={closeCompose} ref={modalRef} onMouseDown={() => setIsCloseAllowed(true)} style={{zIndex: 99, width: '100%', height: '100%'}}>
             {isLoading && <Loading />}
             <ComposeHootStyle >
                 <div className="compose-hoot__container" onMouseLeave={() => setIsCloseAllowed(false)} onMouseEnter={() => setIsCloseAllowed(false)}>
@@ -108,6 +113,14 @@ export default function ComposeHoot(props) {
                             <span >Close</span>
                             </div>
                         </div>
+                        {props.windowSize.width < 688 &&
+                        <div 
+                            className="submit__button"
+                            style={textboxValue.length === 0 ? emptyBoxStyle : {}}
+                            onClick={handlePostHoot}
+                        >
+                            <span>Hoot</span>
+                        </div>}
                     </div>
                     <div className="container__body">
                         <div className="user--avatar__container">
@@ -119,23 +132,27 @@ export default function ComposeHoot(props) {
                             <div
                                 className="draft-editor--content"
                                 role={"textbox"}
-                                tabIndex={"0"}
+                                tabIndex={0}
                                 contentEditable={true}
                                 suppressContentEditableWarning={true}
                                 onInput={(event) => handleChange(event)}
                                 onBeforeInput={(event) => onBeforeInput(event)}
+                                ref={focusDiv}
                             >
                                 {/* {myFormatedText} */}
+                                <div id="data-content" className="data-content" ></div>
+                                {textboxValue.length === 0 && <label className="label--data-content" htmlFor="data-content">What's happening?</label>}
                             </div>
                             <div className="footer__container">
                                 <div className="icons_container"></div>
+                                {props.windowSize.width >= 688 &&
                                 <div 
                                     className="submit__button"
                                     style={textboxValue.length === 0 ? emptyBoxStyle : {}}
                                     onClick={handlePostHoot}
                                 >
                                     <span>Hoot</span>
-                                </div>
+                                </div>}
                             </div>
                         </div>
                     </div>

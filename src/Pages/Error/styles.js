@@ -9,6 +9,7 @@ export const ErrorStyle = styled.div`
         width: 600px;
         height: 100vh;
         border: 1px solid rgba(0, 0, 0, 0.7);
+        border-left: none;
     }
 
     .alternative__container {
