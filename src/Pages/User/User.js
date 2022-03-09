@@ -191,7 +191,7 @@ export default function User(props) {
                 {userData.username === user.username ? 
                 <div className="profile--options__container">
                   <div className="follow-btn" onClick={() => {
-                    navigate('/settings/account')
+                    navigate('/settings')
                   }}>
                     <span>Edit profile</span>
                   </div>
