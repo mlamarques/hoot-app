@@ -32,7 +32,7 @@ export default function Nav(props) {
     const style = {
       // display: 'grid'
       display: 'flex',
-      borderRight: '1px solid rgba(0, 0, 0, 0.7)'
+      borderRight: '1px solid rgba(0, 0, 0, 0.7)',
     }
 
     const ref = createRef()
