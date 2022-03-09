@@ -45,7 +45,7 @@ export default function Home(props) {
   }
 
   return (
-    <div className="home-page">
+    <div className="home-page" style={{height: '100%'}}>
         {/* -------------------------- Main -------------------------- */}
       <HomeStyle>
         <div className="main__container" onWheel={() => console.log('scroll')}>

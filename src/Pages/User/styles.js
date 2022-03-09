@@ -2,22 +2,24 @@ import styled from 'styled-components'
 
 export const UserStyle = styled.div`
     position: relative;
+    height: 100%;
     width: 990px;
 
     .main__container {
         display: flex;
+        position: relative;
         justify-self: center;
         flex-direction: column;
         max-width: 600px;
         width: 100%;
-        height: 100vh;
-        border: 1px solid rgba(0, 0, 0, 0.7);
-        border-left: none;
+        min-height: 100vh;
+        height: 100%;
+        border-right: 1px solid rgba(0, 0, 0, 0.7);
 
         .main__header {
             display: flex;
             position: sticky;
-            top: -0.5px;
+            top: 0;
             min-height: 55px;
             padding-left: 16px;
             padding-right: 16px;
@@ -194,6 +196,10 @@ export const UserStyle = styled.div`
                 }
             }
             
+        }
+
+        .hoot--individual__container {
+            padding-bottom: 50vh;
         }
     }
 

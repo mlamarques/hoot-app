@@ -60,6 +60,7 @@ export const NavStyle = styled.div`
                     width: 100%;
                     text-decoration: inherit;
                     color: inherit;
+                    fill: rgb(25, 25, 25);
                     cursor: pointer;
 
                     &:hover {
@@ -209,5 +210,6 @@ export const NavStyle = styled.div`
     @media only screen and (max-width: 500px) {
         width: 100%;
         height: 100%;
+        background-color: var(--mellow-apricot);
     }
 `

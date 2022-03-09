@@ -167,7 +167,7 @@ export default function User(props) {
   }
 
   return (
-    <div className="user-page">
+    <div className="user-page" style={{height: '100%'}}>
       
         {/* -------------------------- Main -------------------------- */}
       <UserStyle>

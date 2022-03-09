@@ -12,9 +12,9 @@ export const FavoritesStyle = styled.div`
         flex-direction: column;
         max-width: 600px;
         width: 100%;
-        height: 100vh;
-        border: 1px solid rgba(0, 0, 0, 0.7);
-        border-left: none;
+        height: 100%;
+        min-height: 100vh;
+        border-right: 1px solid rgba(0, 0, 0, 0.7);
 
         .main__header {
             display: flex;
@@ -36,11 +36,13 @@ export const FavoritesStyle = styled.div`
             display: flex;
             position: relative;
             height: 100%;
+            padding-bottom: 50vh;
 
             .hoots_container {
                 display: flex;
                 flex-direction: column;
                 flex-grow: 1;
+                width: 100%;
             }
         }
     }
