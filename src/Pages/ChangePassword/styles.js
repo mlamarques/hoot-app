@@ -13,8 +13,7 @@ export const ChangePasswordStyle = styled.div`
         flex-direction: column;
         width: 390px;
         height: 100vh;
-        border: 1px solid rgba(0, 0, 0, 0.7);
-        border-left: none;
+        border-right: 1px solid rgba(0, 0, 0, 0.7);
 
         .main__header {
             display: flex;
@@ -66,8 +65,7 @@ export const ChangePasswordStyle = styled.div`
         position: relative;
         max-width: 600px;
         width: 100%;
-        height: 100%;
-        border-right: 1px solid black;
+        border-right: 1px solid rgba(0, 0, 0, 0.7);
 
         .main__header {
             display: flex;

@@ -12,8 +12,7 @@ export const AnotherSettingStyle = styled.div`
         flex-direction: column;
         width: 390px;
         height: 100vh;
-        border: 1px solid rgba(0, 0, 0, 0.7);
-        border-left: none;
+        border-right: 1px solid rgba(0, 0, 0, 0.7);
 
         .main__header {
             display: flex;
@@ -68,6 +67,37 @@ export const AnotherSettingStyle = styled.div`
         max-width: 600px;
         width: 100%;
         border-right: 1px solid rgba(0, 0, 0, 0.7);
+
+        .main__header {
+            display: flex;
+            height: 55px;
+            align-items: center;
+            padding: 0 16px;
+
+            .go-back--wrapper {
+                position: relative;
+                height: 36px;
+                width: 36px;
+                margin-right: 16px;
+                border-radius: 9999px;
+                transition-duration: 0.5s;
+                cursor: pointer;
+
+                svg {
+                    fill: black;
+                }
+
+                &:hover {
+                    background-color: var(--deep-saffron);
+                }
+            }
+
+            .title--wrapper {
+                font-size: 1.5rem;
+                font-weight: 700;
+                line-height: 2rem;
+            }
+        }
 
         .info-description {
             width: 100%;

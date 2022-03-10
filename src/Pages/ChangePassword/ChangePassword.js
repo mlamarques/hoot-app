@@ -47,9 +47,10 @@ export default function ChangePassword(props) {
         {/* -------------------------- Alt -------------------------- */}
         <div className="alternative__container">
           <div className="main__header">
-            <div className="go-back--wrapper" onClick={() => navigate(-1)}>
+            {props.windowSize.width <= 988 &&
+            <div className="go-back--wrapper" onClick={() => navigate('/settings/account')}>
               <IconArrowBack />
-            </div>
+            </div>}
             <div className="title__container">
               <h2>Change your password</h2>
             </div>

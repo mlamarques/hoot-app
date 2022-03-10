@@ -57,16 +57,17 @@ export default function Account(props) {
         {((props.windowSize.width >= 988 && location.pathname !== '/settings/account') || location.pathname === '/settings/account') &&
         <div className="alternative__container">
           <div className="main__header">
-            <div className="go-back--wrapper" onClick={() => navigate(-1)}>
+            {props.windowSize.width <= 988 &&
+            <div className="go-back--wrapper" onClick={() => navigate('/settings')}>
               <IconArrowBack />
-            </div>
+            </div>}
             <div className="title--wrapper">
               <span>Your account</span>
             </div>
           </div>
           <div className="account-info__container">
             <div className="info-description">
-              <span className="description--value">Some info about this section. Lorem Ipsum Lorem Ipsum Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum Lorem Ipsum</span>
+              <span className="description--value">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque a porta dolor. Proin magna urna, bibendum vel volutpat ac, ornare eget quam.</span>
             </div>
             <div className="account-item__container account-info__item">
               <Link className="option-item--link" to={"/settings/account"} >
@@ -90,8 +91,8 @@ export default function Account(props) {
                 <IconArrowFoward />
               </Link>
             </div>
-            <div className="account-item__container password-change__item">
-              <Link className="option-item--link" to={"/settings/password"} >
+            <div className="account-item__container">
+              <Link className="option-item--link" to={"/settings/account"} >
                 <div className="icon__container">
                   <IconDeactivate />
                 </div>

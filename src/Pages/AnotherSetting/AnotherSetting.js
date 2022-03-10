@@ -7,9 +7,12 @@ import {AnotherSettingStyle} from './styles'
 import IconArrowFoward from '../../assets/icons/IconArrowFoward'
 import IconUser from '../../assets/icons/IconUser'
 import IconDeactivate from '../../assets/icons/IconDeactivate'
+import IconArrowBack from '../../assets/icons/IconArrowBack'
 
 export default function Account(props) {
   const [isLoading, setIsLoading] = useState(false)
+
+  let navigate = useNavigate()
 
   const currentOptionStyle = {
     borderRight: "2px solid var(--orange)",
@@ -46,12 +49,18 @@ export default function Account(props) {
         </div>
         {/* -------------------------- Alt -------------------------- */}
         <div className="alternative__container">
-          <div className="main__header">
-            <h2>Another topic</h2>
+        <div className="main__header">
+            {props.windowSize.width <= 988 &&
+            <div className="go-back--wrapper" onClick={() => navigate('/settings')}>
+              <IconArrowBack />
+            </div>}
+            <div className="title--wrapper">
+              <span>Another settings</span>
+            </div>
           </div>
           <div className="account-info__container">
             <div className="info-description">
-              <span className="description--value">Web weafab web sadu eas wbe eabdbsiudhas wauj aujwsbdiasbdas askasdaksj askjdnaksjdn. Webs?</span>
+              <span className="description--value">Mauris consequat bibendum justo eu dignissim. Cras semper eros et risus dignissim, eget tristique lacus dapibus. Phasellus feugiat odio nec fringilla laoreet. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec dictum quis purus id porttitor. </span>
             </div>
             <div className="account-item__container account-info__item">
               <Link className="option-item--link" to={"/settings/account"} >
@@ -60,17 +69,6 @@ export default function Account(props) {
                 </div>
                 <div className="text__container">
                   <span>Your account</span>
-                </div>
-                <IconArrowFoward />
-              </Link>
-            </div>
-            <div className="account-item__container password-change__item">
-              <Link className="option-item--link" to={"/settings/password"} >
-                <div className="icon__container">
-                  <IconDeactivate />
-                </div>
-                <div className="text__container">
-                  <span>Deactivate your account</span>
                 </div>
                 <IconArrowFoward />
               </Link>
