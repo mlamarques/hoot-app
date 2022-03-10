@@ -362,22 +362,62 @@ export const LoginStyle = styled.div`
 
     .author__container {
         position: fixed;
-        right: 20px;
-        bottom: 20px;
+        display: flex;
+        flex-direction: row;
+        right: 16px;
+        bottom: 16px;
+        align-items: center;
+        max-width: 10rem;
         user-select: none;
         z-index: 1;
 
-        .author-name {
-            margin-left: 4px;
-            padding: 4px 6px;
-            font-weight: 600;
-            border: 0px solid black;
-            border-radius: 9px;
-            transition: 0.25s ease;
+        .linkedin-badge {
+            position: relative;
+            display: flex;
+            max-width: 3rem;
+            justify-content: center;
+            margin: 0 16px;
+
+            .linkedin-badge__background {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                margin: -12px;
+                border-radius: 9999px;
+                z-index: -1;
+            }
 
             &:hover {
-                background-color: var(--light-text);
-                box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 28px;
+                .linkedin-badge__background {
+                    background-color: var(--mellow-apricot-shade)
+                }
+            }
+        }
+
+        .github-badge {
+            position: relative;
+            display: flex;
+            max-width: 3rem;
+            justify-content: center;
+            margin: 0 16px;
+
+            .github-badge__background {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                margin: -12px;
+                border-radius: 9999px;
+                z-index: -1;
+            }
+
+            &:hover {
+                .github-badge__background {
+                    background-color: var(--mellow-apricot-shade)
+                }
             }
         }
     }
