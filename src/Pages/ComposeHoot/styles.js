@@ -3,7 +3,6 @@ import styled from 'styled-components'
 export const ComposeHootStyle = styled.div`
     position: relative;
     
-    
     .compose-hoot__container {
         top: 50px;
         position: relative;
@@ -177,6 +176,7 @@ export const ComposeHootStyle = styled.div`
                         align-items: center;
                         white-space: pre-wrap;
                         overflow-wrap: break-word;
+                        direction: ltr;
                         cursor: text;
                     }
 

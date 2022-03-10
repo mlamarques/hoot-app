@@ -1,21 +1,50 @@
-Project Hoot
+<p align="start">
+  <img alt="frontend" src="https://img.shields.io/badge/app-Frontend-red">
 
-### Compose tweet
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/mlamarques/hoot-app">
+  
+  <img src="https://img.shields.io/github/deployments/mlamarques/hoot-app/hoot-app-alpha" alt="production status">
+  
+  <a href="https://hoot-app.vercel.app">
+    <img alt="website" src="https://img.shields.io/badge/Website-white">
+  </a>
+</p>
 
-The original compose tweet is not a simple text field. Instead, it is a div with the editable option on. This makes it easy to have different functionalities in this input field.
+<!-- <p align="center"><img src="https://user-images.githubusercontent.com/43910483/157722999-95f32943-f6ea-4576-920a-8a5bc4615bf4.png" alt="Hoot-logo" title="Hoot-logo" /></p> -->
+![header](https://user-images.githubusercontent.com/43910483/157725366-2eb821bd-a413-4088-b940-c9fe8da359c8.png)
 
-For example, you can paste the clipboard, can format the text to be read at a certain point, can add mentions and so on. You can
+# Introduction
+[Hoot](https://hoot-app.vercel.app) is a twitter clone, a personal project that I developed for training and showing my Fullstack skills.
 
-some links for helping creating this functionality:
+The project repository is separate in two (![Frontend](https://github.com/mlamarques/hoot-app) and ![Backend](https://github.com/mlamarques/api-hoot)).
 
-  - [React.js Conf 2016 - Isaac Salier-Hellendag - Rich Text Editing with React](https://www.youtube.com/watch?v=feUYwoLhE_4)
-  - https://codepen.io/hus_hmd/pen/zPxJBp
-  - https://codepen.io/mark_alves/pen/JjOyjmy
-  - [Twitter Tweet Box Clone Html Css Javascript | Twitter Clone](https://www.youtube.com/watch?v=E2YLdrXobmI)
-  - [Twitter Tweet Box with Character Limit Highlighting using HTML CSS & JavaScript](https://www.youtube.com/watch?v=_pbuwzly6xA)
-  - [How does Twitter implement its Tweet Box?](https://stackoverflow.com/questions/28820293/how-does-twitter-implement-its-tweet-box)
+## Functionalities
 
+In the current version, you can create a user, post messages, like messages, send direct messages, follow another user and change your password.
 
-## Add this to the final project maybe
+Demo:
 
-<img src="../badges.JPG"> 
+https://user-images.githubusercontent.com/43910483/157718113-ed1512d2-8e83-485d-8d03-5082180c9971.mp4
+
+## Structure:
+
+![Structure](https://user-images.githubusercontent.com/43910483/157724338-546e0bf7-755f-4304-99c8-81a637bc80a1.jpg)
+
+## Tech stack:
+**Frontend**
+- **JavaScript**
+- **React**
+- **Styled components**
+- **Vercel**
+
+**Backend**
+- **Express**
+- **Passport** for authentication
+- **JWT** for session control
+- **Mongoose** for MongoDB communication
+- **Jest** for testing
+- **MongoDB**
+
+You can contact me here:
+
+[![Gmail Badge](https://img.shields.io/badge/-lamarques.marcos@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:lamarques.marcos@gmail.com)](mailto:lamarques.marcos@gmail.com)

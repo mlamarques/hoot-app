@@ -46,7 +46,7 @@ function App() {
 
   // Check if server is up
   return (
-    <div className="App">
+    <div className="App" style={location.pathname === '/compose/hoot' ? {position: 'fixed'} : {}}>
       <GlobalStyles/>
         {((location.pathname !== "/signup" && location.pathname !== "/login") && !(windowSize.width < 500 && RegExp(/^(\/messages\/)/).exec(location.pathname))) && <Nav username={user.username} img_url={user.img_url} windowSize={windowSize} />}
         <Routes location={state?.backgroundLocation || location}>

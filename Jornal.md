@@ -2,6 +2,20 @@
 
 ## I'll use this jornal to comment on the project and when I find something difficult, note it down.
 
+## 10 Fev - Compose tweet
+The original compose tweet is not a simple text field. Instead, it is a div with the editable option on. This makes it easy to have different functionalities in this input field.
+
+For example, you can paste the clipboard, can format the text to be read at a certain point, can add mentions and so on. You can
+
+some links for helping creating this functionality:
+
+  - [React.js Conf 2016 - Isaac Salier-Hellendag - Rich Text Editing with React](https://www.youtube.com/watch?v=feUYwoLhE_4)
+  - https://codepen.io/hus_hmd/pen/zPxJBp
+  - https://codepen.io/mark_alves/pen/JjOyjmy
+  - [Twitter Tweet Box Clone Html Css Javascript | Twitter Clone](https://www.youtube.com/watch?v=E2YLdrXobmI)
+  - [Twitter Tweet Box with Character Limit Highlighting using HTML CSS & JavaScript](https://www.youtube.com/watch?v=_pbuwzly6xA)
+  - [How does Twitter implement its Tweet Box?](https://stackoverflow.com/questions/28820293/how-does-twitter-implement-its-tweet-box)
+
 ## 22 Fev - Problem: Implementing async.waterfall in controller methods
 I wanted to get the information about each Hoot(tweet), to display it. The idea was make one GET request to get all the hoots(tweets) from all users they follow.
     
@@ -76,9 +90,13 @@ be closer to the twitter app. I made it position fixed, and used the component R
 the component width using useEffect, because the Nav component was rendering before the Main component was mount, so the Ref was setting the width before all
 component of the page were rendered, so I did some research and found a solution using ResizeObserver.
 
+## 10 march - Create Readme for project
+In the readme I intend to explain my project goals and show some of it. I will show the project structure in a graph I created in Figma, and a small demo of the app with a video.
+
 ## What's next?
 - use [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) to secure the connection and the data
 - get a [free TLS certificate](https://letsencrypt.org/about/)
 - Cache request results
 - Add another language support
 - Use websockets for messaging
+- Create Frontend tests

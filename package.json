@@ -1,8 +1,13 @@
 {
   "name": "hoot-app",
   "version": "0.1.0",
+  "description": "Twitter clone, a personal project",
   "proxy": "http://localhost:5432",
   "private": true,
+  "keywords": ["personal", "app", "hoot", "twitter", "clone"],
+  "author": { "name": "Marcos Lamarques", "email": "lamarques.marcos@gmail.com", "url": "https://www.linkedin.com/in/mlamarques/" },
+  "homepage": "https://hoot-app.vercel.app",
+  "license": "MIT",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",

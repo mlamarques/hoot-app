@@ -89,6 +89,7 @@ export default function Nav(props) {
               <div className="header--logo">
                 <Link to='/' className="logo--redirect">
                   <LogoSimp />
+                  <div className="logo__background"></div>
                 </Link>
               </div>}
               <nav className="nav__container">
