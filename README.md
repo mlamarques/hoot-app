@@ -3,7 +3,7 @@
 
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/mlamarques/hoot-app">
   
-  <img src="https://img.shields.io/github/deployments/mlamarques/hoot-app/hoot-app-alpha" alt="production status">
+  <img src="https://img.shields.io/github/deployments/mlamarques/hoot-app/Production " alt="production status">
   
   <a href="https://hoot-app.vercel.app">
     <img alt="website" src="https://img.shields.io/badge/Website-white">
