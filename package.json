@@ -1,6 +1,7 @@
 {
   "name": "hoot-app",
   "version": "0.1.0",
+  "description": "Twitter clone, a personal project",
   "proxy": "http://localhost:5432",
   "private": true,
   "keywords": ["personal", "app", "hoot", "twitter", "clone"],

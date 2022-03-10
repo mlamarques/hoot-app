@@ -99,3 +99,4 @@ In the readme I intend to explain my project goals and show some of it. I will s
 - Cache request results
 - Add another language support
 - Use websockets for messaging
+- Create Frontend tests
