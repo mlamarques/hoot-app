@@ -31,6 +31,7 @@ export const NavStyle = styled.div`
                 
 
                 .logo--redirect {
+                    position: relative;
                     display: flex;
                     width: 68px;
                     height: 68px;
@@ -43,7 +44,20 @@ export const NavStyle = styled.div`
                     cursor: pointer;
 
                     &:hover {
-                        background-color: var(--mellow-apricot-shade)
+                        .logo__background {
+                            background-color: var(--mellow-apricot-shade)
+                        }
+                    }
+
+                    .logo__background {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        left: 0;
+                        margin: 6px;
+                        border-radius: 9999px;
+                        z-index: -1;
                     }
                 }
             }
