@@ -114,104 +114,162 @@ export default function Favorites(props) {
   return (
     <div className="messages-page">
       <MessagesStyle>
-      {!(props.windowSize.width <= 988 && params.id) &&
-      <div className="main__container--header">
-        <div className="main__header">
-          <h1>Messages</h1>
-        </div>
-        <div className="messages__container">
-          {(!selectedChat.length && params.id) && 
-            <UserCardMessage
-              key={selectedUser?._id}
-              username={selectedUser?.username}
-              img_url={selectedUser?.img_url}
-              time={''}
-              lastMessage={''}
-              isSelected={true}
-            />  
-          }
-          {userMessages?.map(item => {
-            return (
-              <UserCardMessage
-                key={item?._id}
-                username={item?.party.find(elem => elem._id !== user._id).username}
-                img_url={item?.party.find(elem => elem._id !== user._id).img_url}
-                time={item?.last_update_formatted}
-                lastMessage={item?.content[item?.content.length - 1].message}
-                handleClick={() => handleMessageClick(item?.party, item?.content)}
-                isSelected={item?.party.find(elem => elem._id !== user._id)._id === selectedUser._id ? true : false}
-              />
-            ) 
-          })}
-        </div>
-      </div>}
-      {((props.windowSize.width >= 988 && !params.id) || params.id) &&
-      <div className="chat__container">
-        {params.id ?
-        <div className="chat-full--wrapper">
-          <div className="chat__header">
-            {props.windowSize.width <= 987 &&
-            <div className="go-back--wrapper" onClick={() => navigate(-1)}>
-              <IconArrowBack />
-            </div>}
-            <div className="user-avatar--wrapper">
-              <img src={selectedUser.img_url} alt="user avatar" />
+        {!(props.windowSize.width <= 988 && params.id) && (
+          <div className="main__container--header">
+            <div className="main__header">
+              {props.windowSize.width <= 500 && (
+                <div
+                  className="user--avatar__container"
+                  onClick={props.handleHeaderAvatarClick}
+                >
+                  <div className="user--avatar__wrapper">
+                    <img
+                      className="user--avatar"
+                      src={user.img_url}
+                      alt="img"
+                    />
+                  </div>
+                </div>
+              )}
+              <h1>Messages</h1>
             </div>
-            <div className="user-info--wrapper">
-              <div className="nickname__container">
-                <span>{selectedUser.username}</span>
-              </div>
-              <div className="username__container">
-                <span>@{selectedUser.username}</span>
-              </div>
-            </div>
-          </div>
-          <div className="chat-body__container">
-            {isLoading && 
-            <div className="loading__container" style={{display: 'flex', position: 'absolute', bottom: 0, left: 0, width: '100%'}}>
-              <LoadingSimple />
-            </div>
-            }
-            {selectedChat?.map((item, n) => {
-              return (
-                <ChatMessage
-                  key={n}
-                  img_url={item?.userId === user._id ? '' : selectedUser.img_url}
-                  message={item?.message}
-                  date={item?.date_formatted}
-                  otherUser={item?.userId === user._id ? false : true}
+            <div className="messages__container">
+              {!selectedChat.length && params.id && (
+                <UserCardMessage
+                  key={selectedUser?._id}
+                  username={selectedUser?.username}
+                  img_url={selectedUser?.img_url}
+                  time={''}
+                  lastMessage={''}
+                  isSelected={true}
                 />
-              )
-            })}
-          </div>
-          <div className="compose__container">
-            <div className="input--wrapper">
-              {newMessage.length === 0 &&
-              <div className="label__container">
-                <span>Start a new message</span>
-              </div>
-              }
-              <input className="new-message--input" type="text" value={newMessage} onChange={handleChange} />
+              )}
+              {userMessages?.map((item) => {
+                return (
+                  <UserCardMessage
+                    key={item?._id}
+                    username={
+                      item?.party.find((elem) => elem._id !== user._id).username
+                    }
+                    img_url={
+                      item?.party.find((elem) => elem._id !== user._id).img_url
+                    }
+                    time={item?.last_update_formatted}
+                    lastMessage={
+                      item?.content[item?.content.length - 1].message
+                    }
+                    handleClick={() =>
+                      handleMessageClick(item?.party, item?.content)
+                    }
+                    isSelected={
+                      item?.party.find((elem) => elem._id !== user._id)._id ===
+                      selectedUser._id
+                        ? true
+                        : false
+                    }
+                  />
+                );
+              })}
             </div>
-            <div className="send-message__container" 
-              style={newMessage.length === 0 ? {opacity: 0.5, pointerEvents: 'none'} : {}}
-              onClick={sendNewMessage}
-            >
-              <div className="send-message--wrapper">
-                <div className="send-message--icon">
-                  <IconSendMessage />
+          </div>
+        )}
+        {((props.windowSize.width >= 988 && !params.id) || params.id) && (
+          <div className="chat__container">
+            {params.id ? (
+              <div className="chat-full--wrapper">
+                <div className="chat__header">
+                  {props.windowSize.width <= 987 && (
+                    <div
+                      className="go-back--wrapper"
+                      onClick={() => navigate(-1)}
+                    >
+                      <IconArrowBack />
+                    </div>
+                  )}
+                  <div className="user-avatar--wrapper">
+                    <img src={selectedUser.img_url} alt="user avatar" />
+                  </div>
+                  <div className="user-info--wrapper">
+                    <div className="nickname__container">
+                      <span>{selectedUser.username}</span>
+                    </div>
+                    <div className="username__container">
+                      <span>@{selectedUser.username}</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="chat-body__container">
+                  {isLoading && (
+                    <div
+                      className="loading__container"
+                      style={{
+                        display: 'flex',
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        width: '100%',
+                      }}
+                    >
+                      <LoadingSimple />
+                    </div>
+                  )}
+                  {selectedChat?.map((item, n) => {
+                    return (
+                      <ChatMessage
+                        key={n}
+                        img_url={
+                          item?.userId === user._id ? '' : selectedUser.img_url
+                        }
+                        message={item?.message}
+                        date={item?.date_formatted}
+                        otherUser={item?.userId === user._id ? false : true}
+                      />
+                    );
+                  })}
+                </div>
+                <div className="compose__container">
+                  <div className="input--wrapper">
+                    {newMessage.length === 0 && (
+                      <div className="label__container">
+                        <span>Start a new message</span>
+                      </div>
+                    )}
+                    <input
+                      className="new-message--input"
+                      type="text"
+                      value={newMessage}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div
+                    className="send-message__container"
+                    style={
+                      newMessage.length === 0
+                        ? { opacity: 0.5, pointerEvents: 'none' }
+                        : {}
+                    }
+                    onClick={sendNewMessage}
+                  >
+                    <div className="send-message--wrapper">
+                      <div className="send-message--icon">
+                        <IconSendMessage />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div className="chat-empty--wrapper">
+                <span className="title-empty">
+                  You don't have a message selected
+                </span>
+                <span className="text-empty">
+                  Choose one from your existing messages, or start a new one.
+                </span>
+              </div>
+            )}
           </div>
-        </div>
-        :
-        <div className="chat-empty--wrapper">
-          <span className="title-empty">You don't have a message selected</span>
-          <span className="text-empty">Choose one from your existing messages, or start a new one.</span>
-        </div>
-        }
-      </div>}
+        )}
       </MessagesStyle>
     </div>
   );

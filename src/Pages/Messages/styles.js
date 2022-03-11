@@ -20,6 +20,7 @@ export const MessagesStyle = styled.div`
 
         .main__header {
             display: flex;
+            flex-direction: row;
             position: sticky;
             top: 0;
             min-height: 55px;
@@ -29,6 +30,24 @@ export const MessagesStyle = styled.div`
             background-color: var(--mellow-apricot-transparent);
             border-bottom: 1px solid black;
             z-index: 3;
+
+            .user--avatar__container {
+                display: flex;
+                height: 100%;
+                min-width: 56px;
+                align-items: center;
+                cursor: pointer;
+
+                .user--avatar__wrapper {
+                    height: 32px;
+                    width: 32px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 9999px;
+                    background-color: var(--white-shade);
+                } 
+            }
             
             h1 {
                 cursor: pointer;

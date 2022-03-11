@@ -63,7 +63,7 @@ function App() {
     <div className="App" style={location.pathname === '/compose/hoot' ? {position: 'fixed'} : {}}>
       <GlobalStyles/>
         {isMobileMenuShown &&
-          <MobileMenu isMenuShowing={isMobileMenuShown} closeMenu={handleMobileMenuClose} handleClick={(event) => handleMobileMenuOutsideClick(event)}/>
+          <MobileMenu isMenuShowing={isMobileMenuShown} closeMenu={handleMobileMenuClose} handleClick={(event) => handleMobileMenuOutsideClick(event)} />
         }
         {((location.pathname !== "/signup" && location.pathname !== "/login") && !(windowSize.width < 500 && RegExp(/^(\/messages\/)/).exec(location.pathname))) && <Nav username={user.username} img_url={user.img_url} windowSize={windowSize} />}
         <Routes location={state?.backgroundLocation || location}>
