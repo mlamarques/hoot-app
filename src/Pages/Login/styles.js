@@ -364,10 +364,9 @@ export const LoginStyle = styled.div`
         position: fixed;
         display: flex;
         flex-direction: row;
-        right: 16px;
-        bottom: 16px;
+        right: 2rem;
+        bottom: 3rem;
         align-items: center;
-        max-width: 10rem;
         user-select: none;
         z-index: 1;
 
@@ -376,7 +375,7 @@ export const LoginStyle = styled.div`
             display: flex;
             max-width: 3rem;
             justify-content: center;
-            margin: 0 16px;
+            margin: 0 1.25rem;
 
             .linkedin-badge__background {
                 position: absolute;
@@ -401,7 +400,7 @@ export const LoginStyle = styled.div`
             display: flex;
             max-width: 3rem;
             justify-content: center;
-            margin: 0 16px;
+            margin: 0 1.25rem;
 
             .github-badge__background {
                 position: absolute;
@@ -453,13 +452,33 @@ export const LoginStyle = styled.div`
         }
 
         .author__container {
-            color: var(--light-text);
 
-            .author-name {
+            .linkedin-badge {
+                fill: var(--eerie-black);
 
                 &:hover {
-                    background-color: var(--black-shade);
+                    .linkedin-badge__background {
+                        background-color: var(--light-text);
+                    }
                 }
+
+                .linkedin-badge__background {
+                    background-color: var(--icon-empty);
+                }
+            }
+
+            .github-badge {
+
+                &:hover {
+                    .github-badge__background {
+
+                        background-color: var(--light-text);
+                    }  
+                }
+
+                .github-badge__background {
+                    background-color: var(--icon-empty);
+                }                
             }
         }
     }
