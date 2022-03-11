@@ -219,7 +219,7 @@ function Login(props) {
           )}
         </div>
         {showNotifications && <Notification text={notificationValue} />}
-        {props.windowSize.height > 500 && (
+        {props.windowSize.height > 580 && (
           <div className="author__container">
             <a href="https://www.linkedin.com/in/mlamarques/" className="linkedin-badge">
               <svg viewBox="0 0 128 128">

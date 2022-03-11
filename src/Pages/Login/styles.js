@@ -452,9 +452,16 @@ export const LoginStyle = styled.div`
         }
 
         .author__container {
+            position: absolute;
+            right: 0;
+            left: 0;
+            bottom: 4rem;
+            width: 100%;
+            justify-content: center;
 
             .linkedin-badge {
                 fill: var(--eerie-black);
+                margin: 0 2rem;
 
                 &:hover {
                     .linkedin-badge__background {
@@ -468,6 +475,7 @@ export const LoginStyle = styled.div`
             }
 
             .github-badge {
+                margin: 0 2rem;
 
                 &:hover {
                     .github-badge__background {
