@@ -26,6 +26,11 @@ export default function Account(props) {
       <AnotherSettingStyle>
         <div className="main__container">
           <div className="main__header">
+            { props.windowSize.width <= 988 &&
+              <div className="go-back--wrapper" onClick={() => navigate(-1)}>
+              <IconArrowBack />
+            </div>
+            }
             <h2>Settings</h2>
           </div>
           <div className="settings__container">

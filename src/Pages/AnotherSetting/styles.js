@@ -24,6 +24,24 @@ export const AnotherSettingStyle = styled.div`
             align-items: center;
             background-color: var(--mellow-apricot-transparent);
             z-index: 3;
+
+            .go-back--wrapper {
+                position: relative;
+                height: 36px;
+                width: 36px;
+                margin-right: 16px;
+                border-radius: 9999px;
+                transition-duration: 0.5s;
+                cursor: pointer;
+
+                svg {
+                    fill: black;
+                }
+
+                &:hover {
+                    background-color: var(--deep-saffron);
+                }
+            }
             
             h1 {
                 cursor: pointer;
