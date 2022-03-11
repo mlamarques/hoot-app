@@ -45,61 +45,83 @@ export default function Search(props) {
   }
 
   return (
-    <div className="search-page" style={{height: '100%'}}>
+    <div className="search-page" style={{ height: '100%' }}>
       <SearchStyle>
-      <div className="main__container">
-        <div className="main__header">
-          <h1>Search</h1>
-        </div>
-        <div className="feed__container">
-          <div className="hoot--individual__container">
-            <div className="search__container">
-              <div className="search--logo__container">
-                <IconSearchInput />
-              </div>
-              <div className="input--wrapper">
-                {searchTerm.length === 0 &&
-                <div className="label__container">
-                  <span>Search user</span>
-                </div>
-                }
-              <input className="search--input" type="text" value={searchTerm} onChange={handleChange} />
-              </div>
-              {searchTerm.length !== 0 &&
-              <div className="clean-input__container">
-                <div className="clean-input__background" onClick={() => setSearchTerm('')} >
-                  <IconClose />
+        <div className="main__container">
+          <div className="main__header">
+            {props.windowSize.width <= 500 && (
+              <div
+                className="user--avatar__container"
+                onClick={props.handleHeaderAvatarClick}
+              >
+                <div className="user--avatar__wrapper">
+                  <img className="user--avatar" src={user.img_url} alt="img" />
                 </div>
               </div>
-              }
-            </div>
+            )}
+            <h1>Search</h1>
           </div>
-          <div className="results__container">
+          <div className="feed__container">
+            <div className="hoot--individual__container">
+              <div className="search__container">
+                <div className="search--logo__container">
+                  <IconSearchInput />
+                </div>
+                <div className="input--wrapper">
+                  {searchTerm.length === 0 && (
+                    <div className="label__container">
+                      <span>Search user</span>
+                    </div>
+                  )}
+                  <input
+                    className="search--input"
+                    type="text"
+                    value={searchTerm}
+                    onChange={handleChange}
+                  />
+                </div>
+                {searchTerm.length !== 0 && (
+                  <div className="clean-input__container">
+                    <div
+                      className="clean-input__background"
+                      onClick={() => setSearchTerm('')}
+                    >
+                      <IconClose />
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="results__container">
               <div className="loading__container">
                 {isLoading && <LoadingSimple />}
               </div>
               {autoComplete.length > 0 && (
                 <div className="user-card_container">
-                  {autoComplete.map(item => {
+                  {autoComplete.map((item) => {
                     return (
                       <UserCardSearch
-                      key={item?._id}
-                      username={item?.username}
-                      img_url={item?.img_url}
-                      followValue={(user?.following.includes(item?._id) ? 'Following' : 'Follow')}
+                        key={item?._id}
+                        username={item?.username}
+                        img_url={item?.img_url}
+                        followValue={
+                          user?.following.includes(item?._id)
+                            ? 'Following'
+                            : 'Follow'
+                        }
                       />
-                    )
+                    );
                   })}
                 </div>
               )}
-              {(autoComplete.length === 0 && searchTerm.length > 0) && 
+              {autoComplete.length === 0 && searchTerm.length > 0 && (
                 <ul className="user-card_container">
                   <span>No user found</span>
                 </ul>
-              }
+              )}
             </div>
+          </div>
         </div>
-      </div>
       </SearchStyle>
     </div>
   );

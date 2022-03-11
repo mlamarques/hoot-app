@@ -51,6 +51,12 @@ export default function Favorites(props) {
       <FavoritesStyle>
         <div className="main__container">
           <div className="main__header">
+            {props.windowSize.width <= 500 &&
+            <div className="user--avatar__container" onClick={props.handleHeaderAvatarClick}>
+              <div className="user--avatar__wrapper">
+                  <img className="user--avatar" src={user.img_url} alt="img" />
+              </div>
+            </div>}
             <h1>Favorites</h1>
           </div>
           <div className="feed__container">

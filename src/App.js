@@ -1,6 +1,7 @@
 import {React, useEffect, useState, useRef} from 'react';
 import { Navigate, Routes, Route, useLocation } from 'react-router-dom';
 import PrivateRoutes from './private.routes';
+import MobileMenu from '../src/components/MobileMenu/MobileMenu'
 import Nav from '../src/components/Nav/Nav'
 import Login from './Pages/Login/Login'
 import SignUp from './Pages/SignUp/SignUp'
@@ -23,6 +24,7 @@ function App() {
     width: window.innerWidth,
     height: window.innerHeight,
   })
+  const [isMobileMenuShown, setIsMobileMenuShown] = useState(false)
 
   let location = useLocation()
   let state = location.state
@@ -44,10 +46,25 @@ function App() {
     
   }, [])
 
+  function handleMobileMenuOutsideClick(event) {
+    if (event.target.firstChild && event.target.firstChild.className === 'mobile-menu__container show-menu' ) {
+      setIsMobileMenuShown(prev => !prev)
+    } else {
+      return
+    }
+  }
+
+  function handleMobileMenuClose() {
+    setIsMobileMenuShown(false)
+  }
+
   // Check if server is up
   return (
     <div className="App" style={location.pathname === '/compose/hoot' ? {position: 'fixed'} : {}}>
       <GlobalStyles/>
+        {isMobileMenuShown &&
+          <MobileMenu isMenuShowing={isMobileMenuShown} closeMenu={handleMobileMenuClose} handleClick={(event) => handleMobileMenuOutsideClick(event)}/>
+        }
         {((location.pathname !== "/signup" && location.pathname !== "/login") && !(windowSize.width < 500 && RegExp(/^(\/messages\/)/).exec(location.pathname))) && <Nav username={user.username} img_url={user.img_url} windowSize={windowSize} />}
         <Routes location={state?.backgroundLocation || location}>
           <Route path="/login" element={<Login windowSize={windowSize} />} />
@@ -57,11 +74,11 @@ function App() {
             <Route path="/settings/account" element={<Account windowSize={windowSize} />} />
             <Route path="/settings/password" element={<ChangePassword windowSize={windowSize} />} />
             <Route path="/settings/" element={windowSize.width >= 988 ? <Navigate to="/settings/account" /> : <Account windowSize={windowSize} />} />
-            <Route path="/messages/:id" element={<Messages windowSize={windowSize} />} />
-            <Route path="/messages/" element={<Messages windowSize={windowSize} />} />
-            <Route path="/favorites" element={<Favorites />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/messages/:id" element={<Messages windowSize={windowSize}  />} />
+            <Route path="/messages/" element={<Messages windowSize={windowSize} handleHeaderAvatarClick={() => setIsMobileMenuShown(prev => !prev)} />} />
+            <Route path="/favorites" element={<Favorites windowSize={windowSize} handleHeaderAvatarClick={() => setIsMobileMenuShown(prev => !prev)} />} />
+            <Route path="/search" element={<Search windowSize={windowSize} handleHeaderAvatarClick={() => setIsMobileMenuShown(prev => !prev)} />} />
+            <Route path="/home" element={<Home windowSize={windowSize} handleHeaderAvatarClick={() => setIsMobileMenuShown(prev => !prev)} />} />
             <Route path="/:user" element={<User />} />
             <Route path="/" element={<Navigate to="/home" />} />
             <Route path="*" element={<Navigate to="/home" />} />

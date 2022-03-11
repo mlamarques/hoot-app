@@ -9,6 +9,7 @@ import HootCard from '../../components/HootCard/HootCard';
 export default function Home(props) {
   const [isLoading, setIsLoading] = useState(false)
   const [userFeed, setUserFeed] = useState([])
+  
 
   let params = useParams();
 
@@ -44,12 +45,20 @@ export default function Home(props) {
     return user?.likes?.includes(hootId) ? true : false
   }
 
+  
+
   return (
     <div className="home-page" style={{height: '100%'}}>
         {/* -------------------------- Main -------------------------- */}
       <HomeStyle>
         <div className="main__container" onWheel={() => console.log('scroll')}>
           <div className="main__header">
+            {props.windowSize.width <= 500 &&
+            <div className="user--avatar__container" onClick={props.handleHeaderAvatarClick}>
+              <div className="user--avatar__wrapper">
+                  <img className="user--avatar" src={user.img_url} alt="img" />
+              </div>
+            </div>}
             <h1>Home</h1>
           </div>
           <div className="feed__container">
