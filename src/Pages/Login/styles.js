@@ -364,6 +364,7 @@ export const LoginStyle = styled.div`
         position: fixed;
         display: flex;
         flex-direction: row;
+        height: 48px;
         right: 2rem;
         bottom: 3rem;
         align-items: center;
@@ -373,6 +374,7 @@ export const LoginStyle = styled.div`
         .linkedin-badge {
             position: relative;
             display: flex;
+            height: 100%;
             max-width: 3rem;
             justify-content: center;
             margin: 0 1.25rem;
@@ -398,6 +400,7 @@ export const LoginStyle = styled.div`
         .github-badge {
             position: relative;
             display: flex;
+            height: 100%;
             max-width: 3rem;
             justify-content: center;
             margin: 0 1.25rem;
@@ -453,6 +456,7 @@ export const LoginStyle = styled.div`
 
         .author__container {
             position: absolute;
+            height: 48px;
             right: 0;
             left: 0;
             bottom: 4rem;
