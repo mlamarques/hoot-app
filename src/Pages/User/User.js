@@ -247,7 +247,7 @@ export default function User(props) {
                       commentsCount={item?.comments_count}
                       img_url={userData?.img_url} 
                       username={userData?.username}  
-                      time={item?.date_formatted}
+                      time={item?.new_date}
                       isLiked={ () => handleIsHootLiked(item?._id) } 
                       handleLikeClick={ () => handleLikeClick(item?._id) }
                     />
