@@ -137,6 +137,7 @@ export default function Nav(props) {
                     </div>}
                   </div>
                 </Link>
+                {props.windowSize.width > 500 &&
                 <Link to={`/${user.username}`} className="nav__item">
                   <div className="item--wrapper">
                     <div className="logo-item">
@@ -147,7 +148,7 @@ export default function Nav(props) {
                       <span className="logo-text--value">Profile</span>
                     </div>}
                   </div>
-                </Link>
+                </Link>}
                 {(location.pathname === '/home' || props.windowSize.width > 500) &&
                 <Link to='/compose/hoot' className="nav__compose" state={{ backgroundLocation: location }}>
                   <div className="compose--wrapper">
