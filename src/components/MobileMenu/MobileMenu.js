@@ -40,22 +40,21 @@ export default function MobileMenu(props) {
     }
   }, [])
 
-  function closeMenuTransition(props) {
+  function closeMenuTransition() {
 
     new Promise(
       function(resolve, reject) {
         setTimeout(function () {
+          
           resolve(
             menuRef.current.classList.remove('show-menu'),
-            backgroundRef.current.style.backgroundColor = 'transparent'
+            backgroundRef.current.style.backgroundColor = 'transparent',
+            props.closeMenu()
           )
         }, 250)
+        
       }
-    ).then(() => {
-      setTimeout(function () {
-        props.closeMenu()
-      }, 250)
-      })
+    )
   }
 
   function handleLogout() {
