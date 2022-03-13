@@ -16,6 +16,7 @@ export const UserCardMessageStyle = styled.div`
         background-color: var(--mellow-apricot);
         user-select: none;
         transition: background-color 0.2s ease;
+        cursor: pointer;
 
         &:hover {
             background-color: var(--mellow-apricot-shade);
