@@ -40,21 +40,34 @@ export default function MobileMenu(props) {
     }
   }, [])
 
-  function closeMenuTransition() {
+  async function closeMenuTransition() {
+
+    // new Promise(
+    //   function(resolve, reject) {
+    //     setTimeout(function () {
+    //       resolve(
+    //         menuRef.current.classList.remove('show-menu'),
+    //         backgroundRef.current.style.backgroundColor = 'transparent',
+    //       )
+    //     }, 250)
+    //   }
+    // ).then(() => props.closeMenu())
 
     new Promise(
-      function(resolve, reject) {
+      function(resolve) {
         setTimeout(function () {
-          
-          resolve(
-            menuRef.current.classList.remove('show-menu'),
-            backgroundRef.current.style.backgroundColor = 'transparent',
-            props.closeMenu()
+          menuRef.current.classList.remove('show-menu')
+          backgroundRef.current.style.backgroundColor = 'transparent'
+          return resolve(
+            setTimeout(function () {
+              props.closeMenu()
+            }, 250)
           )
         }, 250)
-        
       }
     )
+    
+    
   }
 
   function handleLogout() {
