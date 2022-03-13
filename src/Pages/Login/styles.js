@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const LoginStyle = styled.div`
-
+    
     .sign-in__container {
         display: flex;
         flex-direction: column;
@@ -426,7 +426,8 @@ export const LoginStyle = styled.div`
 
     @media only screen and (max-width: 675px) {
         display: flex;
-        height: 100vh;
+        min-height: 100vh;
+        height: 100%;
         width: 100vw;
         justify-content: center;
         background-color: var(--eerie-black);
@@ -439,7 +440,7 @@ export const LoginStyle = styled.div`
             border-radius: 0;
 
             .go-back--wrapper {
-                position: fixed;
+                position: absolute;
                 top: 8px;
                 left: 8px;
             }
