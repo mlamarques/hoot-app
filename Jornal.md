@@ -105,6 +105,18 @@ One way of protecting your source code is making the JS files not human readable
 This will make the build folder have minified code inside main.
 You can also use a plugin called jssrambler
 
+## 14 march - Test error
+Was having a problem with testing. It looks like some kind of version problem. I needed to install a working version of jest-watch-typeahead
+Error: 
+Error: Failed to initialize watch plugin "node_modules/jest-watch-typeahead/filename.js":
+	● Test suite failed to run
+	import { PatternPrompt, printPatternCaret, printRestoredPatternCaret } from 'jest-watcher';
+							^^^^^^^^^^^^^^^^^
+
+Fix: run: npm i -D --exact jest-watch-typeahead@0.6.5
+
+
+
 ## What's next?
 - use [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) to secure the connection and the data
 - get a [free TLS certificate](https://letsencrypt.org/about/)

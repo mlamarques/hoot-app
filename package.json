@@ -4,8 +4,18 @@
   "description": "Twitter clone, a personal project",
   "proxy": "http://localhost:5432",
   "private": true,
-  "keywords": ["personal", "app", "hoot", "twitter", "clone"],
-  "author": { "name": "Marcos Lamarques", "email": "lamarques.marcos@gmail.com", "url": "https://www.linkedin.com/in/mlamarques/" },
+  "keywords": [
+    "personal",
+    "app",
+    "hoot",
+    "twitter",
+    "clone"
+  ],
+  "author": {
+    "name": "Marcos Lamarques",
+    "email": "lamarques.marcos@gmail.com",
+    "url": "https://www.linkedin.com/in/mlamarques/"
+  },
   "homepage": "https://hoot-app.vercel.app",
   "license": "MIT",
   "dependencies": {
@@ -43,5 +53,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "jest-watch-typeahead": "^0.6.5"
   }
 }
