@@ -100,6 +100,11 @@ So I noticed that their containers had no height defined so I set the height and
 ## 13 march - Mobile behavior
 If you have input fields in the page, when you click on it, it opens the keyboard, which changes the screen size and can make some fixed elements get over other elements.
 
+## 14 march - Code obfuscation
+One way of protecting your source code is making the JS files not human readable. One way of making this is creating a local variable GENERATE_SOURCEMAP=false.
+This will make the build folder have minified code inside main.
+You can also use a plugin called jssrambler
+
 ## What's next?
 - use [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) to secure the connection and the data
 - get a [free TLS certificate](https://letsencrypt.org/about/)
