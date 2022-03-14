@@ -108,3 +108,5 @@ If you have input fields in the page, when you click on it, it opens the keyboar
 - Use websockets for messaging
 - Create Frontend tests
 - Make a darkmode version
+- Let user pick their avatar image
+- Let user have a different name

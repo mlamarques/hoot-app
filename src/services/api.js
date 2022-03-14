@@ -3,7 +3,7 @@ import axios from 'axios'
 export const api = axios.create({
     // baseURL: 'http://localhost:5432',
     baseURL: 'https://hoot-api.herokuapp.com/',
-    timeout: 10000,
+    timeout: 60000,
     headers: {
         'Content-Type': 'application/json',
         // 'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
