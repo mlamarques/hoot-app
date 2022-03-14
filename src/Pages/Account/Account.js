@@ -33,7 +33,7 @@ export default function Account(props) {
         <div className="main__container">
           <div className="main__header">
             { props.windowSize.width <= 988 &&
-              <div className="go-back--wrapper" onClick={() => navigate(-1)}>
+              <div className="go-back--wrapper" onClick={() => navigate('/home')}>
                 <IconArrowBack />
               </div>
             }
