@@ -8,13 +8,14 @@ export const HootCardStyle = styled.div`
         flex-direction: column;
         flex: 1;
         padding: 0 16px;
-        background-color: rgba(0, 0, 0, 1);
+        /* background-color: rgba(0, 0, 0, 1); */
         border-bottom: 1px solid rgb(47, 51, 54);
         transition-duration: 0.2s;
         cursor: pointer;
 
         &:hover {
-            background-color: rgba(0, 0, 0, 0.95);
+            /* background-color: rgba(0, 0, 0, 0.95); */
+            background-color: var(--mellow-apricot-shade);
         }
 
         .container__header {
@@ -60,7 +61,6 @@ export const HootCardStyle = styled.div`
                     justify-content: space-between;
                     max-width: 100%;
                     min-width: 0px;
-                    color: white;
                     margin-bottom: 2px;
 
                     .info--header {
@@ -194,7 +194,7 @@ export const HootCardStyle = styled.div`
                             line-height: 20px;
                             
                             svg {
-                                fill: white;
+                                /* fill: white; */
                             }
                         }
                     }
@@ -219,7 +219,7 @@ export const HootCardStyle = styled.div`
                         line-height: 1.25rem;
                         font-size: 1rem;
                         font-weight: 400;
-                        color: white;
+                        /* color: white; */
                     }
 
                     .footer__container {
@@ -289,7 +289,7 @@ export const HootCardStyle = styled.div`
                             .count--wrapper {
                                 padding: 0 12px;
                                 min-width: 0px;
-                                color: white;
+                                /* color: white; */
 
                                 .icon--count {
                                     transition-duration: 0.2s;

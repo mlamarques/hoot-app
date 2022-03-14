@@ -93,6 +93,13 @@ component of the page were rendered, so I did some research and found a solution
 ## 10 march - Create Readme for project
 In the readme I intend to explain my project goals and show some of it. I will show the project structure in a graph I created in Figma, and a small demo of the app with a video.
 
+## 12 march - SVG not displayed in mobile version
+In the login page, the icons for directing to my pages were showing ok in the browser, even in the mobile version, but when I accessed the app in my phone they were not visible.
+So I noticed that their containers had no height defined so I set the height and it solved the problem.
+
+## 13 march - Mobile behavior
+If you have input fields in the page, when you click on it, it opens the keyboard, which changes the screen size and can make some fixed elements get over other elements.
+
 ## What's next?
 - use [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) to secure the connection and the data
 - get a [free TLS certificate](https://letsencrypt.org/about/)
@@ -100,3 +107,4 @@ In the readme I intend to explain my project goals and show some of it. I will s
 - Add another language support
 - Use websockets for messaging
 - Create Frontend tests
+- Make a darkmode version

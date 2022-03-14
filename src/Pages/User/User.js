@@ -1,5 +1,5 @@
 import { UserStyle } from './styles'
-import Loading from '../../components/Loading/Loading'
+import LoadingFeed from '../../components/LoadingFeed/LoadingFeed'
 import { Link, useNavigate, useParams  } from 'react-router-dom'
 import { api } from '../../services/api'
 import { useEffect, useState } from 'react'
@@ -171,7 +171,7 @@ export default function User(props) {
       
         {/* -------------------------- Main -------------------------- */}
       <UserStyle>
-        {isLoading && <Loading />}
+        {isLoading && <LoadingFeed />}
         {isUserFound ?
         <div className="main__container">
           <div className="main__header">

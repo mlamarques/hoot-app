@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import Loading from '../../components/Loading/Loading'
+import LoadingFeed from '../../components/LoadingFeed/LoadingFeed'
 import { Link, useNavigate } from 'react-router-dom'
 import { api } from '../../services/api'
 import { useUserState } from '../../context/UserContext'
@@ -16,7 +16,7 @@ export default function ChangePassword(props) {
 
   return (
     <div className="change-password-page">
-      {isLoading && <Loading />}
+      {isLoading && <LoadingFeed />}
 
       {/* -------------------------- Main -------------------------- */}
       <ChangePasswordStyle>

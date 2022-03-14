@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import HootCard from '../../components/HootCard/HootCard';
-import Loading from '../../components/Loading/Loading';
+import LoadingFeed from '../../components/LoadingFeed/LoadingFeed';
 import { useUserState } from '../../context/UserContext';
 import { api } from '../../services/api';
 import { FavoritesStyle } from './styles';
@@ -47,7 +47,7 @@ export default function Favorites(props) {
   }
 
   return (
-    <div className="favorites-page" style={{ height: '100%' }}>
+    <div className="favorites-page" style={{ height: '100%' }} onClick={() => setIsLoading(true)}>
       <FavoritesStyle>
         <div className="main__container">
           <div className="main__header">
@@ -60,7 +60,7 @@ export default function Favorites(props) {
             <h1>Favorites</h1>
           </div>
           <div className="feed__container">
-            {isLoading && <Loading />}
+            {isLoading && <LoadingFeed />}
             <div className="hoots_container">
               {likedHoots.length === 0 ? (
                 <span>No favorite hoots yet</span>

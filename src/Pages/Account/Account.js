@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import Loading from '../../components/Loading/Loading'
+import LoadingFeed from '../../components/LoadingFeed/LoadingFeed'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { api } from '../../services/api'
 import { useUserState } from '../../context/UserContext'
@@ -25,7 +25,7 @@ export default function Account(props) {
 
   return (
     <div className="account-page" style={{ height: '100%'}}>
-      {isLoading && <Loading />}
+      {isLoading && <LoadingFeed />}
       
         {/* -------------------------- Main -------------------------- */}
       <AccountStyle>
