@@ -5,7 +5,7 @@ export default function LoadingFeed() {
     // source: https://codepen.io/aurer/pen/ZEJxpO
     return (
       <LoadingFeedStyle>
-        <div class="loader loader--style2" title="1">
+        <div className="loader loader--style2" title="1">
           <svg
             version="1.1"
             id="loader-1"

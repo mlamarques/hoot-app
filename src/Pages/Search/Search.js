@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import {SearchStyle} from './styles'
 import { api } from '../../services/api'
-import Loading from '../../components/Loading/Loading'
+import LoadingFeed from '../../components/LoadingFeed/LoadingFeed'
 import LoadingSimple from '../../components/LoadingSimple/LoadingSimple'
 import IconSearchInput from '../../assets/icons/IconSearchInput'
 import IconClose from '../../assets/icons/IconClose'

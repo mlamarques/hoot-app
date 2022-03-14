@@ -30,7 +30,7 @@ export default function User(props) {
   const followBtn = document.querySelector('[data-btn]')
 
   let followBtnText
-
+  
   if (showUnfollow) {
     followBtnText =  <span>Unfollow</span>
     } else {
@@ -68,7 +68,7 @@ export default function User(props) {
     
     user.following.includes(userData._id) ? setIsFollowing(true) : setIsFollowing(false)
     
-  }, [params.user])
+  }, [params.user, userData._id])
 
   function handleFollowClick(event) {
 
