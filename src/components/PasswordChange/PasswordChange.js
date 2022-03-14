@@ -4,6 +4,7 @@ import IconNotVisible from '../../assets/icons/IconNotVisible';
 import IconVisible from '../../assets/icons/IconVisible';
 import { PasswordChangeStyle } from './styles';
 import { useUserState } from '../../context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function PasswordChange() {
   const [isCurrentPasswordShown, setIsCurrentPasswordShown] = useState(false);
@@ -18,7 +19,7 @@ export default function PasswordChange() {
   const [validationMessage, setValidationMessage] = useState('')
 
   const { user, setUser } = useUserState()
-
+  let navigate = useNavigate()
 
   function handlePasswordChange(event) {
     const { name, value } = event.target
@@ -53,7 +54,10 @@ export default function PasswordChange() {
 
       // Call API for check current passwordName
       api.post('change-password', { userId: user._id, currentPassword: currentPassword, newPassword: newPassword})
-        .then(res => console.log(res.data))
+        .then(res => {
+          console.log(res.data)
+          navigate('/home')
+        })
         .catch(err => console.error(err))
       // if wrong:
         //   setIsCurrentPasswordValid(false)
