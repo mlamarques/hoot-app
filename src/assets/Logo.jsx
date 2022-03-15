@@ -1,6 +1,6 @@
 function Logo() {
     return (
-        <svg className="logo" width="140" height="162" viewBox="0 0 140 162" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className="logo" width="140" height="162" viewBox="0 0 140 162" fill="none" aria-label="Hoot" xmlns="http://www.w3.org/2000/svg">
         <g clipPath="url(#clip0_181506_4)">
         <path d="M87 95L131 69L133.5 56.5L131.5 44.5L87 95Z" fill="white"/>
         <path d="M16.8804 140.451C10.2432 144.872 5.81844 155.922 5.81844 155.922C5.81844 155.922 125.287 184.653 128.606 103.985L130.818 64.2031" fill="white"/>

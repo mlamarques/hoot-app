@@ -149,6 +149,7 @@ function Login(props) {
                   autoComplete="username"
                   autoCorrect="on"
                   name="username"
+                  aria-label="username"
                   spellCheck="true"
                   type="text"
                   required="required"

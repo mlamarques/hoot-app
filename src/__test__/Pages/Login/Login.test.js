@@ -1,23 +1,32 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Login from "../../../src/Pages/Login/Login";
+import '@testing-library/jest-dom'
+import Login from "../../../Pages/Login/Login";
 
 const mockedUsedNavigate = jest.fn();
+
+const windowSize = {
+    width: 1920,
+    height: 1080 ,}
 
 jest.mock('react-router-dom', () => ({
    useNavigate: () => mockedUsedNavigate,
  }));
 
 describe("Login component", () => {
-    it("renders", () => {
-        const windowSize = {
-            width: 1920,
-            height: 1080 ,}
+    it("has login input", () => {
         render(<Login windowSize={windowSize} />);
-        const loginTitle = screen.getByText(/Sign in/i)
+        const usernameInput = screen.getByRole('textbox', {name: /username/i})
 
-        expect(loginTitle).toMatchSnapshot();
+        expect(usernameInput).toBeInTheDocument();
+    });
+
+    it("has sign up link", () => {
+        render(<Login windowSize={windowSize} />);
+        
+
+        expect(screen.getByText("Sign up").textContent).toMatch(/Sign up/i);
     });
 
     // it("renders radical rhinos after button click", () => {
