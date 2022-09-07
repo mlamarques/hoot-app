@@ -2,8 +2,7 @@ import axios from 'axios'
 
 export const api = axios.create({
     // baseURL: 'http://localhost:5432',
-    // baseURL: 'https://hoot-api.herokuapp.com/', ----OUTDATED----
-    baseURL: 'https://api-hoot.vercel.app/',
+    baseURL: 'https://hoot-api.herokuapp.com/',
     timeout: 60000,
     headers: {
         'Content-Type': 'application/json',
