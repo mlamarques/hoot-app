@@ -179,6 +179,7 @@ function Login(props) {
             <>
               <div
                 className="go-back--wrapper"
+                aria-label='Go back'
                 onClick={() => setIsUserNameValid(false)}
               >
                 <IconArrowBack />

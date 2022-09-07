@@ -15,6 +15,13 @@ jest.mock('react-router-dom', () => ({
  }));
 
 describe("Login component", () => {
+    it("has logo hoot", () => {
+        render(<Login windowSize={windowSize} />);
+        const logoHoot = screen.getByLabelText('Hoot')
+
+        expect(logoHoot).toBeInTheDocument();
+    });
+
     it("has login input", () => {
         render(<Login windowSize={windowSize} />);
         const usernameInput = screen.getByRole('textbox', {name: /username/i})
@@ -29,12 +36,12 @@ describe("Login component", () => {
         expect(screen.getByText("Sign up").textContent).toMatch(/Sign up/i);
     });
 
-    // it("renders radical rhinos after button click", () => {
-    //     render(<Login />);
-    //     const button = screen.getByRole("button", { name: "Next" });
-
-    //     userEvent.click(button);
-
-    //     expect(screen.getByRole("heading").textContent).toMatch(/radical rhinos/i);
-    // });
+    it("input has correct values", () => {
+        render(<Login windowSize={windowSize} />);
+        const usernameInput = screen.getByRole('textbox', {name: /username/i})
+    
+        userEvent.type(usernameInput, "Whale");
+    
+        expect(usernameInput).toHaveValue("Whale");
+    });
 });
